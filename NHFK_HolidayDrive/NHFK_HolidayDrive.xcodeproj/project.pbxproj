@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		F14D4E37253A926E00CD841C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E36253A926E00CD841C /* AppDelegate.swift */; };
 		F14D4E39253A926E00CD841C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E38253A926E00CD841C /* SceneDelegate.swift */; };
-		F14D4E3B253A926E00CD841C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E3A253A926E00CD841C /* ViewController.swift */; };
 		F14D4E3E253A926E00CD841C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E3C253A926E00CD841C /* Main.storyboard */; };
 		F14D4E40253A927200CD841C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E3F253A927200CD841C /* Assets.xcassets */; };
 		F14D4E43253A927200CD841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E41253A927200CD841C /* LaunchScreen.storyboard */; };
 		F14D4E4E253A927200CD841C /* NHFK_HolidayDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E4D253A927200CD841C /* NHFK_HolidayDriveTests.swift */; };
 		F14D4E59253A927200CD841C /* NHFK_HolidayDriveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E58253A927200CD841C /* NHFK_HolidayDriveUITests.swift */; };
+		F14D4E72253D341A00CD841C /* RegisterS1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E71253D341A00CD841C /* RegisterS1VC.swift */; };
+		F14D4E7A253D346F00CD841C /* RegisterS2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E79253D346F00CD841C /* RegisterS2VC.swift */; };
+		F14D4E81253D34D000CD841C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E80253D34D000CD841C /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 		F14D4E33253A926E00CD841C /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D4E36253A926E00CD841C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F14D4E38253A926E00CD841C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F14D4E3A253A926E00CD841C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F14D4E3D253A926E00CD841C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F14D4E3F253A927200CD841C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14D4E42253A927200CD841C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		F14D4E54253A927200CD841C /* NHFK_HolidayDriveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHFK_HolidayDriveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14D4E58253A927200CD841C /* NHFK_HolidayDriveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHFK_HolidayDriveUITests.swift; sourceTree = "<group>"; };
 		F14D4E5A253A927200CD841C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F14D4E71253D341A00CD841C /* RegisterS1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterS1VC.swift; sourceTree = "<group>"; };
+		F14D4E79253D346F00CD841C /* RegisterS2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterS2VC.swift; sourceTree = "<group>"; };
+		F14D4E80253D34D000CD841C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,10 @@
 		F14D4E35253A926E00CD841C /* NHFK_HolidayDrive */ = {
 			isa = PBXGroup;
 			children = (
+				F14D4E7F253D34B700CD841C /* ViewControllers */,
 				F14D4E36253A926E00CD841C /* AppDelegate.swift */,
 				F14D4E38253A926E00CD841C /* SceneDelegate.swift */,
-				F14D4E3A253A926E00CD841C /* ViewController.swift */,
+				F14D4E7E253D347F00CD841C /* AuthViewControllers */,
 				F14D4E3C253A926E00CD841C /* Main.storyboard */,
 				F14D4E3F253A927200CD841C /* Assets.xcassets */,
 				F14D4E41253A927200CD841C /* LaunchScreen.storyboard */,
@@ -126,6 +131,23 @@
 				F14D4E5A253A927200CD841C /* Info.plist */,
 			);
 			path = NHFK_HolidayDriveUITests;
+			sourceTree = "<group>";
+		};
+		F14D4E7E253D347F00CD841C /* AuthViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F14D4E71253D341A00CD841C /* RegisterS1VC.swift */,
+				F14D4E79253D346F00CD841C /* RegisterS2VC.swift */,
+			);
+			path = AuthViewControllers;
+			sourceTree = "<group>";
+		};
+		F14D4E7F253D34B700CD841C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F14D4E80253D34D000CD841C /* HomeVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14D4E3B253A926E00CD841C /* ViewController.swift in Sources */,
+				F14D4E7A253D346F00CD841C /* RegisterS2VC.swift in Sources */,
 				F14D4E37253A926E00CD841C /* AppDelegate.swift in Sources */,
+				F14D4E81253D34D000CD841C /* HomeVC.swift in Sources */,
 				F14D4E39253A926E00CD841C /* SceneDelegate.swift in Sources */,
+				F14D4E72253D341A00CD841C /* RegisterS1VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
