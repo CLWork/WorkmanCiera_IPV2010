@@ -7,70 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F14D4E37253A926E00CD841C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E36253A926E00CD841C /* AppDelegate.swift */; };
-		F14D4E39253A926E00CD841C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E38253A926E00CD841C /* SceneDelegate.swift */; };
-		F14D4E3E253A926E00CD841C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E3C253A926E00CD841C /* Main.storyboard */; };
-		F14D4E40253A927200CD841C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E3F253A927200CD841C /* Assets.xcassets */; };
-		F14D4E43253A927200CD841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14D4E41253A927200CD841C /* LaunchScreen.storyboard */; };
-		F14D4E4E253A927200CD841C /* NHFK_HolidayDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E4D253A927200CD841C /* NHFK_HolidayDriveTests.swift */; };
-		F14D4E59253A927200CD841C /* NHFK_HolidayDriveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E58253A927200CD841C /* NHFK_HolidayDriveUITests.swift */; };
-		F14D4E72253D341A00CD841C /* RegisterS1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E71253D341A00CD841C /* RegisterS1VC.swift */; };
-		F14D4E7A253D346F00CD841C /* RegisterS2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E79253D346F00CD841C /* RegisterS2VC.swift */; };
-		F14D4E81253D34D000CD841C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D4E80253D34D000CD841C /* HomeVC.swift */; };
+		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
+		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
+		F1E68E072543D018006892EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E062543D018006892EE /* ViewController.swift */; };
+		F1E68E0A2543D018006892EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E082543D018006892EE /* Main.storyboard */; };
+		F1E68E0C2543D019006892EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E0B2543D019006892EE /* Assets.xcassets */; };
+		F1E68E0F2543D019006892EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */; };
+		F1E68E1A2543D019006892EE /* NHFK_HolidayDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E192543D019006892EE /* NHFK_HolidayDriveTests.swift */; };
+		F1E68E252543D019006892EE /* NHFK_HolidayDriveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E242543D019006892EE /* NHFK_HolidayDriveUITests.swift */; };
+		F1E68E392543D186006892EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E382543D186006892EE /* LoginVC.swift */; };
+		F1E68E412543D1BC006892EE /* RegStepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E402543D1BC006892EE /* RegStepOneVC.swift */; };
+		F1E68E462543D1CA006892EE /* RegStepTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E452543D1CA006892EE /* RegStepTwoVC.swift */; };
+		F1E68E4B2543D1D8006892EE /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E4A2543D1D8006892EE /* HomeVC.swift */; };
+		F1E68E502543D1EE006892EE /* ChildListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E4F2543D1EE006892EE /* ChildListVC.swift */; };
+		F1E68E552543D1F8006892EE /* DonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E542543D1F8006892EE /* DonateVC.swift */; };
+		F1E68E5A2543D23F006892EE /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E592543D23F006892EE /* AboutVC.swift */; };
+		F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E5E2543D257006892EE /* SponsorsVC.swift */; };
+		F1E68E642543D264006892EE /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E632543D264006892EE /* AccountVC.swift */; };
+		F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E682543D28A006892EE /* AddChildVC.swift */; };
+		F1E68E6E2543D297006892EE /* EditChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E6D2543D297006892EE /* EditChildVC.swift */; };
+		F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E722543D2D9006892EE /* EditHomeVC.swift */; };
+		F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E772543D2EA006892EE /* EditAccountVC.swift */; };
+		F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F14D4E4A253A927200CD841C /* PBXContainerItemProxy */ = {
+		F1E68E162543D019006892EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F14D4E2B253A926E00CD841C /* Project object */;
+			containerPortal = F1E68DF72543D018006892EE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F14D4E32253A926E00CD841C;
+			remoteGlobalIDString = F1E68DFE2543D018006892EE;
 			remoteInfo = NHFK_HolidayDrive;
 		};
-		F14D4E55253A927200CD841C /* PBXContainerItemProxy */ = {
+		F1E68E212543D019006892EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F14D4E2B253A926E00CD841C /* Project object */;
+			containerPortal = F1E68DF72543D018006892EE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F14D4E32253A926E00CD841C;
+			remoteGlobalIDString = F1E68DFE2543D018006892EE;
 			remoteInfo = NHFK_HolidayDrive;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F14D4E33253A926E00CD841C /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14D4E36253A926E00CD841C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F14D4E38253A926E00CD841C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F14D4E3D253A926E00CD841C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F14D4E3F253A927200CD841C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F14D4E42253A927200CD841C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F14D4E44253A927200CD841C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F14D4E49253A927200CD841C /* NHFK_HolidayDriveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHFK_HolidayDriveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14D4E4D253A927200CD841C /* NHFK_HolidayDriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHFK_HolidayDriveTests.swift; sourceTree = "<group>"; };
-		F14D4E4F253A927200CD841C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F14D4E54253A927200CD841C /* NHFK_HolidayDriveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHFK_HolidayDriveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14D4E58253A927200CD841C /* NHFK_HolidayDriveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHFK_HolidayDriveUITests.swift; sourceTree = "<group>"; };
-		F14D4E5A253A927200CD841C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F14D4E71253D341A00CD841C /* RegisterS1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterS1VC.swift; sourceTree = "<group>"; };
-		F14D4E79253D346F00CD841C /* RegisterS2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterS2VC.swift; sourceTree = "<group>"; };
-		F14D4E80253D34D000CD841C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F1E68E062543D018006892EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F1E68E092543D018006892EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1E68E0B2543D019006892EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1E68E0E2543D019006892EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F1E68E102543D019006892EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1E68E152543D019006892EE /* NHFK_HolidayDriveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHFK_HolidayDriveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E68E192543D019006892EE /* NHFK_HolidayDriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHFK_HolidayDriveTests.swift; sourceTree = "<group>"; };
+		F1E68E1B2543D019006892EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1E68E202543D019006892EE /* NHFK_HolidayDriveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHFK_HolidayDriveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E68E242543D019006892EE /* NHFK_HolidayDriveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHFK_HolidayDriveUITests.swift; sourceTree = "<group>"; };
+		F1E68E262543D019006892EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1E68E382543D186006892EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		F1E68E402543D1BC006892EE /* RegStepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegStepOneVC.swift; sourceTree = "<group>"; };
+		F1E68E452543D1CA006892EE /* RegStepTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegStepTwoVC.swift; sourceTree = "<group>"; };
+		F1E68E4A2543D1D8006892EE /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		F1E68E4F2543D1EE006892EE /* ChildListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildListVC.swift; sourceTree = "<group>"; };
+		F1E68E542543D1F8006892EE /* DonateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateVC.swift; sourceTree = "<group>"; };
+		F1E68E592543D23F006892EE /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		F1E68E5E2543D257006892EE /* SponsorsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorsVC.swift; sourceTree = "<group>"; };
+		F1E68E632543D264006892EE /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		F1E68E682543D28A006892EE /* AddChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildVC.swift; sourceTree = "<group>"; };
+		F1E68E6D2543D297006892EE /* EditChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildVC.swift; sourceTree = "<group>"; };
+		F1E68E722543D2D9006892EE /* EditHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeVC.swift; sourceTree = "<group>"; };
+		F1E68E772543D2EA006892EE /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
+		F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatisticsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F14D4E30253A926E00CD841C /* Frameworks */ = {
+		F1E68DFC2543D018006892EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E46253A927200CD841C /* Frameworks */ = {
+		F1E68E122543D019006892EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E51253A927200CD841C /* Frameworks */ = {
+		F1E68E1D2543D019006892EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,86 +104,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F14D4E2A253A926E00CD841C = {
+		F1E68DF62543D018006892EE = {
 			isa = PBXGroup;
 			children = (
-				F14D4E35253A926E00CD841C /* NHFK_HolidayDrive */,
-				F14D4E4C253A927200CD841C /* NHFK_HolidayDriveTests */,
-				F14D4E57253A927200CD841C /* NHFK_HolidayDriveUITests */,
-				F14D4E34253A926E00CD841C /* Products */,
+				F1E68E012543D018006892EE /* NHFK_HolidayDrive */,
+				F1E68E182543D019006892EE /* NHFK_HolidayDriveTests */,
+				F1E68E232543D019006892EE /* NHFK_HolidayDriveUITests */,
+				F1E68E002543D018006892EE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F14D4E34253A926E00CD841C /* Products */ = {
+		F1E68E002543D018006892EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E33253A926E00CD841C /* NHFK_HolidayDrive.app */,
-				F14D4E49253A927200CD841C /* NHFK_HolidayDriveTests.xctest */,
-				F14D4E54253A927200CD841C /* NHFK_HolidayDriveUITests.xctest */,
+				F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */,
+				F1E68E152543D019006892EE /* NHFK_HolidayDriveTests.xctest */,
+				F1E68E202543D019006892EE /* NHFK_HolidayDriveUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F14D4E35253A926E00CD841C /* NHFK_HolidayDrive */ = {
+		F1E68E012543D018006892EE /* NHFK_HolidayDrive */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E7F253D34B700CD841C /* ViewControllers */,
-				F14D4E36253A926E00CD841C /* AppDelegate.swift */,
-				F14D4E38253A926E00CD841C /* SceneDelegate.swift */,
-				F14D4E7E253D347F00CD841C /* AuthViewControllers */,
-				F14D4E3C253A926E00CD841C /* Main.storyboard */,
-				F14D4E3F253A927200CD841C /* Assets.xcassets */,
-				F14D4E41253A927200CD841C /* LaunchScreen.storyboard */,
-				F14D4E44253A927200CD841C /* Info.plist */,
+				F1E68E372543D12D006892EE /* Add_Edit_Controllers */,
+				F1E68E362543D110006892EE /* Tab_Controllers */,
+				F1E68E352543D0D9006892EE /* Login_Reg_Controllers */,
+				F1E68E022543D018006892EE /* AppDelegate.swift */,
+				F1E68E042543D018006892EE /* SceneDelegate.swift */,
+				F1E68E062543D018006892EE /* ViewController.swift */,
+				F1E68E082543D018006892EE /* Main.storyboard */,
+				F1E68E0B2543D019006892EE /* Assets.xcassets */,
+				F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */,
+				F1E68E102543D019006892EE /* Info.plist */,
 			);
 			path = NHFK_HolidayDrive;
 			sourceTree = "<group>";
 		};
-		F14D4E4C253A927200CD841C /* NHFK_HolidayDriveTests */ = {
+		F1E68E182543D019006892EE /* NHFK_HolidayDriveTests */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E4D253A927200CD841C /* NHFK_HolidayDriveTests.swift */,
-				F14D4E4F253A927200CD841C /* Info.plist */,
+				F1E68E192543D019006892EE /* NHFK_HolidayDriveTests.swift */,
+				F1E68E1B2543D019006892EE /* Info.plist */,
 			);
 			path = NHFK_HolidayDriveTests;
 			sourceTree = "<group>";
 		};
-		F14D4E57253A927200CD841C /* NHFK_HolidayDriveUITests */ = {
+		F1E68E232543D019006892EE /* NHFK_HolidayDriveUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E58253A927200CD841C /* NHFK_HolidayDriveUITests.swift */,
-				F14D4E5A253A927200CD841C /* Info.plist */,
+				F1E68E242543D019006892EE /* NHFK_HolidayDriveUITests.swift */,
+				F1E68E262543D019006892EE /* Info.plist */,
 			);
 			path = NHFK_HolidayDriveUITests;
 			sourceTree = "<group>";
 		};
-		F14D4E7E253D347F00CD841C /* AuthViewControllers */ = {
+		F1E68E352543D0D9006892EE /* Login_Reg_Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E71253D341A00CD841C /* RegisterS1VC.swift */,
-				F14D4E79253D346F00CD841C /* RegisterS2VC.swift */,
+				F1E68E382543D186006892EE /* LoginVC.swift */,
+				F1E68E402543D1BC006892EE /* RegStepOneVC.swift */,
+				F1E68E452543D1CA006892EE /* RegStepTwoVC.swift */,
 			);
-			path = AuthViewControllers;
+			path = Login_Reg_Controllers;
 			sourceTree = "<group>";
 		};
-		F14D4E7F253D34B700CD841C /* ViewControllers */ = {
+		F1E68E362543D110006892EE /* Tab_Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F14D4E80253D34D000CD841C /* HomeVC.swift */,
+				F1E68E4A2543D1D8006892EE /* HomeVC.swift */,
+				F1E68E4F2543D1EE006892EE /* ChildListVC.swift */,
+				F1E68E542543D1F8006892EE /* DonateVC.swift */,
+				F1E68E592543D23F006892EE /* AboutVC.swift */,
+				F1E68E5E2543D257006892EE /* SponsorsVC.swift */,
+				F1E68E632543D264006892EE /* AccountVC.swift */,
+				F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */,
 			);
-			path = ViewControllers;
+			path = Tab_Controllers;
+			sourceTree = "<group>";
+		};
+		F1E68E372543D12D006892EE /* Add_Edit_Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F1E68E682543D28A006892EE /* AddChildVC.swift */,
+				F1E68E6D2543D297006892EE /* EditChildVC.swift */,
+				F1E68E722543D2D9006892EE /* EditHomeVC.swift */,
+				F1E68E772543D2EA006892EE /* EditAccountVC.swift */,
+			);
+			path = Add_Edit_Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F14D4E32253A926E00CD841C /* NHFK_HolidayDrive */ = {
+		F1E68DFE2543D018006892EE /* NHFK_HolidayDrive */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F14D4E5D253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDrive" */;
+			buildConfigurationList = F1E68E292543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDrive" */;
 			buildPhases = (
-				F14D4E2F253A926E00CD841C /* Sources */,
-				F14D4E30253A926E00CD841C /* Frameworks */,
-				F14D4E31253A926E00CD841C /* Resources */,
+				F1E68DFB2543D018006892EE /* Sources */,
+				F1E68DFC2543D018006892EE /* Frameworks */,
+				F1E68DFD2543D018006892EE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -167,68 +211,68 @@
 			);
 			name = NHFK_HolidayDrive;
 			productName = NHFK_HolidayDrive;
-			productReference = F14D4E33253A926E00CD841C /* NHFK_HolidayDrive.app */;
+			productReference = F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F14D4E48253A927200CD841C /* NHFK_HolidayDriveTests */ = {
+		F1E68E142543D019006892EE /* NHFK_HolidayDriveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F14D4E60253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveTests" */;
+			buildConfigurationList = F1E68E2C2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveTests" */;
 			buildPhases = (
-				F14D4E45253A927200CD841C /* Sources */,
-				F14D4E46253A927200CD841C /* Frameworks */,
-				F14D4E47253A927200CD841C /* Resources */,
+				F1E68E112543D019006892EE /* Sources */,
+				F1E68E122543D019006892EE /* Frameworks */,
+				F1E68E132543D019006892EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F14D4E4B253A927200CD841C /* PBXTargetDependency */,
+				F1E68E172543D019006892EE /* PBXTargetDependency */,
 			);
 			name = NHFK_HolidayDriveTests;
 			productName = NHFK_HolidayDriveTests;
-			productReference = F14D4E49253A927200CD841C /* NHFK_HolidayDriveTests.xctest */;
+			productReference = F1E68E152543D019006892EE /* NHFK_HolidayDriveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F14D4E53253A927200CD841C /* NHFK_HolidayDriveUITests */ = {
+		F1E68E1F2543D019006892EE /* NHFK_HolidayDriveUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F14D4E63253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveUITests" */;
+			buildConfigurationList = F1E68E2F2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveUITests" */;
 			buildPhases = (
-				F14D4E50253A927200CD841C /* Sources */,
-				F14D4E51253A927200CD841C /* Frameworks */,
-				F14D4E52253A927200CD841C /* Resources */,
+				F1E68E1C2543D019006892EE /* Sources */,
+				F1E68E1D2543D019006892EE /* Frameworks */,
+				F1E68E1E2543D019006892EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F14D4E56253A927200CD841C /* PBXTargetDependency */,
+				F1E68E222543D019006892EE /* PBXTargetDependency */,
 			);
 			name = NHFK_HolidayDriveUITests;
 			productName = NHFK_HolidayDriveUITests;
-			productReference = F14D4E54253A927200CD841C /* NHFK_HolidayDriveUITests.xctest */;
+			productReference = F1E68E202543D019006892EE /* NHFK_HolidayDriveUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F14D4E2B253A926E00CD841C /* Project object */ = {
+		F1E68DF72543D018006892EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
-					F14D4E32253A926E00CD841C = {
-						CreatedOnToolsVersion = 12.0.1;
+					F1E68DFE2543D018006892EE = {
+						CreatedOnToolsVersion = 12.1;
 					};
-					F14D4E48253A927200CD841C = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = F14D4E32253A926E00CD841C;
+					F1E68E142543D019006892EE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = F1E68DFE2543D018006892EE;
 					};
-					F14D4E53253A927200CD841C = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = F14D4E32253A926E00CD841C;
+					F1E68E1F2543D019006892EE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = F1E68DFE2543D018006892EE;
 					};
 				};
 			};
-			buildConfigurationList = F14D4E2E253A926E00CD841C /* Build configuration list for PBXProject "NHFK_HolidayDrive" */;
+			buildConfigurationList = F1E68DFA2543D018006892EE /* Build configuration list for PBXProject "NHFK_HolidayDrive" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -236,37 +280,37 @@
 				en,
 				Base,
 			);
-			mainGroup = F14D4E2A253A926E00CD841C;
-			productRefGroup = F14D4E34253A926E00CD841C /* Products */;
+			mainGroup = F1E68DF62543D018006892EE;
+			productRefGroup = F1E68E002543D018006892EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F14D4E32253A926E00CD841C /* NHFK_HolidayDrive */,
-				F14D4E48253A927200CD841C /* NHFK_HolidayDriveTests */,
-				F14D4E53253A927200CD841C /* NHFK_HolidayDriveUITests */,
+				F1E68DFE2543D018006892EE /* NHFK_HolidayDrive */,
+				F1E68E142543D019006892EE /* NHFK_HolidayDriveTests */,
+				F1E68E1F2543D019006892EE /* NHFK_HolidayDriveUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F14D4E31253A926E00CD841C /* Resources */ = {
+		F1E68DFD2543D018006892EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14D4E43253A927200CD841C /* LaunchScreen.storyboard in Resources */,
-				F14D4E40253A927200CD841C /* Assets.xcassets in Resources */,
-				F14D4E3E253A926E00CD841C /* Main.storyboard in Resources */,
+				F1E68E0F2543D019006892EE /* LaunchScreen.storyboard in Resources */,
+				F1E68E0C2543D019006892EE /* Assets.xcassets in Resources */,
+				F1E68E0A2543D018006892EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E47253A927200CD841C /* Resources */ = {
+		F1E68E132543D019006892EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E52253A927200CD841C /* Resources */ = {
+		F1E68E1E2543D019006892EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -276,62 +320,74 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F14D4E2F253A926E00CD841C /* Sources */ = {
+		F1E68DFB2543D018006892EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14D4E7A253D346F00CD841C /* RegisterS2VC.swift in Sources */,
-				F14D4E37253A926E00CD841C /* AppDelegate.swift in Sources */,
-				F14D4E81253D34D000CD841C /* HomeVC.swift in Sources */,
-				F14D4E39253A926E00CD841C /* SceneDelegate.swift in Sources */,
-				F14D4E72253D341A00CD841C /* RegisterS1VC.swift in Sources */,
+				F1E68E072543D018006892EE /* ViewController.swift in Sources */,
+				F1E68E6E2543D297006892EE /* EditChildVC.swift in Sources */,
+				F1E68E4B2543D1D8006892EE /* HomeVC.swift in Sources */,
+				F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */,
+				F1E68E032543D018006892EE /* AppDelegate.swift in Sources */,
+				F1E68E462543D1CA006892EE /* RegStepTwoVC.swift in Sources */,
+				F1E68E552543D1F8006892EE /* DonateVC.swift in Sources */,
+				F1E68E412543D1BC006892EE /* RegStepOneVC.swift in Sources */,
+				F1E68E5A2543D23F006892EE /* AboutVC.swift in Sources */,
+				F1E68E502543D1EE006892EE /* ChildListVC.swift in Sources */,
+				F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */,
+				F1E68E642543D264006892EE /* AccountVC.swift in Sources */,
+				F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */,
+				F1E68E392543D186006892EE /* LoginVC.swift in Sources */,
+				F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */,
+				F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */,
+				F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E45253A927200CD841C /* Sources */ = {
+		F1E68E112543D019006892EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14D4E4E253A927200CD841C /* NHFK_HolidayDriveTests.swift in Sources */,
+				F1E68E1A2543D019006892EE /* NHFK_HolidayDriveTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F14D4E50253A927200CD841C /* Sources */ = {
+		F1E68E1C2543D019006892EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14D4E59253A927200CD841C /* NHFK_HolidayDriveUITests.swift in Sources */,
+				F1E68E252543D019006892EE /* NHFK_HolidayDriveUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F14D4E4B253A927200CD841C /* PBXTargetDependency */ = {
+		F1E68E172543D019006892EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F14D4E32253A926E00CD841C /* NHFK_HolidayDrive */;
-			targetProxy = F14D4E4A253A927200CD841C /* PBXContainerItemProxy */;
+			target = F1E68DFE2543D018006892EE /* NHFK_HolidayDrive */;
+			targetProxy = F1E68E162543D019006892EE /* PBXContainerItemProxy */;
 		};
-		F14D4E56253A927200CD841C /* PBXTargetDependency */ = {
+		F1E68E222543D019006892EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F14D4E32253A926E00CD841C /* NHFK_HolidayDrive */;
-			targetProxy = F14D4E55253A927200CD841C /* PBXContainerItemProxy */;
+			target = F1E68DFE2543D018006892EE /* NHFK_HolidayDrive */;
+			targetProxy = F1E68E212543D019006892EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F14D4E3C253A926E00CD841C /* Main.storyboard */ = {
+		F1E68E082543D018006892EE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F14D4E3D253A926E00CD841C /* Base */,
+				F1E68E092543D018006892EE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F14D4E41253A927200CD841C /* LaunchScreen.storyboard */ = {
+		F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F14D4E42253A927200CD841C /* Base */,
+				F1E68E0E2543D019006892EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -339,7 +395,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F14D4E5B253A927200CD841C /* Debug */ = {
+		F1E68E272543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -390,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -400,7 +456,7 @@
 			};
 			name = Debug;
 		};
-		F14D4E5C253A927200CD841C /* Release */ = {
+		F1E68E282543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -445,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -455,7 +511,7 @@
 			};
 			name = Release;
 		};
-		F14D4E5E253A927200CD841C /* Debug */ = {
+		F1E68E2A2543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -474,7 +530,7 @@
 			};
 			name = Debug;
 		};
-		F14D4E5F253A927200CD841C /* Release */ = {
+		F1E68E2B2543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -493,7 +549,7 @@
 			};
 			name = Release;
 		};
-		F14D4E61253A927200CD841C /* Debug */ = {
+		F1E68E2D2543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -501,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNM33LR2G7;
 				INFOPLIST_FILE = NHFK_HolidayDriveTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,7 +571,7 @@
 			};
 			name = Debug;
 		};
-		F14D4E62253A927200CD841C /* Release */ = {
+		F1E68E2E2543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -523,7 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNM33LR2G7;
 				INFOPLIST_FILE = NHFK_HolidayDriveTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,7 +593,7 @@
 			};
 			name = Release;
 		};
-		F14D4E64253A927200CD841C /* Debug */ = {
+		F1E68E302543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -557,7 +613,7 @@
 			};
 			name = Debug;
 		};
-		F14D4E65253A927200CD841C /* Release */ = {
+		F1E68E312543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -580,43 +636,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F14D4E2E253A926E00CD841C /* Build configuration list for PBXProject "NHFK_HolidayDrive" */ = {
+		F1E68DFA2543D018006892EE /* Build configuration list for PBXProject "NHFK_HolidayDrive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F14D4E5B253A927200CD841C /* Debug */,
-				F14D4E5C253A927200CD841C /* Release */,
+				F1E68E272543D019006892EE /* Debug */,
+				F1E68E282543D019006892EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F14D4E5D253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDrive" */ = {
+		F1E68E292543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDrive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F14D4E5E253A927200CD841C /* Debug */,
-				F14D4E5F253A927200CD841C /* Release */,
+				F1E68E2A2543D019006892EE /* Debug */,
+				F1E68E2B2543D019006892EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F14D4E60253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveTests" */ = {
+		F1E68E2C2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F14D4E61253A927200CD841C /* Debug */,
-				F14D4E62253A927200CD841C /* Release */,
+				F1E68E2D2543D019006892EE /* Debug */,
+				F1E68E2E2543D019006892EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F14D4E63253A927200CD841C /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveUITests" */ = {
+		F1E68E2F2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F14D4E64253A927200CD841C /* Debug */,
-				F14D4E65253A927200CD841C /* Release */,
+				F1E68E302543D019006892EE /* Debug */,
+				F1E68E312543D019006892EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F14D4E2B253A926E00CD841C /* Project object */;
+	rootObject = F1E68DF72543D018006892EE /* Project object */;
 }

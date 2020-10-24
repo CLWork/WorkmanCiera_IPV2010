@@ -1,21 +1,19 @@
 //
-//  RegisterS2VC.swift
+//  ViewController.swift
 //  NHFK_HolidayDrive
 //
-//  Created by Ciera on 10/18/20.
+//  Created by Ciera on 10/23/20.
 //
 
-import Foundation
 import UIKit
 
-class RegisterS2VC: UIViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-    
 
 
 }
+
