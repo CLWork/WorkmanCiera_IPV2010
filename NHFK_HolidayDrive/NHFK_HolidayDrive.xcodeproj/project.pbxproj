@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F18047A82545244E000501D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18047A72545244E000501D4 /* GoogleService-Info.plist */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E072543D018006892EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E062543D018006892EE /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F18047A72545244E000501D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				F1E68E0B2543D019006892EE /* Assets.xcassets */,
 				F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */,
 				F1E68E102543D019006892EE /* Info.plist */,
+				F18047A72545244E000501D4 /* GoogleService-Info.plist */,
 			);
 			path = NHFK_HolidayDrive;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				F1E68E0F2543D019006892EE /* LaunchScreen.storyboard in Resources */,
 				F1E68E0C2543D019006892EE /* Assets.xcassets in Resources */,
 				F1E68E0A2543D018006892EE /* Main.storyboard in Resources */,
+				F18047A82545244E000501D4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
