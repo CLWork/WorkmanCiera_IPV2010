@@ -7,6 +7,18 @@ target 'NHFK_HolidayDrive' do
 
   # Pods for NHFK_HolidayDrive
 
+# Add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
+
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'Firebase/Auth'
+
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
+
   target 'NHFK_HolidayDriveTests' do
     inherit! :search_paths
     # Pods for testing

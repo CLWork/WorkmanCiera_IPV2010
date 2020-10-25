@@ -1,0 +1,6 @@
+framework module Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests {
+  umbrella header "Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A45AD362FCDAEAD1A0BF9F33 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */; };
+		B49402697B9F354CC370FAFE /* Pods_NHFK_HolidayDriveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */; };
 		F18047A82545244E000501D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18047A72545244E000501D4 /* GoogleService-Info.plist */; };
+		F18047C925452972000501D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18047A72545244E000501D4 /* GoogleService-Info.plist */; };
+		F18047CD25452973000501D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F18047A72545244E000501D4 /* GoogleService-Info.plist */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E072543D018006892EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E062543D018006892EE /* ViewController.swift */; };
@@ -30,6 +34,7 @@
 		F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E722543D2D9006892EE /* EditHomeVC.swift */; };
 		F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E772543D2EA006892EE /* EditAccountVC.swift */; };
 		F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */; };
+		F9E78A1599618C62D45A06F0 /* Pods_NHFK_HolidayDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DBAE94329F556A6D2C18631 /* Pods_NHFK_HolidayDrive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BA21CC0661A93D356CEE766 /* Pods-NHFK_HolidayDrive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive.release.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive/Pods-NHFK_HolidayDrive.release.xcconfig"; sourceTree = "<group>"; };
+		0DBAE94329F556A6D2C18631 /* Pods_NHFK_HolidayDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45752EBB87C152B3D0DF3D44 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.release.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.release.xcconfig"; sourceTree = "<group>"; };
+		470B9CE84E860AABECB7D4C6 /* Pods-NHFK_HolidayDrive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive.debug.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive/Pods-NHFK_HolidayDrive.debug.xcconfig"; sourceTree = "<group>"; };
+		641304F73DDC6DF675E344A4 /* Pods-NHFK_HolidayDriveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDriveTests.debug.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDriveTests/Pods-NHFK_HolidayDriveTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C3E106ABBDC48ADCEBFD4F76 /* Pods-NHFK_HolidayDriveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDriveTests.release.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDriveTests/Pods-NHFK_HolidayDriveTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E705539AD5821491A16A8857 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F18047A72545244E000501D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +92,7 @@
 		F1E68E722543D2D9006892EE /* EditHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeVC.swift; sourceTree = "<group>"; };
 		F1E68E772543D2EA006892EE /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
 		F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatisticsVC.swift; sourceTree = "<group>"; };
+		FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDriveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9E78A1599618C62D45A06F0 /* Pods_NHFK_HolidayDrive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B49402697B9F354CC370FAFE /* Pods_NHFK_HolidayDriveTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,12 +116,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45AD362FCDAEAD1A0BF9F33 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3ECE10E81845B5DA68E926FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				470B9CE84E860AABECB7D4C6 /* Pods-NHFK_HolidayDrive.debug.xcconfig */,
+				0BA21CC0661A93D356CEE766 /* Pods-NHFK_HolidayDrive.release.xcconfig */,
+				E705539AD5821491A16A8857 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig */,
+				45752EBB87C152B3D0DF3D44 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.release.xcconfig */,
+				641304F73DDC6DF675E344A4 /* Pods-NHFK_HolidayDriveTests.debug.xcconfig */,
+				C3E106ABBDC48ADCEBFD4F76 /* Pods-NHFK_HolidayDriveTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		945F40E3B64B23BD6EB46A15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DBAE94329F556A6D2C18631 /* Pods_NHFK_HolidayDrive.framework */,
+				D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */,
+				FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F1E68DF62543D018006892EE = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +153,8 @@
 				F1E68E182543D019006892EE /* NHFK_HolidayDriveTests */,
 				F1E68E232543D019006892EE /* NHFK_HolidayDriveUITests */,
 				F1E68E002543D018006892EE /* Products */,
+				3ECE10E81845B5DA68E926FD /* Pods */,
+				945F40E3B64B23BD6EB46A15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E68E292543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDrive" */;
 			buildPhases = (
+				16DA3058CAEBB53D51D5D3E2 /* [CP] Check Pods Manifest.lock */,
 				F1E68DFB2543D018006892EE /* Sources */,
 				F1E68DFC2543D018006892EE /* Frameworks */,
 				F1E68DFD2543D018006892EE /* Resources */,
+				6D0D4857FC2567E59203640F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E68E2C2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveTests" */;
 			buildPhases = (
+				1F954B39053C2C98E1A4FCB7 /* [CP] Check Pods Manifest.lock */,
 				F1E68E112543D019006892EE /* Sources */,
 				F1E68E122543D019006892EE /* Frameworks */,
 				F1E68E132543D019006892EE /* Resources */,
@@ -239,9 +284,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E68E2F2543D019006892EE /* Build configuration list for PBXNativeTarget "NHFK_HolidayDriveUITests" */;
 			buildPhases = (
+				B5E82F60D64F4D8B1FB9E202 /* [CP] Check Pods Manifest.lock */,
 				F1E68E1C2543D019006892EE /* Sources */,
 				F1E68E1D2543D019006892EE /* Frameworks */,
 				F1E68E1E2543D019006892EE /* Resources */,
+				AA262495BF98E8CECA1AA878 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18047C925452972000501D4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,10 +366,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18047CD25452973000501D4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16DA3058CAEBB53D51D5D3E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NHFK_HolidayDrive-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F954B39053C2C98E1A4FCB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NHFK_HolidayDriveTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D0D4857FC2567E59203640F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive/Pods-NHFK_HolidayDrive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive/Pods-NHFK_HolidayDrive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive/Pods-NHFK_HolidayDrive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA262495BF98E8CECA1AA878 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5E82F60D64F4D8B1FB9E202 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1E68DFB2543D018006892EE /* Sources */ = {
@@ -517,6 +669,7 @@
 		};
 		F1E68E2A2543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 470B9CE84E860AABECB7D4C6 /* Pods-NHFK_HolidayDrive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -536,6 +689,7 @@
 		};
 		F1E68E2B2543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BA21CC0661A93D356CEE766 /* Pods-NHFK_HolidayDrive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -555,6 +709,7 @@
 		};
 		F1E68E2D2543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 641304F73DDC6DF675E344A4 /* Pods-NHFK_HolidayDriveTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -577,6 +732,7 @@
 		};
 		F1E68E2E2543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3E106ABBDC48ADCEBFD4F76 /* Pods-NHFK_HolidayDriveTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -599,6 +755,7 @@
 		};
 		F1E68E302543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E705539AD5821491A16A8857 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -619,6 +776,7 @@
 		};
 		F1E68E312543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45752EBB87C152B3D0DF3D44 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
