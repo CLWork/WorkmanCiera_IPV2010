@@ -18,17 +18,16 @@ class LoginVC: UIViewController, LoginButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        let loginButton = FBLoginButton()
+        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 280)
+        loginButton.center = newCenter
+        loginButton.delegate = self
+        loginButton.permissions = ["public_profile", "email"]
+        view.addSubview(loginButton)
+        
+        
         if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
             toHomeScreen()
-            
-        } else {
-            print("No user signed in")
-            let loginButton = FBLoginButton()
-            let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 280)
-            loginButton.center = newCenter
-            loginButton.delegate = self
-            loginButton.permissions = ["public_profile", "email"]
-            view.addSubview(loginButton)
         }
     }
     
@@ -59,11 +58,11 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         let isEmailValid = Utility.checkEmailFormat(email!)
         let isPassStrong = Utility.checkPasswordStrength(p: password!)
         
-        if(isEmailValid == false || email != nil){
+        if(isEmailValid == false || email == nil){
             
             self.showToast(message: "Please enter a valid email: email@domain.com")
             
-        } else if(isPassStrong == false || password != nil){
+        } else if(isPassStrong == false || password == nil){
             
             self.showToast(message: "Password must be 8 characters. 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character")
             
@@ -94,9 +93,13 @@ class LoginVC: UIViewController, LoginButtonDelegate{
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
-                print("User signs in successfully")
-                let _ = Auth.auth().currentUser
-                self.toHomeScreen()
+                if(Auth.auth().currentUser?.isEmailVerified == true){
+                    print("User signs in successfully")
+                    let _ = Auth.auth().currentUser
+                    self.toHomeScreen()
+                } else{
+                    self.showToast(message: "Oops! Your email hasn't been verified yet.")
+                }
             }
             
         }
@@ -113,7 +116,7 @@ class LoginVC: UIViewController, LoginButtonDelegate{
                     if let error = error {
                         print(error)
                     }
-                    
+                    self.toHomeScreen()
                 }
                 
             } else {

@@ -18,16 +18,19 @@ class RegStepOneVC: UIViewController{
     @IBOutlet weak var confirmPassTF: UITextField!
     @IBOutlet weak var codeTF: UITextField!
     
+    var newUser: Users?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    
+    //validate input upon button tap
     @IBAction func continueTapped(_ sender: UIButton) {
         validateInput()
     }
     
+    //validate each input
     func validateInput(){
         
         let fullName = fullNameTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? nil
@@ -54,34 +57,32 @@ class RegStepOneVC: UIViewController{
         } else if(confirmPass == nil || doPassMatch == false){
             self.showToast(message: "Password must be confirmed, not empty and must match.")
         } else{
-            let newUser = Users(fName: fullName!, userEmail: email!)
-            newUser.setType(t: checkType(code: code!))
+            newUser = Users(fName: fullName!, userEmail: email!)
+            newUser!.setType(t: checkType(code: code!))
             
-            createNewUser(e: email!, p: pass!, newUser: newUser)
-            
+            createNewUser(e: email!, p: pass!, newUser: newUser!)
             
         }
         
-        
-        
     }
     
-    func addUserToDB(newUser: Users){
+    //Add user profile to DB
+    func addUserToDB(newUser: Users, uid: String){
         let db = Firestore.firestore()
-        let uid = Auth.auth().currentUser?.uid
-        
-        do{
-            try db.collection("users").document(uid!).setData(from: newUser)
-            
-        } catch{
-            print(error)
-           showToast(message: "Error in adding user to database.")
+        let ref = db.collection("users")
+        var docRef: DocumentReference? = nil
+        docRef = ref.addDocument(data: newUser.getUserDic()) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print(docRef!.documentID)
+                
+            }
         }
-        
-        showToast(message: "User added to database!")
         
     }
     
+    //Create the user with Auth,send verification email
     func createNewUser(e: String, p: String, newUser: Users){
         
         Auth.auth().createUser(withEmail: e, password: p) { (authResult, error) in
@@ -96,15 +97,27 @@ class RegStepOneVC: UIViewController{
                     self.showToast(message: "Oops! Email is in wrong format.")
                 default:
                     print("Error: \(error.localizedDescription)")
+                    print("Error 2: \(error.description)")
                 }
             } else {
                 self.showToast(message: "User Created!")
-                let _ = Auth.auth().currentUser
-                addUserToDB(newUser: newUser)
+               // let current = Auth.auth().currentUser
+                //let uid = current?.uid
+                
+                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    self.showToast(message: "Email Verification Sent!")
+                })
+                self.performSegue(withIdentifier: "toStepTwo", sender: self)
+                //self.addUserToDB(newUser: newUser, uid: uid!)
             }
         }
     }
     
+    //determine user type based on code entry
     func checkType(code: String) -> String{
         let codeString = "e9gt968irL"
         if(!code.isEmpty){
@@ -121,9 +134,11 @@ class RegStepOneVC: UIViewController{
         
     }
     
-    func toRegStepTwo(){
-        let regVC = self.storyboard?.instantiateViewController(withIdentifier: "regStepOne") as! RegStepTwoVC
-        present(regVC, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toStepTwo" {
+            if let stepTwo = segue.destination as? RegStepTwoVC {
+                stepTwo.passedUser = newUser!
+            }
+        }
     }
-    
 }

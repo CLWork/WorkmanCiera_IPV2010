@@ -12,13 +12,31 @@ public class Users: Codable {
     //Member variables
     private var fullName: String = ""
     private var email: String = ""
-    private var address: String = ""
+    private var addressLineOne: String = ""
+    private var city: String = ""
+    private var state: String = ""
+    private var zipcode: String = ""
     private var type: String = ""
     
     //Constructor
     init(fName: String, userEmail: String){
         fullName = fName
         email = userEmail
+    }
+    
+    func getUserDic()->[String: Any]{
+        
+        let dic = [
+            "fullName": self.fullName,
+            "email": self.email,
+            "type": self.type,
+            "addressLineOne": self.addressLineOne,
+            "city": self.city,
+            "state": state,
+            "zipcode": zipcode]
+        
+        return dic
+        
     }
     
     //Getters
@@ -28,8 +46,17 @@ public class Users: Codable {
     public func getEmail()-> String{
         return email
     }
-    public func getAddress()-> String{
-        return address
+    public func getAddressLineOne()-> String{
+        return addressLineOne
+    }
+    public func getCity()->String{
+        return city
+    }
+    public func getState()->String{
+        return state
+    }
+    public func getZipcode()->String{
+        return zipcode
     }
     public func getType()->String{
         return type;
@@ -42,8 +69,17 @@ public class Users: Codable {
     public func setEmail(e: String){
         email = e
     }
-    public func setAddress(a:String){
-        address = a
+    public func setAddressLineOne(a1:String){
+        addressLineOne = a1
+    }
+    public func setCity(c:String){
+        city = c
+    }
+    public func setState(s:String){
+        state = s
+    }
+    public func setZipcode(z:String){
+        zipcode = z
     }
     public func setType(t: String){
         type = t
