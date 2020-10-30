@@ -27,6 +27,7 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         
         
         if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
+            
             toHomeScreen()
         }
     }
@@ -36,8 +37,16 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         present(regVC, animated: true, completion: nil)
         
     }
+    
     @IBAction func loginTapped(_ sender: UIButton) {
         validateFields()
+        
+        
+    }
+    
+    @IBAction func forgotPasswordTapped(_ sender: UIButton) {
+        
+        
         
         
     }
@@ -70,6 +79,8 @@ class LoginVC: UIViewController, LoginButtonDelegate{
             signInUser(email: email!, pass: password!)
             
         }
+        
+        
         
     }
     

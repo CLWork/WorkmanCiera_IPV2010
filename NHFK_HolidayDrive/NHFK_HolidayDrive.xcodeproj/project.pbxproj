@@ -26,6 +26,9 @@
 		F175FD82254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
 		F175FD83254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
 		F175FD84254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
+		F175FD95254BA5780011DD50 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD94254BA5770011DD50 /* Child.swift */; };
+		F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD99254BA5870011DD50 /* Sponsor.swift */; };
+		F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */; };
 		F1804816254530E8000501D4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804815254530E8000501D4 /* Users.swift */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
@@ -84,6 +87,9 @@
 		F175FD73254648310011DD50 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
 		F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Regular.ttf"; sourceTree = "<group>"; };
 		F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-SemiBold.ttf"; sourceTree = "<group>"; };
+		F175FD94254BA5770011DD50 /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
+		F175FD99254BA5870011DD50 /* Sponsor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
+		F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		F1804815254530E8000501D4 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		F180486E2545DFAC000501D4 /* NHFK_HolidayDrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NHFK_HolidayDrive.entitlements; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				F1804815254530E8000501D4 /* Users.swift */,
+				F175FD94254BA5770011DD50 /* Child.swift */,
+				F175FD99254BA5870011DD50 /* Sponsor.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 				F1E68E382543D186006892EE /* LoginVC.swift */,
 				F1E68E402543D1BC006892EE /* RegStepOneVC.swift */,
 				F1E68E452543D1CA006892EE /* RegStepTwoVC.swift */,
+				F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */,
 			);
 			path = Login_Reg_Controllers;
 			sourceTree = "<group>";
@@ -589,15 +598,18 @@
 				F1E68E462543D1CA006892EE /* RegStepTwoVC.swift in Sources */,
 				F1E68E552543D1F8006892EE /* DonateVC.swift in Sources */,
 				F1E68E412543D1BC006892EE /* RegStepOneVC.swift in Sources */,
+				F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */,
 				F1E68E5A2543D23F006892EE /* AboutVC.swift in Sources */,
 				F1E68E502543D1EE006892EE /* ChildListVC.swift in Sources */,
 				F1804816254530E8000501D4 /* Users.swift in Sources */,
 				F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */,
 				F1E68E642543D264006892EE /* AccountVC.swift in Sources */,
+				F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */,
 				F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */,
 				F1E68E392543D186006892EE /* LoginVC.swift in Sources */,
 				F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */,
 				F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */,
+				F175FD95254BA5780011DD50 /* Child.swift in Sources */,
 				F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

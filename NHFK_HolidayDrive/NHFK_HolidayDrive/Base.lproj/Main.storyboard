@@ -48,6 +48,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dS-qt-aeS">
                                 <rect key="frame" x="0.0" y="757" width="414" height="30"/>
                                 <state key="normal" title="Forgot Password?"/>
+                                <connections>
+                                    <action selector="forgotPasswordTapped:" destination="t8a-Us-Sd7" eventType="touchUpInside" id="XSz-63-eeU"/>
+                                    <segue destination="Lw2-dB-6xB" kind="showDetail" id="DSe-4K-gu5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tr-PT-3vc">
                                 <rect key="frame" x="40" y="273" width="41" height="21"/>
@@ -64,7 +68,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zrP-ct-HE2" userLabel="passwordTextField">
                                 <rect key="frame" x="41.5" y="385" width="331" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GlK-2N-YWc"/>
@@ -84,6 +88,8 @@
                             <constraint firstItem="HSq-dQ-ngG" firstAttribute="width" secondItem="Xm9-tj-cgW" secondAttribute="width" id="Xc0-yI-4fZ"/>
                             <constraint firstItem="9eC-Pr-j0X" firstAttribute="leading" secondItem="GlK-2N-YWc" secondAttribute="leading" constant="20" id="Y0a-wM-Rz2"/>
                             <constraint firstItem="1dS-qt-aeS" firstAttribute="width" secondItem="Hna-Cy-fww" secondAttribute="width" id="axb-3j-bnr"/>
+                            <constraint firstItem="GlK-2N-YWc" firstAttribute="trailing" secondItem="g9F-rc-j3g" secondAttribute="trailing" constant="300.5" id="bKY-Bq-CNS"/>
+                            <constraint firstItem="GlK-2N-YWc" firstAttribute="trailing" secondItem="7tr-PT-3vc" secondAttribute="trailing" constant="333" id="bzb-ge-eq1"/>
                             <constraint firstItem="zi1-gc-Uqy" firstAttribute="top" secondItem="7tr-PT-3vc" secondAttribute="bottom" constant="8" symbolic="YES" id="d9R-ls-XUF"/>
                             <constraint firstItem="zi1-gc-Uqy" firstAttribute="centerX" secondItem="GlK-2N-YWc" secondAttribute="centerX" id="dc3-FN-5Ib"/>
                             <constraint firstItem="7tr-PT-3vc" firstAttribute="top" secondItem="9eC-Pr-j0X" secondAttribute="bottom" constant="40" id="eh2-5T-Ogm"/>
@@ -1302,11 +1308,11 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EVg-UT-qbl">
                                 <rect key="frame" x="10.5" y="374" width="393" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">As the holidays approach, New Hope for Kids begins the important task of filling Santa’s ‘BAG OF HOPE’ with gifts for the kids. New Hope for Kids’ goal each holiday season is to help provide gifts to the children and families in our grief and wish programs. In addition to the struggles caused by the economy, many of our families are also dealing with financial burdens caused by the death of their wage earner or because of medical expenses due to illness. Please help us make their holiday a memorable one!
+                                <string key="text">As the holidays approach, New Hope for Kids begins the important task of filling Santa’s ‘BAG OF HOPE’ with gifts for the kids. New Hope for Kids’ goal each holiday season is to help provide gifts to the children and families in our grief and wish programs. In addition to the struggles caused by the economy, many of our families are also dealing with financial burdens caused by the death of their wage earner or because of medical expenses due to illness. Please help us make their holiday a memorable one!
 
 In spite of the current pandemic, Santa is prepared to put on his mask, to gather his elves, and to load up his sleigh to deliver joy this Holiday Season, BUT… he needs more helpers. With the support of our generous community, Santa’s bag was filled with gifts for over 500 kids last year and anticipate supporting over 500 again this holiday season.
 
-Please join New Hope for Kids in spreading much needed hope and cheer to our deserving children and families by helping fill Santa’s ‘BAG OF HOPE’.</mutableString>
+Please join New Hope for Kids in spreading much needed hope and cheer to our deserving children and families by helping fill Santa’s ‘BAG OF HOPE’.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1416,12 +1422,12 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HR-sb-mLa">
                                 <rect key="frame" x="41.5" y="452" width="331" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jhe-bh-8nZ">
                                 <rect key="frame" x="41.5" y="527" width="331" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3M-KP-m1d">
                                 <rect key="frame" x="40" y="356" width="74" height="21"/>
@@ -1589,7 +1595,7 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                                 <textInputTraits key="textInputTraits" textContentType="postal-code"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-jv-AL4">
-                                <rect key="frame" x="192" y="636.5" width="30" height="30"/>
+                                <rect key="frame" x="83" y="618.5" width="248" height="30"/>
                                 <state key="normal" title="Skip"/>
                                 <connections>
                                     <action selector="skipTapped:" destination="OBc-kZ-ykO" eventType="touchUpInside" id="tou-Zy-DQb"/>
@@ -1632,7 +1638,7 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9H-zb-sf0">
-                                <rect key="frame" x="57" y="538.5" width="300" height="38"/>
+                                <rect key="frame" x="83" y="538.5" width="248" height="30"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.22352941179999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.90980392160000001" green="0.91372549020000005" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1663,6 +1669,7 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                             <constraint firstItem="b9H-zb-sf0" firstAttribute="centerX" secondItem="hG4-aa-tg1" secondAttribute="centerX" id="6Pt-3D-x5b"/>
                             <constraint firstItem="ZP9-23-XjV" firstAttribute="leading" secondItem="hIc-kH-qQN" secondAttribute="trailing" constant="150" id="6zW-7F-m4S"/>
                             <constraint firstItem="ZP9-23-XjV" firstAttribute="top" secondItem="Tff-oO-E0J" secondAttribute="bottom" constant="20" id="7KF-Mw-3we"/>
+                            <constraint firstItem="rIL-jv-AL4" firstAttribute="top" secondItem="b9H-zb-sf0" secondAttribute="bottom" constant="50" id="7Na-iA-bGI"/>
                             <constraint firstItem="d0I-Op-qlc" firstAttribute="top" secondItem="MiC-Rx-rJx" secondAttribute="bottom" constant="20" id="7ZA-5F-Xnm"/>
                             <constraint firstItem="b9H-zb-sf0" firstAttribute="top" secondItem="yfP-1v-UJm" secondAttribute="bottom" constant="60" id="7ia-ia-kDn"/>
                             <constraint firstItem="Zei-cK-TNG" firstAttribute="top" secondItem="hG4-aa-tg1" secondAttribute="top" constant="10" id="9IC-PO-hv5"/>
@@ -1670,18 +1677,18 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                             <constraint firstItem="ysu-eR-9Xm" firstAttribute="leading" secondItem="hG4-aa-tg1" secondAttribute="leading" constant="40" id="CrW-Kf-qlA"/>
                             <constraint firstItem="yfP-1v-UJm" firstAttribute="top" secondItem="ZP9-23-XjV" secondAttribute="bottom" id="DWi-26-fnx"/>
                             <constraint firstItem="Tff-oO-E0J" firstAttribute="top" secondItem="ysu-eR-9Xm" secondAttribute="bottom" id="GNG-mM-cj5"/>
-                            <constraint firstItem="rIL-jv-AL4" firstAttribute="centerX" secondItem="b9H-zb-sf0" secondAttribute="centerX" id="K24-Z6-f83"/>
-                            <constraint firstItem="b9H-zb-sf0" firstAttribute="height" secondItem="PY5-Aa-UxD" secondAttribute="height" multiplier="0.045" id="Kxu-h3-dJc"/>
                             <constraint firstItem="hG4-aa-tg1" firstAttribute="trailing" secondItem="ZP9-23-XjV" secondAttribute="trailing" constant="120" id="Lee-fP-9H9"/>
                             <constraint firstItem="wSK-nZ-UHA" firstAttribute="top" secondItem="d0I-Op-qlc" secondAttribute="bottom" id="NJk-1W-34A"/>
                             <constraint firstItem="wSK-nZ-UHA" firstAttribute="width" secondItem="MiC-Rx-rJx" secondAttribute="width" id="Ns2-1J-VcI"/>
+                            <constraint firstItem="rIL-jv-AL4" firstAttribute="width" secondItem="PY5-Aa-UxD" secondAttribute="width" multiplier="0.6" id="Rps-YG-2Ts"/>
                             <constraint firstItem="QZG-rs-fhC" firstAttribute="leading" secondItem="hG4-aa-tg1" secondAttribute="leading" constant="40" id="UV3-H9-Nyl"/>
                             <constraint firstItem="hIc-kH-qQN" firstAttribute="leading" secondItem="hG4-aa-tg1" secondAttribute="leading" constant="40" id="V8h-rv-yf8"/>
                             <constraint firstItem="hG4-aa-tg1" firstAttribute="trailing" secondItem="QZG-rs-fhC" secondAttribute="trailing" constant="263" id="VG4-6j-brA"/>
                             <constraint firstItem="Zei-cK-TNG" firstAttribute="height" secondItem="PY5-Aa-UxD" secondAttribute="height" multiplier="0.2" id="VJV-kp-Dbz"/>
-                            <constraint firstItem="b9H-zb-sf0" firstAttribute="width" secondItem="PY5-Aa-UxD" secondAttribute="width" multiplier="0.724638" id="Vqe-S0-rBL"/>
+                            <constraint firstItem="b9H-zb-sf0" firstAttribute="width" secondItem="PY5-Aa-UxD" secondAttribute="width" multiplier="0.6" id="Vqe-S0-rBL"/>
                             <constraint firstItem="yfP-1v-UJm" firstAttribute="width" secondItem="PY5-Aa-UxD" secondAttribute="width" multiplier="0.3" id="YYd-LV-w2o"/>
                             <constraint firstItem="hG4-aa-tg1" firstAttribute="trailing" secondItem="ysu-eR-9Xm" secondAttribute="trailing" constant="343" id="Zgc-qX-GYh"/>
+                            <constraint firstItem="rIL-jv-AL4" firstAttribute="centerX" secondItem="hG4-aa-tg1" secondAttribute="centerX" id="auA-ww-Pmt"/>
                             <constraint firstItem="QZG-rs-fhC" firstAttribute="top" secondItem="Zei-cK-TNG" secondAttribute="bottom" constant="20" id="bRI-fH-lAZ"/>
                             <constraint firstItem="Zei-cK-TNG" firstAttribute="leading" secondItem="hG4-aa-tg1" secondAttribute="leading" constant="20" id="cSd-lx-tEU"/>
                             <constraint firstItem="wSK-nZ-UHA" firstAttribute="centerX" secondItem="MiC-Rx-rJx" secondAttribute="centerX" id="e0O-Lt-UKk"/>
@@ -1693,7 +1700,6 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
                             <constraint firstItem="lWf-7D-0sN" firstAttribute="top" secondItem="hIc-kH-qQN" secondAttribute="bottom" id="oAa-BQ-uw6"/>
                             <constraint firstItem="ysu-eR-9Xm" firstAttribute="top" secondItem="wSK-nZ-UHA" secondAttribute="bottom" constant="20" id="pq0-jD-apW"/>
                             <constraint firstItem="hG4-aa-tg1" firstAttribute="trailing" secondItem="d0I-Op-qlc" secondAttribute="trailing" constant="261" id="rtY-5M-Cjg"/>
-                            <constraint firstItem="rIL-jv-AL4" firstAttribute="top" secondItem="b9H-zb-sf0" secondAttribute="bottom" constant="60" id="uMC-US-idi"/>
                             <constraint firstItem="hG4-aa-tg1" firstAttribute="trailing" secondItem="Zei-cK-TNG" secondAttribute="trailing" constant="20" id="xzY-lo-gTl"/>
                         </constraints>
                         <variation key="default">
@@ -1734,6 +1740,83 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
             </objects>
             <point key="canvasLocation" x="1531.8840579710145" y="103.79464285714285"/>
         </scene>
+        <!--Reset PasswordVC-->
+        <scene sceneID="VNB-Lc-dVF">
+            <objects>
+                <viewController storyboardIdentifier="resetPassword" id="Lw2-dB-6xB" customClass="ResetPasswordVC" customModule="NHFK_HolidayDrive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TDi-2O-NIR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newHopeLogoFull" translatesAutoresizingMaskIntoConstraints="NO" id="sIC-A9-jAX">
+                                <rect key="frame" x="20" y="0.0" width="374" height="168.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9n-qL-d9L">
+                                <rect key="frame" x="40" y="212.5" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ihk-ZV-SFr">
+                                <rect key="frame" x="41.5" y="241.5" width="331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="editChanged:" destination="Lw2-dB-6xB" eventType="editingChanged" id="dMy-pr-Cl9"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zph-Tv-J0e">
+                                <rect key="frame" x="83" y="395.5" width="248" height="40.5"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.22352941179999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.91372549020000005" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueTapped:" destination="6n5-71-hWa" eventType="touchUpInside" id="TzI-ns-rsx"/>
+                                    <action selector="passwordReset:" destination="Lw2-dB-6xB" eventType="touchUpInside" id="NAK-ah-HBZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a valid email address." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XE5-U2-QRR">
+                                <rect key="frame" x="45" y="283.5" width="214" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="abk-3p-T9z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ihk-ZV-SFr" firstAttribute="top" secondItem="S9n-qL-d9L" secondAttribute="bottom" constant="8" symbolic="YES" id="8F0-iL-lIM"/>
+                            <constraint firstItem="ihk-ZV-SFr" firstAttribute="width" secondItem="TDi-2O-NIR" secondAttribute="width" multiplier="0.8" id="9LF-VX-ElP"/>
+                            <constraint firstItem="abk-3p-T9z" firstAttribute="trailing" secondItem="sIC-A9-jAX" secondAttribute="trailing" constant="20" id="JRq-7r-xmq"/>
+                            <constraint firstItem="abk-3p-T9z" firstAttribute="trailing" secondItem="S9n-qL-d9L" secondAttribute="trailing" constant="333" id="KYM-ii-0tm"/>
+                            <constraint firstItem="sIC-A9-jAX" firstAttribute="centerX" secondItem="abk-3p-T9z" secondAttribute="centerX" id="PSP-vw-aKN"/>
+                            <constraint firstItem="sIC-A9-jAX" firstAttribute="leading" secondItem="abk-3p-T9z" secondAttribute="leading" constant="20" id="VV6-y7-2Bi"/>
+                            <constraint firstItem="Zph-Tv-J0e" firstAttribute="height" secondItem="TDi-2O-NIR" secondAttribute="height" multiplier="0.0479911" id="Z0a-Tr-aYm"/>
+                            <constraint firstItem="S9n-qL-d9L" firstAttribute="top" secondItem="sIC-A9-jAX" secondAttribute="bottom" constant="44" id="aO0-dM-Awl"/>
+                            <constraint firstItem="sIC-A9-jAX" firstAttribute="height" secondItem="TDi-2O-NIR" secondAttribute="height" multiplier="0.2" id="cBA-kC-Sr4"/>
+                            <constraint firstItem="ihk-ZV-SFr" firstAttribute="centerX" secondItem="abk-3p-T9z" secondAttribute="centerX" id="clg-Uk-Hf5"/>
+                            <constraint firstItem="XE5-U2-QRR" firstAttribute="width" secondItem="TDi-2O-NIR" secondAttribute="width" constant="-200" id="edI-Fy-P2F"/>
+                            <constraint firstItem="abk-3p-T9z" firstAttribute="trailing" secondItem="XE5-U2-QRR" secondAttribute="trailing" constant="155" id="fyz-jR-XN2"/>
+                            <constraint firstItem="Zph-Tv-J0e" firstAttribute="top" secondItem="ihk-ZV-SFr" secondAttribute="bottom" constant="120" id="hfe-Aw-coy"/>
+                            <constraint firstItem="XE5-U2-QRR" firstAttribute="top" secondItem="ihk-ZV-SFr" secondAttribute="bottom" constant="8" symbolic="YES" id="ij7-iY-YLA"/>
+                            <constraint firstItem="sIC-A9-jAX" firstAttribute="top" secondItem="abk-3p-T9z" secondAttribute="top" id="nDw-IN-LAz"/>
+                            <constraint firstItem="S9n-qL-d9L" firstAttribute="leading" secondItem="abk-3p-T9z" secondAttribute="leading" constant="40" id="seP-Ix-w3Z"/>
+                            <constraint firstItem="Zph-Tv-J0e" firstAttribute="width" secondItem="TDi-2O-NIR" secondAttribute="width" multiplier="0.599034" id="ufE-ez-1vW"/>
+                            <constraint firstItem="XE5-U2-QRR" firstAttribute="leading" secondItem="abk-3p-T9z" secondAttribute="leading" constant="45" id="wsa-RA-W6d"/>
+                            <constraint firstItem="Zph-Tv-J0e" firstAttribute="centerX" secondItem="abk-3p-T9z" secondAttribute="centerX" id="xbZ-se-Fao"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTF" destination="ihk-ZV-SFr" id="Dn7-3R-R6p"/>
+                        <outlet property="errorLabel" destination="XE5-U2-QRR" id="JZw-Ce-ubf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edn-wr-8dF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2288" y="104"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bagOfHopeInfo" width="936" height="624"/>
@@ -1750,6 +1833,9 @@ Please join New Hope for Kids in spreading much needed hope and cheer to our des
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

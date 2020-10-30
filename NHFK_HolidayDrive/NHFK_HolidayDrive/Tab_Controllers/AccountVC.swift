@@ -32,19 +32,21 @@ class AccountVC: UIViewController{
             .getDocument { (snapshot, error ) in
                 
                 if let document = snapshot {
-                    let name = document.get("fullName") as! String
-                    let email = document.get("email") as! String
-                    let addressOne = document.get("addressLineOne") as! String
-                    let city = document.get("city") as! String
-                    let state = document.get("state") as! String
-                    let zipcode = document.get("zipcode") as! String
+                    let name = document.get("fullName") as? String
+                    let email = document.get("email") as? String
+                    let addressOne = document.get("addressLineOne") as? String
+                    let city = document.get("city") as? String
+                    let state = document.get("state") as? String
+                    let zipcode = document.get("zipcode") as? String
                     
+                    if(name != nil){
                     self.nameLabel.text = name
                     self.emailLabel.text = email
                     self.addressL1.text = addressOne
                     self.cityLabel.text = city
                     self.stateLabel.text = state
                     self.zipcodeLabel.text = zipcode
+                    }
                 } else {
                     
                     print("Document does not exist")
