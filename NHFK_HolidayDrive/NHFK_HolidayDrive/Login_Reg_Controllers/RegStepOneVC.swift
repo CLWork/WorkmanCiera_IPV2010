@@ -12,17 +12,48 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class RegStepOneVC: UIViewController{
+    
+    //outlets
     @IBOutlet weak var fullNameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmPassTF: UITextField!
     @IBOutlet weak var codeTF: UITextField!
+    @IBOutlet weak var nameErrorLabel: UILabel!
     
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var passMatchErrorLabel: UILabel!
+    @IBOutlet weak var codeErrorLabel: UILabel!
+    
+    @IBOutlet weak var continueButton: UIButton!
+    
+    //variables
     var newUser: Users?
+    let emailInUse = "Email already in use."
+    let invalidEmail = "Please enter a valid email."
+    var pass = ""
+    var confirmPass = ""
+    var fullName = ""
+    var email = ""
+    var code = ""
+    
+    //control bools
+    var nameValid = false
+    var emailValid = false
+    var passValid = false
+    var passMatches = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //hide all error labels
+        nameErrorLabel.isHidden = true
+        emailErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
+        passMatchErrorLabel.isHidden = true
+        codeErrorLabel.isHidden = true
+    
     }
     
     //validate input upon button tap
@@ -33,50 +64,117 @@ class RegStepOneVC: UIViewController{
     //validate each input
     func validateInput(){
         
-        let fullName = fullNameTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? nil
-        let email = emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let pass = passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let confirmPass = confirmPassTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let code = codeTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        //disable textfields to prevent any editing after Continue has been pressed
+        fullNameTF.isEnabled = false
+        emailTF.isEnabled = false
+        passwordTF.isEnabled = false
+        confirmPassTF.isEnabled = false
+        codeTF.isEnabled = false
         
-        
-        let isEmailValid = Utility.checkEmailFormat(email!)
-        let isPassStrong = Utility.checkPasswordStrength(p: pass!)
-        let doPassMatch = Utility.comparePass(p: pass!, p2: confirmPass!)
-        
-        
-        if(fullName == nil || fullName!.isEmpty){
-            self.showToast(message: "Please enter your name!")
+        //final check for valid entries just in case
+        if(nameValid && emailValid && passValid && passMatches){
+            code = codeTF.text ?? ""
+            newUser = Users(fName: fullName, userEmail: email)
+            newUser?.setType(t: checkType(code: code))
+            createNewUser(e: email, p: pass, newUser: newUser!)
             
-        } else if(email == nil || isEmailValid == false){
-            self.showToast(message: "Email must be a valid format and not empty!")
-            
-        } else if(pass == nil || isPassStrong == false){
-            self.showToast(message: "Password must be 8 characters long with 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character.")
-            
-        } else if(confirmPass == nil || doPassMatch == false){
-            self.showToast(message: "Password must be confirmed, not empty and must match.")
         } else{
-            newUser = Users(fName: fullName!, userEmail: email!)
-            newUser!.setType(t: checkType(code: code!))
             
-            createNewUser(e: email!, p: pass!, newUser: newUser!)
+            //Enable editing if an error occurs.
+            fullNameTF.isEnabled = true
+            emailTF.isEnabled = true
+            passwordTF.isEnabled =  true
+            confirmPassTF.isEnabled = true
+            codeTF.isEnabled = true
+            showToast(message: "Something went wrong, please check your entries.")
             
         }
         
+        
     }
+    
+    //checks for name validity as the user types
+    @IBAction func nameEditChanged(_ sender: UITextField) {
+        fullName = fullNameTF.text ?? ""
+        if(fullName.count < 6 || fullName.isEmpty){
+            nameErrorLabel.isHidden = false
+            nameValid = false
+        } else{
+            nameErrorLabel.isHidden = true
+            nameValid = true
+        }
+    }
+    
+    //checks for email validity as user types
+    @IBAction func emailEditChanged(_ sender: UITextField) {
+        email = sender.text ?? ""
+        
+        Auth.auth().fetchSignInMethods(forEmail: email, completion: { (signInMethods, error) in
+            if(error != nil){
+                print(error!.localizedDescription)
+                self.emailErrorLabel.isHidden = false
+                self.emailValid = false
+                
+            } else if(signInMethods != nil){
+                self.emailErrorLabel.text = self.emailInUse
+                self.emailErrorLabel.isHidden = false
+                self.emailValid = false
+            } else{
+                self.emailErrorLabel.text = self.invalidEmail
+                self.emailErrorLabel.isHidden = true
+                self.emailValid = true
+            }
+        })
+        
+    }
+    
+    //Check for validity as the user types their password
+    @IBAction func passEditChanged(_ sender: Any) {
+        pass = passwordTF.text ?? ""
+        
+        if(Utility.checkPasswordStrength(p: pass) == false || pass.isEmpty){
+            passwordErrorLabel.isHidden = false;
+            passValid = false
+        } else{
+            passwordErrorLabel.isHidden = true;
+            passValid = true
+        }
+    }
+    
+    //Check for validity as a user types their matching password
+    @IBAction func passMatchEditChanged(_ sender: Any) {
+        confirmPass = confirmPassTF.text ?? ""
+        
+        if(Utility.comparePass(p: pass, p2: confirmPass) == false || confirmPass.isEmpty){
+            passMatchErrorLabel.isHidden = false
+            passMatches = false
+        } else{
+            passMatchErrorLabel.isHidden = true
+            passMatches = true
+        }
+    }
+    
     
     //Add user profile to DB
     func addUserToDB(newUser: Users, uid: String){
+        
         let db = Firestore.firestore()
         let ref = db.collection("users")
-        var docRef: DocumentReference? = nil
-        docRef = ref.addDocument(data: newUser.getUserDic()) { err in
+        
+        var _: DocumentReference? = nil
+        _ = ref.addDocument(data: newUser.getUserDic()) { err in
             if let err = err {
                 print("Error adding document: \(err)")
+                self.showToast(message: "Error in creating User Profile, please try again.")
             } else {
-                print(docRef!.documentID)
+                self.showToast(message: "User Profile Created!")
                 
+                //clear password variables
+                self.pass = ""
+                self.confirmPass = ""
+                
+                //move to address step after user is successfully added to database
+                self.performSegue(withIdentifier: "toStepTwo", sender: self)
             }
         }
         
@@ -96,23 +194,23 @@ class RegStepOneVC: UIViewController{
                     
                     self.showToast(message: "Oops! Email is in wrong format.")
                 default:
-                    print("Error: \(error.localizedDescription)")
-                    print("Error 2: \(error.description)")
+                    print("Error: \(error.localizedDescription)\n\r \(error.description)")
                 }
             } else {
                 self.showToast(message: "User Created!")
-               // let current = Auth.auth().currentUser
+                // let current = Auth.auth().currentUser
                 //let uid = current?.uid
                 
                 Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                     if let error = error {
                         print(error.localizedDescription)
+                        self.showToast(message: "Error Sending Verification Email! Please try again.")
+                        
                         return
                     }
                     self.showToast(message: "Email Verification Sent!")
+                    self.addUserToDB(newUser: newUser, uid: Auth.auth().currentUser!.uid)
                 })
-                self.performSegue(withIdentifier: "toStepTwo", sender: self)
-                //self.addUserToDB(newUser: newUser, uid: uid!)
             }
         }
     }

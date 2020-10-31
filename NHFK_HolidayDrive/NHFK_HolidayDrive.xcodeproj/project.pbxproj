@@ -15,17 +15,9 @@
 		F175FD5D254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
 		F175FD5E254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
 		F175FD6A254648290011DD50 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD69254648290011DD50 /* DancingScript-Bold.ttf */; };
-		F175FD6B254648290011DD50 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD69254648290011DD50 /* DancingScript-Bold.ttf */; };
-		F175FD6C254648290011DD50 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD69254648290011DD50 /* DancingScript-Bold.ttf */; };
 		F175FD74254648310011DD50 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD73254648310011DD50 /* DancingScript-Medium.ttf */; };
-		F175FD75254648310011DD50 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD73254648310011DD50 /* DancingScript-Medium.ttf */; };
-		F175FD76254648310011DD50 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD73254648310011DD50 /* DancingScript-Medium.ttf */; };
 		F175FD7B2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */; };
-		F175FD7C2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */; };
-		F175FD7D2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */; };
 		F175FD82254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
-		F175FD83254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
-		F175FD84254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD81254648420011DD50 /* DancingScript-SemiBold.ttf */; };
 		F175FD95254BA5780011DD50 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD94254BA5770011DD50 /* Child.swift */; };
 		F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD99254BA5870011DD50 /* Sponsor.swift */; };
 		F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */; };
@@ -425,11 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F175FD75254648310011DD50 /* DancingScript-Medium.ttf in Resources */,
-				F175FD7C2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */,
-				F175FD83254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */,
 				F175FD5D254645840011DD50 /* GoogleService-Info.plist in Resources */,
-				F175FD6B254648290011DD50 /* DancingScript-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,11 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F175FD76254648310011DD50 /* DancingScript-Medium.ttf in Resources */,
-				F175FD7D2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */,
-				F175FD84254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */,
 				F175FD5E254645840011DD50 /* GoogleService-Info.plist in Resources */,
-				F175FD6C254648290011DD50 /* DancingScript-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
