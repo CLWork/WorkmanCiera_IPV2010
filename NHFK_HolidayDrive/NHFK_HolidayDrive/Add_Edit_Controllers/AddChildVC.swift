@@ -10,5 +10,10 @@ import UIKit
 
 class AddChildVC: UIViewController{
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
     
 }

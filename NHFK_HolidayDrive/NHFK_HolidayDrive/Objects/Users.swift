@@ -13,6 +13,7 @@ public class Users: Codable {
     private var fullName: String = ""
     private var email: String = ""
     private var addressLineOne: String = ""
+    private var addressLineTwo: String = ""
     private var city: String = ""
     private var state: String = ""
     private var zipcode: String = ""
@@ -31,6 +32,7 @@ public class Users: Codable {
             "email": self.email,
             "type": self.type,
             "addressLineOne": self.addressLineOne,
+            "addressLineTwo": self.addressLineTwo,
             "city": self.city,
             "state": state,
             "zipcode": zipcode]
@@ -48,6 +50,9 @@ public class Users: Codable {
     }
     public func getAddressLineOne()-> String{
         return addressLineOne
+    }
+    public func getAddressLineTwo()-> String{
+        return addressLineTwo
     }
     public func getCity()->String{
         return city
@@ -71,6 +76,9 @@ public class Users: Codable {
     }
     public func setAddressLineOne(a1:String){
         addressLineOne = a1
+    }
+    public func setAddressLineTwo(a2:String){
+        addressLineTwo = a2
     }
     public func setCity(c:String){
         city = c

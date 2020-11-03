@@ -17,12 +17,20 @@ class AccountVC: UIViewController{
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var addressL1: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var stateLabel: UILabel!
-    @IBOutlet weak var zipcodeLabel: UILabel!
+    
+    @IBOutlet weak var statsBarBttn: UIBarButtonItem!
+    var type = ""
+    var address1 = ""
+    var address2 = ""
+    var city = ""
+    var state = ""
+    var zipcode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         readUserProfile()
+        
+        nameLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
     }
     
     func readUserProfile(){
@@ -34,18 +42,27 @@ class AccountVC: UIViewController{
                 if let document = snapshot {
                     let name = document.get("fullName") as? String
                     let email = document.get("email") as? String
-                    let addressOne = document.get("addressLineOne") as? String
-                    let city = document.get("city") as? String
-                    let state = document.get("state") as? String
-                    let zipcode = document.get("zipcode") as? String
+                    self.address1 = document.get("addressLineOne") as? String ?? ""
+                    self.address2 = document.get("addressLineTwo") as? String ?? ""
+                    self.city = document.get("city") as? String ?? ""
+                    self.state = document.get("state") as? String ?? ""
+                    self.zipcode = document.get("zipcode") as? String ?? ""
+                    self.type = document.get("type") as? String ?? "user"
                     
                     if(name != nil){
-                    self.nameLabel.text = name
-                    self.emailLabel.text = email
-                    self.addressL1.text = addressOne
-                    self.cityLabel.text = city
-                    self.stateLabel.text = state
-                    self.zipcodeLabel.text = zipcode
+                        self.nameLabel.text = name
+                        self.emailLabel.text = email
+                        self.addressL1.text = self.address1 + " " + self.address2
+                        self.cityLabel.text = self.city + ", " + self.state + " " + self.zipcode
+                        
+                        if(self.type == "admin"){
+                            self.statsBarBttn.isEnabled = true
+                            self.statsBarBttn.tintColor = .systemBlue
+                        } else{
+                            self.statsBarBttn.isEnabled = false
+                            self.statsBarBttn.tintColor = .clear
+                        }
+                        
                     }
                 } else {
                     
@@ -54,6 +71,7 @@ class AccountVC: UIViewController{
                 }
             }
     }
+    
     
     
     

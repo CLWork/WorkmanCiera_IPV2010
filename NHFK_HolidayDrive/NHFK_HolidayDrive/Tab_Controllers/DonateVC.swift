@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DonateVC: UIViewController{
+class DonateVC: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var supporterLabel: UILabel!
     @IBOutlet weak var sponsorLabel: UILabel!
@@ -24,4 +24,14 @@ class DonateVC: UIViewController{
         sponsorLabel.font = UIFont(name: "DancingScript-SemiBold", size: 40)
     }
     
+    @IBAction func supporterTapped(_ sender: UITapGestureRecognizer) {
+        
+        
+        
+    }
+    @IBAction func sponsorTapped(_ sender: UITapGestureRecognizer) {
+        
+        
+        
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SponsorsVC: UIViewController{
+class SponsorsVC: UITabBarController{
     
     
 }

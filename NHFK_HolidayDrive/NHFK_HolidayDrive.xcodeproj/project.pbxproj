@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A45AD362FCDAEAD1A0BF9F33 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */; };
 		B49402697B9F354CC370FAFE /* Pods_NHFK_HolidayDriveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */; };
+		F12E7FAA25510B9600160B28 /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12E7FA925510B9600160B28 /* ChildCell.swift */; };
 		F175FD472546139A0011DD50 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD462546139A0011DD50 /* Toast.swift */; };
 		F175FD54254615FE0011DD50 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD53254615FE0011DD50 /* Utility.swift */; };
 		F175FD5C254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
@@ -72,6 +73,7 @@
 		C3E106ABBDC48ADCEBFD4F76 /* Pods-NHFK_HolidayDriveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDriveTests.release.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDriveTests/Pods-NHFK_HolidayDriveTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E705539AD5821491A16A8857 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F12E7FA925510B9600160B28 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
 		F175FD462546139A0011DD50 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		F175FD53254615FE0011DD50 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F175FD5B254645840011DD50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				F1804815254530E8000501D4 /* Users.swift */,
 				F175FD94254BA5770011DD50 /* Child.swift */,
 				F175FD99254BA5870011DD50 /* Sponsor.swift */,
+				F12E7FA925510B9600160B28 /* ChildCell.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */,
 				F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */,
 				F1E68E392543D186006892EE /* LoginVC.swift in Sources */,
+				F12E7FAA25510B9600160B28 /* ChildCell.swift in Sources */,
 				F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */,
 				F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */,
 				F175FD95254BA5780011DD50 /* Child.swift in Sources */,

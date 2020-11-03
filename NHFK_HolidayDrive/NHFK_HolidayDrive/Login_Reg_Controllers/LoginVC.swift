@@ -15,8 +15,26 @@ class LoginVC: UIViewController, LoginButtonDelegate{
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passErrorLabel: UILabel!
+    
+    var email = ""
+    var pass = ""
+    
+    var verifyError = "Email verification required!"
+    var invalidError = "Invalid Email Address"
+    
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+        emailErrorLabel.isHidden = true
+        emailErrorLabel.text = invalidError
+        passErrorLabel.isHidden = true
+        
+        if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
+            
+            toHomeScreen()
+        }
         
         let loginButton = FBLoginButton()
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 280)
@@ -25,11 +43,6 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         loginButton.permissions = ["public_profile", "email"]
         view.addSubview(loginButton)
         
-        
-        if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
-            
-            toHomeScreen()
-        }
     }
     
     @IBAction func registerTapped(_ sender: UIButton) {
@@ -39,15 +52,33 @@ class LoginVC: UIViewController, LoginButtonDelegate{
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        validateFields()
-        
+        if(email != "" && pass != ""){
+            signInUser(email: email, pass: pass)
+        }
         
     }
     
-    @IBAction func forgotPasswordTapped(_ sender: UIButton) {
+    @IBAction func emailEditChanged(_ sender: UITextField) {
+        email = sender.text ?? ""
         
+        Auth.auth().fetchSignInMethods(forEmail: email, completion: { (signInMethods, error) in
+            if(error != nil){
+                print(error!.localizedDescription)
+                self.emailErrorLabel.isHidden = false
+                
+            } else{
+                self.emailErrorLabel.isHidden = true
+                
+            }
+        })
         
-        
+    }
+    
+    @IBAction func passEditChange(_ sender: UITextField) {
+        pass = passwordTF.text ?? ""
+        if(pass == ""){
+            passErrorLabel.isHidden = false
+        }
         
     }
     private func toHomeScreen(){
@@ -60,56 +91,45 @@ class LoginVC: UIViewController, LoginButtonDelegate{
     }
     
     
-    func validateFields(){
-        
-        let email = emailTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let isEmailValid = Utility.checkEmailFormat(email!)
-        let isPassStrong = Utility.checkPasswordStrength(p: password!)
-        
-        if(isEmailValid == false || email == nil){
-            
-            self.showToast(message: "Please enter a valid email: email@domain.com")
-            
-        } else if(isPassStrong == false || password == nil){
-            
-            self.showToast(message: "Password must be 8 characters. 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character")
-            
-        } else{
-            signInUser(email: email!, pass: password!)
-            
-        }
-        
-        
-        
-    }
-    
     func signInUser(email: String, pass: String){
         Auth.auth().signIn(withEmail: email, password: pass) { (authResult, error) in
             if let error = error as NSError? {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .operationNotAllowed:
                     
-                    print("Unable to sign in with a email and password.")
+                    self.showToast(message: "Sign In has been disabled by admins.")
+                    
                 case .userDisabled:
                     
-                    self.showToast(message: "This account has been disabled.")
+                    self.showToast(message: "This account is disabled.")
+                    
                 case .wrongPassword:
                     
-                    self.showToast(message: "Oops! Incorrect password.")
+                    self.passErrorLabel.isHidden = false
+                    
                 case .invalidEmail:
                     
-                    self.showToast(message: "Oops! Email is in wrong format.")
+                    self.emailErrorLabel.text = self.invalidError
+                    self.emailErrorLabel.isHidden = false
+                    
                 default:
                     print("Error: \(error.localizedDescription)")
                 }
             } else {
                 if(Auth.auth().currentUser?.isEmailVerified == true){
-                    print("User signs in successfully")
+                    self.passErrorLabel.isHidden = true
+                    self.emailErrorLabel.isHidden = true
+                    self.emailErrorLabel.text = self.invalidError
+                    
+                    self.showToast(message: "Sign In Successful!")
+                    self.email = ""
+                    self.pass = ""
+                    
                     let _ = Auth.auth().currentUser
                     self.toHomeScreen()
                 } else{
-                    self.showToast(message: "Oops! Your email hasn't been verified yet.")
+                    self.emailErrorLabel.isHidden = false
+                    self.emailErrorLabel.text = self.verifyError
                 }
             }
             

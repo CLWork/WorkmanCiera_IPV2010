@@ -14,10 +14,10 @@ class Child {
     private var name: String
     private var program: String
     private var age: Int
-    private var interests: String
+    private var interests: [String?]
     
     //Constructor
-    init(id: Int, name: String, age: Int, program: String, interests: String){
+    init(id: Int, name: String, age: Int, program: String, interests: [String?]){
         self.id = id
         self.name = name
         self.age = age
@@ -38,7 +38,7 @@ class Child {
         return program
     }
     
-    public func getInterests()-> String{
+    public func getInterests()-> [String?]{
         return interests
     }
     
