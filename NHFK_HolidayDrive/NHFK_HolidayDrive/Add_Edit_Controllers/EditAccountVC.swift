@@ -30,6 +30,8 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     
     var currentUser: Users?
+    let emailInUse = "Email already in use."
+    let invalidEmail = "Please enter a valid email."
     
     var address1 = ""
     var address2 = ""
@@ -37,6 +39,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var state = ""
     var zipcode = ""
     var email = ""
+    var name = ""
     
     let stateArray = Utility.populateStateArray()
     
@@ -55,6 +58,8 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         cityErrorLabel.isHidden = true
         stateErrorLabel.isHidden = true
         zipErrorLabel.isHidden = true
+        emailErrorLabel.isHidden = true
+        nameErrorLabel.isHidden = true
         
         readUserProfile()
     }
@@ -66,7 +71,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             .getDocument { (snapshot, error ) in
                 
                 if let document = snapshot {
-                    let name = document.get("fullName") as? String
+                    self.name = document.get("fullName") as? String ?? ""
                     self.email = document.get("email") as? String ?? ""
                     self.address1 = document.get("addressLineOne") as? String ?? ""
                     self.address2 = document.get("addressLineTwo") as? String ?? ""
@@ -74,17 +79,18 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     self.state = document.get("state") as? String ?? ""
                     self.zipcode = document.get("zipcode") as? String ?? ""
                     
-                    if(name != nil){
-                        self.fullNameTF.text = name
-                        self.emailTF.text = self.email
-                        self.addressOneTF.text = self.address1
-                        self.stateTF.text = self.state
-                        self.addressTwoTF.text = self.address2
-                        self.cityTF.text = self.city
-                        self.stateTF.text = self.state
-                        self.zipcodeTF.text = self.zipcode
-                        
-                    }
+                    
+                    self.fullNameTF.text = self.name
+                    self.emailTF.text = self.email
+                    self.addressOneTF.text = self.address1
+                    self.stateTF.text = self.state
+                    self.addressTwoTF.text = self.address2
+                    self.cityTF.text = self.city
+                    self.stateTF.text = self.state
+                    self.zipcodeTF.text = self.zipcode
+                    
+                    self.currentUser = Users(fName: self.name, userEmail: self.email)
+                    
                 } else {
                     
                     print("Document does not exist")
@@ -94,18 +100,18 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func validateInput(){
-        
+        if(name != "" && email != "" && Utility.checkEmailFormat(email) == true){
         currentUser?.setAddressLineOne(a1: address1)
         currentUser?.setAddressLineTwo(a2: address2)
         currentUser?.setCity(c: city)
         currentUser?.setState(s: state)
         currentUser?.setZipcode(z: zipcode)
         
-        updateUserProfile()
+            updateUserProfile()}
         
     }
     
-    func updateEmail(){
+    func updateUserEmail(){
         let updatedEmail = emailTF.text ?? ""
         if(updatedEmail != email && updatedEmail != ""){
             Auth.auth().currentUser?.updateEmail(to: email) { (error) in
@@ -113,12 +119,46 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     print(error!.localizedDescription)
                 } else{
                     self.showToast(message: "Email updated to: \(updatedEmail)")
+                    Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                    
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
     }
     
+    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
+    
+    @IBAction func savePressed(_ sender: Any) {
+        validateInput()
+        
+    }
+    
+    //checks for email validity as user types
+    @IBAction func emailEditChanged(_ sender: UITextField) {
+        email = sender.text ?? ""
+        
+        Auth.auth().fetchSignInMethods(forEmail: email, completion: { (signInMethods, error) in
+            if(error != nil){
+                print(error!.localizedDescription)
+                self.emailErrorLabel.isHidden = false
+                //self.emailValid = false
+                
+            } else if(signInMethods != nil){
+                self.emailErrorLabel.text = self.emailInUse
+                self.emailErrorLabel.isHidden = false
+                //self.emailValid = false
+            } else{
+                self.emailErrorLabel.text = self.invalidEmail
+                self.emailErrorLabel.isHidden = true
+                //self.emailValid = true
+            }
+        })
+        
+    }
     
     @IBAction func addOneEditChanged(_ sender: UITextField) {
         address1 = addressOneTF.text ?? ""
@@ -174,6 +214,8 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     
+    
+    
     func updateUserProfile(){
         
         if(currentUser != nil){
@@ -183,14 +225,16 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                 .collection("users")
                 .document(uid!)
                 .setData(currentUser!.getUserDic()) { [weak self] e in
-                    guard let self = self else { return }
+                    guard self != nil else { return }
                     if e != nil {
                         print(e!.localizedDescription)
                     }
                     else {
-                        
+                       print("Profile Updated")
                     }
                 }
+            
+            updateUserEmail()
             
         } else{
             print("No user was passed.");

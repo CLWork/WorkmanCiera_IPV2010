@@ -18,6 +18,8 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var type = ""
     var childrenArray = Array<Child>()
     let db = Firestore.firestore()
+    var supportedChild: Child?
+    var chosenChild: Child?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,8 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func getChildrenFromDB(){
         
+        childrenArray.removeAll()
+        
         db.collection("children").getDocuments { (snapshot, error ) in
             
             if(error != nil){
@@ -74,23 +78,25 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     let name = document.get("name") as? String
                     let age = document.get("age") as? Int
                     let program = document.get("program") as? String
-                    let movieArray = document.get("movies") as? [String]
                     let itemArray = document.get("items") as? [String]
                     
                     
                     if(name != nil){
-                        self.showToast(message: "Child Added From DB: \(name!)")
-                        let interestArray = [movieArray?[0], itemArray?[0], itemArray?[1]]
+                        let interestArray = [itemArray?[0], itemArray?[1], itemArray?[2], itemArray?[3]]
                         
-                        let supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, interests: interestArray)
-                        self.childrenArray.append(supportedChild)
-                        print(self.childrenArray.count.description)
+                        self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, interests: interestArray)
+                        
+                        self.childrenArray.append(self.supportedChild!)
+                        
+                        self.tableView.reloadData()
                     }
                 }
             }
             
         }
     }
+    
+    //MARK: PREPARE FOR SEGUE
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return childrenArray.count
@@ -105,10 +111,31 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         let interests = childrenArray[indexPath.row].getInterests()
         
         cell.movie1.text = interests[0]
-        cell.item1.text = interests[1]
-        cell.item2.text = interests[2]
+        cell.movie2.text = interests[1]
+        cell.item1.text = interests[2]
+        cell.item2.text = interests[3]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO: Send user to donation page
+        chosenChild = childrenArray[indexPath.row]
+        print(chosenChild!.getName())
+        self.performSegue(withIdentifier: "toDonate", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDonate" {
+            if let donateToChild = segue.destination as? DonateAmountVC {
+                donateToChild.selectedChild = chosenChild
+            }
+        }
     }
     
     

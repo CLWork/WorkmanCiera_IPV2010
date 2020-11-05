@@ -23,6 +23,7 @@
 		F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD99254BA5870011DD50 /* Sponsor.swift */; };
 		F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */; };
 		F1804816254530E8000501D4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804815254530E8000501D4 /* Users.swift */; };
+		F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F657F2553515F00FEB895 /* DonateAmountVC.swift */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E0A2543D018006892EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E082543D018006892EE /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		F1804815254530E8000501D4 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		F180486E2545DFAC000501D4 /* NHFK_HolidayDrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NHFK_HolidayDrive.entitlements; sourceTree = "<group>"; };
+		F19F657F2553515F00FEB895 /* DonateAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateAmountVC.swift; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				F1E68E5E2543D257006892EE /* SponsorsVC.swift */,
 				F1E68E632543D264006892EE /* AccountVC.swift */,
 				F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */,
+				F19F657F2553515F00FEB895 /* DonateAmountVC.swift */,
 			);
 			path = Tab_Controllers;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				F1804816254530E8000501D4 /* Users.swift in Sources */,
 				F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */,
 				F1E68E642543D264006892EE /* AccountVC.swift in Sources */,
+				F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */,
 				F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */,
 				F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */,
 				F1E68E392543D186006892EE /* LoginVC.swift in Sources */,

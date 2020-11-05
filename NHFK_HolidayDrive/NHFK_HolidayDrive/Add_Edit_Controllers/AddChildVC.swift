@@ -10,10 +10,18 @@ import UIKit
 
 class AddChildVC: UIViewController{
     
+    var passedChild: Child?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    //PULL INFO
     
+    //POPULATE
+    
+    //CHECK
+    
+    //SAVE
     
 }

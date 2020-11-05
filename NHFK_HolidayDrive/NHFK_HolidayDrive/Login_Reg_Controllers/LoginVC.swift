@@ -31,17 +31,17 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         emailErrorLabel.text = invalidError
         passErrorLabel.isHidden = true
         
-        if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
-            
-            toHomeScreen()
-        }
-        
         let loginButton = FBLoginButton()
         let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 280)
         loginButton.center = newCenter
         loginButton.delegate = self
         loginButton.permissions = ["public_profile", "email"]
         view.addSubview(loginButton)
+        
+        if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
+            
+            toHomeScreen()
+        }
         
     }
     

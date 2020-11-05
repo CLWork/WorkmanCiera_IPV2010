@@ -13,13 +13,23 @@ import FirebaseFirestore
 class AboutVC: UIViewController{
     
     @IBOutlet weak var editBarBttn: UIBarButtonItem!
+    @IBOutlet weak var aboutNHLabel: UILabel!
+    @IBOutlet weak var griefLabel: UILabel!
+    @IBOutlet weak var wishLabel: UILabel!
     
     var type = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setFont()
         checkType()
+    }
+    
+    func setFont(){
+        aboutNHLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
+        griefLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
+        wishLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
     }
     
     func checkType(){

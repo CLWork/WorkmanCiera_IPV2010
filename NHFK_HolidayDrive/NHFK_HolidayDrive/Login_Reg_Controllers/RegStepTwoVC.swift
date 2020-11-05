@@ -42,7 +42,9 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     var stateValid = false
     var zipValid = false
     
-    let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-#" + " ")
+    let addressSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-#" + " ")
+    let citySet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" + " ")
+    let zipcodeSet =  CharacterSet(charactersIn: "0123456789")
     
     
     override func viewDidLoad() {
@@ -66,14 +68,15 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     @IBAction func skipTapped(_ sender: UIButton) {
         updateUserProfile()
-        toHomeScreen()
+        
+        alertUser()
     }
     
     
     
     func validateInput(){
         
-        if(address1Valid && address2Valid && cityValid && stateValid && zipValid){
+        if(address1Valid && cityValid && stateValid && zipValid){
         passedUser?.setAddressLineOne(a1: address1)
         passedUser?.setAddressLineTwo(a2: address2)
         passedUser?.setCity(c: city)
@@ -92,56 +95,52 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBAction func addOneEditChanged(_ sender: UITextField) {
         address1 = addressOne.text ?? ""
         
-        if address1.rangeOfCharacter(from: characterset.inverted) != nil{
+        if address1.rangeOfCharacter(from: addressSet.inverted) != nil{
             address1ErrorLabel.isHidden = false
             address1Valid = false
         }else{
             address1ErrorLabel.isHidden = true
             address1Valid = true
         }
+        
+        print(address1Valid)
     }
     
     @IBAction func addTwoEditChanged(_ sender: UITextField) {
         address2 = addressTwo.text ?? ""
         
-        if address2.rangeOfCharacter(from: characterset.inverted) != nil{
+        if address2.rangeOfCharacter(from: addressSet.inverted) != nil{
             address2ErrorLabel.isHidden = false
             address2Valid = false
         } else{
             address2ErrorLabel.isHidden = true
             address2Valid = true
         }
+        print(address2Valid)
     }
     
     @IBAction func cityEditChanged(_ sender: UITextField) {
         city = cityTF.text ?? ""
         
-        if city.rangeOfCharacter(from: characterset.inverted) != nil {
+        if city.rangeOfCharacter(from: citySet.inverted) != nil {
             cityErrorLabel.isHidden = false
             cityValid = false
         } else{
             cityErrorLabel.isHidden = true
             cityValid = true
         }
+        print(cityValid)
     }
     
     @IBAction func zipEditChanged(_ sender: UITextField) {
         zipcode = zipcodeTF.text ?? ""
         
-        if(zipcode != "" && zipcode.count == 5){
-            guard Int(zipcode) != nil else{
-                zipcodeErrorLabel.isHidden = false
-                zipValid = false
-                return
-            }
-            zipcodeErrorLabel.isHidden = true
-            zipValid = true
-            
-        } else{
+        if zipcode.rangeOfCharacter(from: zipcodeSet.inverted) != nil{
             zipcodeErrorLabel.isHidden = false
-            zipValid = false
+        } else{
+            zipcodeErrorLabel.isHidden = true
         }
-        
+        print(zipValid)
     }
     
     
