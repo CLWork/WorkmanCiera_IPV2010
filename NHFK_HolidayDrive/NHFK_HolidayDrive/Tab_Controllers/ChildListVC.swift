@@ -34,6 +34,8 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         getChildrenFromDB()
     }
+    
+    //determine if user can see bar button items
     func checkType(){
         let currentUser = Auth.auth().currentUser
         db.collection("users").document(currentUser!.uid)
@@ -61,6 +63,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             }
     }
     
+    //pull information from the database
     func getChildrenFromDB(){
         
         childrenArray.removeAll()
@@ -77,6 +80,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     let id = document.get("id") as? Int
                     let name = document.get("name") as? String
                     let age = document.get("age") as? Int
+                    let gender = document.get("gender") as? String
                     let program = document.get("program") as? String
                     let itemArray = document.get("items") as? [String]
                     
@@ -84,7 +88,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     if(name != nil){
                         let interestArray = [itemArray?[0], itemArray?[1], itemArray?[2], itemArray?[3]]
                         
-                        self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, interests: interestArray)
+                        self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, gender: gender!, interests: interestArray)
                         
                         self.childrenArray.append(self.supportedChild!)
                         
@@ -96,7 +100,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-    //MARK: PREPARE FOR SEGUE
+    //MARK: TableView Protocols
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return childrenArray.count
@@ -130,6 +134,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    //Prepare for segue to pass data.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDonate" {
             if let donateToChild = segue.destination as? DonateAmountVC {

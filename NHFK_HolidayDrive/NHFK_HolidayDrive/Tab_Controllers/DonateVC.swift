@@ -24,14 +24,11 @@ class DonateVC: UIViewController, UIGestureRecognizerDelegate{
         sponsorLabel.font = UIFont(name: "DancingScript-SemiBold", size: 40)
     }
     
-    @IBAction func supporterTapped(_ sender: UITapGestureRecognizer) {
-        
-        
-        
+    @IBAction func supportTapped(_ sender: UIButton) {
     }
-    @IBAction func sponsorTapped(_ sender: UITapGestureRecognizer) {
-        
-        
-        
+    
+    
+    @IBAction func sponsorTapped(_ sender: Any) {
     }
+    
 }

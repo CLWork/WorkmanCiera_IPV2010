@@ -14,6 +14,7 @@ class Child{
     private var name: String
     private var program: String
     private var age: Int
+    private var gender: String
     private var interests: [String?]
     private var hidden: Bool = false
     private var cap: Int = 100
@@ -22,12 +23,13 @@ class Child{
     private var counter = 0
     
     //Constructor
-    init(id: Int, name: String, age: Int, program: String, interests: [String?]){
+    init(id: Int, name: String, age: Int, program: String, gender:String, interests: [String?]){
         self.id = id
         self.name = name
         self.age = age
         self.program = program
         self.interests = interests
+        self.gender = gender
     }
     
     //Getters
@@ -83,6 +85,7 @@ class Child{
             "id": id,
             "name": name,
             "age": age,
+            "gender": gender,
             "program": program,
             "hidden": hidden,
             "cap": cap,

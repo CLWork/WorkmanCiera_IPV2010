@@ -24,6 +24,7 @@
 		F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD9E254BB2780011DD50 /* ResetPasswordVC.swift */; };
 		F1804816254530E8000501D4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804815254530E8000501D4 /* Users.swift */; };
 		F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F657F2553515F00FEB895 /* DonateAmountVC.swift */; };
+		F19F65882553D18E00FEB895 /* SponsorDonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E0A2543D018006892EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E082543D018006892EE /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		F1804815254530E8000501D4 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		F180486E2545DFAC000501D4 /* NHFK_HolidayDrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NHFK_HolidayDrive.entitlements; sourceTree = "<group>"; };
 		F19F657F2553515F00FEB895 /* DonateAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateAmountVC.swift; sourceTree = "<group>"; };
+		F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDonateVC.swift; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				F1E68E632543D264006892EE /* AccountVC.swift */,
 				F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */,
 				F19F657F2553515F00FEB895 /* DonateAmountVC.swift */,
+				F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */,
 			);
 			path = Tab_Controllers;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			files = (
 				F175FD54254615FE0011DD50 /* Utility.swift in Sources */,
 				F1E68E6E2543D297006892EE /* EditChildVC.swift in Sources */,
+				F19F65882553D18E00FEB895 /* SponsorDonateVC.swift in Sources */,
 				F1E68E4B2543D1D8006892EE /* HomeVC.swift in Sources */,
 				F175FD472546139A0011DD50 /* Toast.swift in Sources */,
 				F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */,

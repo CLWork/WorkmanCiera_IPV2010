@@ -28,12 +28,11 @@ class DonateAmountVC: UIViewController{
         
         setUp()
         
-        print(selectedChild?.getName() ?? "No name found at viewDidLoad.")
-        
     }
     
+    //Set custom font, labels as needed
     func setUp(){
-        donateLabel.font = UIFont(name: "DancingScript-SemiBold", size: 40)
+        donateLabel.font = UIFont(name: "DancingScript-SemiBold", size: 45)
         
         donateAmountLabel.text = "$" + donationAmnt.description
         donateButton.setTitle("Donate $\(donationAmnt.description)", for: .normal)
@@ -52,11 +51,11 @@ class DonateAmountVC: UIViewController{
         }
     }
     
-    
+    //Update labels as slider changes
     @IBAction func sliderChanged(_ sender: UISlider) {
         donationAmnt = Int(sender.value)
         donateAmountLabel.text = "$\(donationAmnt.description)"
-        donateButton.setTitle("Donate \(donationAmnt.description)", for: .normal)
+        donateButton.setTitle("Donate $\(donationAmnt.description)", for: .normal)
         
         if(donationAmnt > 0){
             donateButton.isEnabled = true
@@ -64,15 +63,18 @@ class DonateAmountVC: UIViewController{
         }
     }
     
+    //dismiss controller
     @IBAction func cancelTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    //verify donation on press
     @IBAction func donateTapped(_ sender: UIButton) {
         
         alertUser()
     }
     
+    //tell the user their donation was successful. 
     func alertUser(){
         
         let alert = UIAlertController(title: "Thank You!", message: "We have recieved your donation of $\(donationAmnt)", preferredStyle: .alert)
