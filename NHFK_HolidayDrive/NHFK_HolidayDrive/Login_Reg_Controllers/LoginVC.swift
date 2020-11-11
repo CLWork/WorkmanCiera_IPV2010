@@ -142,6 +142,7 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
         request.start(completionHandler: {connection, result, error in
             if(result != nil){
+
                 let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
                 Auth.auth().signIn(with: credential) { (authResult, error) in
                     if let error = error {

@@ -27,6 +27,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         checkType()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelectionDuringEditing = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,8 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                         self.editBarBttn.tintColor = .systemBlue
                         self.addBarBttn.isEnabled = true
                         self.addBarBttn.tintColor = .systemBlue
+                        
+                        
                     } else{
                         self.editBarBttn.isEnabled = false
                         self.editBarBttn.tintColor = .clear
@@ -63,6 +66,17 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             }
     }
     
+    @IBAction func editTapped(_ sender: Any) {
+        if(tableView.isEditing == false){
+            tableView.isEditing = true
+            editBarBttn.title = "Finish"
+            
+            
+        } else if(tableView.isEditing == true){
+            tableView.isEditing = false
+            editBarBttn.title = "Edit"
+        }
+    }
     //pull information from the database
     func getChildrenFromDB(){
         
@@ -86,13 +100,20 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     
                     
                     if(name != nil){
-                        let interestArray = [itemArray?[0], itemArray?[1], itemArray?[2], itemArray?[3]]
-                        
-                        self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, gender: gender!, interests: interestArray)
-                        
-                        self.childrenArray.append(self.supportedChild!)
-                        
-                        self.tableView.reloadData()
+                        if(itemArray != nil){
+                            var interestArray = [String]()
+                            var i = 0
+                            while i < 4 && i < itemArray!.count{
+                                interestArray.append(itemArray![i])
+                                i+=1
+                            }
+                            
+                            self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, gender: gender!, interests: interestArray)
+                            
+                            self.childrenArray.append(self.supportedChild!)
+                            
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
@@ -110,14 +131,33 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) as? ChildCell else {return tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) }
         
         cell.childNameAge.text = childrenArray[indexPath.row].getName() + ", " + childrenArray[indexPath.row].getAge().description
+        cell.childNameAge.font = UIFont(name: "DancingScript-SemiBold", size: 25)
         cell.program.text = childrenArray[indexPath.row].getProgram()
         
-        let interests = childrenArray[indexPath.row].getInterests()
+        let interests: [String?] = childrenArray[indexPath.row].getInterests()
         
-        cell.movie1.text = interests[0]
-        cell.movie2.text = interests[1]
-        cell.item1.text = interests[2]
-        cell.item2.text = interests[3]
+        switch interests.count{
+        case 1:
+            cell.movie1.text = interests[0]
+        case 2:
+            cell.movie1.text = interests[0]
+            cell.movie2.text = interests[1]
+        case 3:
+            cell.movie1.text = interests[0]
+            cell.movie2.text = interests[1]
+            cell.item1.text = interests[2]
+        case 4:
+            cell.movie1.text = interests[0]
+            cell.movie2.text = interests[1]
+            cell.item1.text = interests[2]
+            cell.item2.text = interests[3]
+        default:
+            cell.movie1.text = ""
+            cell.movie2.text = ""
+            cell.item1.text = ""
+            cell.item2.text = ""
+            
+        }
         
         return cell
     }
@@ -130,8 +170,77 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         //TODO: Send user to donation page
         chosenChild = childrenArray[indexPath.row]
         print(chosenChild!.getName())
-        self.performSegue(withIdentifier: "toDonate", sender: self)
+        if(tableView.isEditing == false){
+            self.performSegue(withIdentifier: "toDonate", sender: self)
+        }
         
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            completion(true)
+            print("Edit Tapped")
+            self.chosenChild = self.childrenArray[indexPath.row]
+            self.performSegue(withIdentifier: "toEdit", sender: self)
+        }
+        edit.backgroundColor = .systemBlue
+        
+        let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            completion(true)
+            print("Delete Tapped")
+            self.chosenChild = self.childrenArray[indexPath.row]
+            self.alertUser(passedIndex: indexPath.row)
+        }
+        delete.backgroundColor = .systemRed
+        
+        let config = UISwipeActionsConfiguration(actions: [edit, delete])
+        config.performsFirstActionWithFullSwipe = false
+        
+        return config
+    }
+    
+    func alertUser(passedIndex: Int){
+        print("Alert Presented")
+        let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete \(chosenChild!.getName()) from the list?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            self.getDocID()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getDocID(){
+        var docID = ""
+        let id = Double(chosenChild!.getID())
+        let db = Firestore.firestore()
+        
+        db.collection("children").whereField("id", isEqualTo: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        docID = document.documentID.description
+                        print("DOC ID: \(docID)")
+                        self.deleteChild(docID: docID)
+                    }
+                }
+            }
+        
+       
+    }
+    
+    func deleteChild(docID: String){
+        let db = Firestore.firestore()
+        db.collection("children").document(docID).delete(){ err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+                self.getChildrenFromDB()
+            }
+        }
+    
     }
     
     //Prepare for segue to pass data.
@@ -140,8 +249,13 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
             if let donateToChild = segue.destination as? DonateAmountVC {
                 donateToChild.selectedChild = chosenChild
             }
+        } else if segue.identifier == "toEdit"{
+            if let editChild = segue.destination as? EditChildVC {
+                editChild.passedChild = chosenChild
+            }
         }
     }
-    
-    
 }
+
+
+
