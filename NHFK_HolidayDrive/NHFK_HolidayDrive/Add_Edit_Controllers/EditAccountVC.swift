@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
-class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     
     @IBOutlet weak var fullNameTF: UITextField!
     @IBOutlet weak var emailTF: UITextField!
@@ -27,9 +28,12 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var cityErrorLabel: UILabel!
     @IBOutlet weak var stateErrorLabel: UILabel!
     @IBOutlet weak var zipErrorLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     
     
     var currentUser: Users?
+    let picker = UIImagePickerController()
+    let storage = Storage.storage()
     let emailInUse = "Email already in use."
     let invalidEmail = "Please enter a valid email."
     
@@ -37,7 +41,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var address2 = ""
     var city = ""
     var state = ""
-    var zipcode = ""
+    var zipcode = 0
     var email = ""
     var name = ""
     
@@ -61,6 +65,16 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         emailErrorLabel.isHidden = true
         nameErrorLabel.isHidden = true
         
+        profileImage.backgroundColor = .lightGray
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+        
+        profileImage.isUserInteractionEnabled = true
+        let imgTapReg = UITapGestureRecognizer(target: self, action: #selector(changeImage))
+        profileImage.addGestureRecognizer(imgTapReg)
+        picker.delegate = self
+        
         readUserProfile()
     }
     
@@ -77,7 +91,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     self.address2 = document.get("addressLineTwo") as? String ?? ""
                     self.city = document.get("city") as? String ?? ""
                     self.state = document.get("state") as? String ?? ""
-                    self.zipcode = document.get("zipcode") as? String ?? ""
+                    self.zipcode = document.get("zipcode") as? Int ?? 0
                     
                     
                     self.fullNameTF.text = self.name
@@ -87,16 +101,58 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     self.addressTwoTF.text = self.address2
                     self.cityTF.text = self.city
                     self.stateTF.text = self.state
-                    self.zipcodeTF.text = self.zipcode
+                    self.zipcodeTF.text = self.zipcode.description
                     
                     self.currentUser = Users(fName: self.name, userEmail: self.email)
-                    
+                    self.currentUser?.setAddressLineOne(a1: self.address1)
+                    self.currentUser?.setAddressLineTwo(a2: self.address2)
+                    self.currentUser?.setCity(c: self.city)
+                    self.currentUser?.setZipcode(z: self.zipcode)
                 } else {
                     
                     print("Document does not exist")
                     
                 }
             }
+    }
+    
+    @objc
+    func changeImage(){
+        if(UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)){
+            picker.sourceType = .savedPhotosAlbum
+            picker.allowsEditing = false
+            present(picker, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        profileImage.backgroundColor = .none
+        self.profileImage.image = image
+        
+        self.dismiss(animated: true) {
+        }
+    }
+    
+    func storeImage(uid: String){
+        
+        guard profileImage.image != nil else{
+            return
+        }
+        
+        guard let imageData = profileImage.image?.pngData() else{
+            return
+        }
+        self.storage.reference().child("profileImg/\(uid).png").putData(imageData, metadata: nil) { (_, error) in
+            guard error == nil else{
+                return
+            }
+        }
+        
     }
     
     func validateInput(){
@@ -197,14 +253,15 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     @IBAction func zipEditChanged(_ sender: UITextField) {
-        zipcode = zipcodeTF.text ?? ""
+        let zipcodeString = zipcodeTF.text ?? ""
         
-        if(zipcode != "" && zipcode.count == 5){
-            guard Int(zipcode) != nil else{
+        if(zipcodeString != "" && zipcodeString.count == 5){
+            guard Int(zipcodeString) != nil else{
                 zipErrorLabel.isHidden = false
                 return
             }
             zipErrorLabel.isHidden = true
+            zipcode = Int(zipcodeString) ?? 0
             
         } else{
             zipErrorLabel.isHidden = false
@@ -231,6 +288,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     }
                     else {
                        print("Profile Updated")
+                        
                     }
                 }
             

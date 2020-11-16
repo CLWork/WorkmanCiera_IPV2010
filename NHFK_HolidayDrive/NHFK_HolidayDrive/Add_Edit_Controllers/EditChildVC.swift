@@ -8,11 +8,10 @@
 import Foundation
 import UIKit
 
-class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class EditChildVC: UIViewController{
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var ageTF: UITextField!
-    @IBOutlet weak var programTF: UITextField!
     @IBOutlet weak var interest1: UITextField!
     @IBOutlet weak var interest2: UITextField!
     @IBOutlet weak var interest3: UITextField!
@@ -21,15 +20,14 @@ class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var ageErrorLabel: UILabel!
     @IBOutlet weak var programErrorLabel: UILabel!
     @IBOutlet weak var interestErrorLabel: UILabel!
+    @IBOutlet weak var griefButton: UIButton!
+    @IBOutlet weak var wishButton: UIButton!
     
     var passedChild: Child?
     var interestOne: String?
     var interestTwo: String?
     var interestThree: String?
     var interestFour: String?
-    let programPicker = UIPickerView()
-    let genderPicker = UIPickerView()
-    let programArray = ["Grief", "Wish"]
     var program = ""
     var name = ""
     var age = 0
@@ -38,13 +36,13 @@ class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        programPicker.delegate = self
-        programTF.inputView = programPicker
         
         nameErrorLabel.isHidden = true
         ageErrorLabel.isHidden = true
         programErrorLabel.isHidden = true
         interestErrorLabel.isHidden = true
+        
+        
         
         setUp()
     }
@@ -54,7 +52,26 @@ class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             
             nameTF.text = passedChild!.getName()
             ageTF.text = passedChild!.getAge().description
-            programTF.text = passedChild!.getProgram()
+            
+            switch passedChild!.getProgram(){
+            case "Grief":
+                griefButton.isSelected = true
+                wishButton.isSelected = false
+                griefButton.tintColor = .systemBlue
+                griefButton.setTitleColor(.systemBlue, for: .selected)
+            case "Wish":
+                wishButton.isSelected = true
+                griefButton.isSelected = false
+                wishButton.tintColor = .systemBlue
+                wishButton.setTitleColor(.systemBlue, for: .selected)
+            default:
+                griefButton.tintColor = .systemGray2
+                griefButton.setTitleColor(.black, for: .selected)
+                wishButton.tintColor = .systemGray2
+                wishButton.setTitleColor(.black, for: .selected)
+                griefButton.isSelected = false
+                wishButton.isSelected = false
+            }
             
             if(passedChild!.getInterests().count > 0){
                 let interestArray = passedChild!.getInterests()
@@ -122,6 +139,9 @@ class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         
     }
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func checkIntersts(){
         beforeCheckInterestArray.removeAll()
@@ -146,25 +166,4 @@ class EditChildVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return programArray.count
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return programArray[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        program = programArray[row]
-        programTF.text = programArray[row]
-    }
 }

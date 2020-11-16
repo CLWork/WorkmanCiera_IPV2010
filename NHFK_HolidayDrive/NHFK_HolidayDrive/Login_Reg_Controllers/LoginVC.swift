@@ -32,7 +32,7 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         passErrorLabel.isHidden = true
         
         let loginButton = FBLoginButton()
-        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 280)
+        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 180)
         loginButton.center = newCenter
         loginButton.delegate = self
         loginButton.permissions = ["public_profile", "email"]
@@ -142,7 +142,7 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
         request.start(completionHandler: {connection, result, error in
             if(result != nil){
-
+                
                 let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
                 Auth.auth().signIn(with: credential) { (authResult, error) in
                     if let error = error {

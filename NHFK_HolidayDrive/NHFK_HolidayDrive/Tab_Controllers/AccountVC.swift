@@ -17,6 +17,7 @@ class AccountVC: UIViewController{
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var addressL1: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var statsBarBttn: UIBarButtonItem!
     var type = ""
@@ -31,6 +32,14 @@ class AccountVC: UIViewController{
         readUserProfile()
         
         nameLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
+        profileImage.backgroundColor = .lightGray
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+        
+        profileImage.isUserInteractionEnabled = true
+        let imgTapReg = UITapGestureRecognizer(target: self, action: #selector(changeImage))
+        profileImage.addGestureRecognizer(imgTapReg)
     }
     
     func readUserProfile(){
@@ -71,9 +80,10 @@ class AccountVC: UIViewController{
                 }
             }
     }
-    
-    
-    
+    @objc
+    func changeImage(){
+        
+    }
     
     @IBAction func signOutTapped(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()

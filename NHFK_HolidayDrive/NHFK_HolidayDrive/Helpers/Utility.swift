@@ -23,10 +23,13 @@ public class Utility{
     
     //Ensures password meets strength requirements.
     public static func checkPasswordStrength(p: String) -> Bool{
-        let passRegex = "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[0-9])(?=.*[A-Z]).{8,}$"
-        
-        let testP = NSPredicate(format: "SELF MATCHES %@", passRegex)
-        return testP.evaluate(with: p)
+        let passSet =  CharacterSet(charactersIn: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*")
+        if p.rangeOfCharacter(from: passSet.inverted) != nil || p.count < 8 || p.count > 15{
+            return false
+        } else{
+            return true
+        }
+       
     }
     
     public static func comparePass(p: String, p2: String)-> Bool{

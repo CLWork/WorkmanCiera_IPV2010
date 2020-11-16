@@ -12,9 +12,6 @@
 		F12E7FAA25510B9600160B28 /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12E7FA925510B9600160B28 /* ChildCell.swift */; };
 		F175FD472546139A0011DD50 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD462546139A0011DD50 /* Toast.swift */; };
 		F175FD54254615FE0011DD50 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD53254615FE0011DD50 /* Utility.swift */; };
-		F175FD5C254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
-		F175FD5D254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
-		F175FD5E254645840011DD50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F175FD5B254645840011DD50 /* GoogleService-Info.plist */; };
 		F175FD6A254648290011DD50 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD69254648290011DD50 /* DancingScript-Bold.ttf */; };
 		F175FD74254648310011DD50 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD73254648310011DD50 /* DancingScript-Medium.ttf */; };
 		F175FD7B2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */; };
@@ -25,6 +22,8 @@
 		F1804816254530E8000501D4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1804815254530E8000501D4 /* Users.swift */; };
 		F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F657F2553515F00FEB895 /* DonateAmountVC.swift */; };
 		F19F65882553D18E00FEB895 /* SponsorDonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */; };
+		F1CB656A2560A31E006C8273 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CB65692560A31E006C8273 /* GoogleService-Info.plist */; };
+		F1CB65762560B513006C8273 /* ApplePaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E0A2543D018006892EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E082543D018006892EE /* Main.storyboard */; };
@@ -78,7 +77,6 @@
 		F12E7FA925510B9600160B28 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
 		F175FD462546139A0011DD50 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		F175FD53254615FE0011DD50 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		F175FD5B254645840011DD50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F175FD69254648290011DD50 /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Bold.ttf"; sourceTree = "<group>"; };
 		F175FD73254648310011DD50 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
 		F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Regular.ttf"; sourceTree = "<group>"; };
@@ -90,6 +88,8 @@
 		F180486E2545DFAC000501D4 /* NHFK_HolidayDrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NHFK_HolidayDrive.entitlements; sourceTree = "<group>"; };
 		F19F657F2553515F00FEB895 /* DonateAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateAmountVC.swift; sourceTree = "<group>"; };
 		F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDonateVC.swift; sourceTree = "<group>"; };
+		F1CB65692560A31E006C8273 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaymentHandler.swift; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +178,7 @@
 				F175FD94254BA5770011DD50 /* Child.swift */,
 				F175FD99254BA5870011DD50 /* Sponsor.swift */,
 				F12E7FA925510B9600160B28 /* ChildCell.swift */,
+				F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -240,7 +241,7 @@
 				F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */,
 				F1E68E0B2543D019006892EE /* Assets.xcassets */,
 				F1E68E102543D019006892EE /* Info.plist */,
-				F175FD5B254645840011DD50 /* GoogleService-Info.plist */,
+				F1CB65692560A31E006C8273 /* GoogleService-Info.plist */,
 			);
 			path = NHFK_HolidayDrive;
 			sourceTree = "<group>";
@@ -411,8 +412,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F175FD5C254645840011DD50 /* GoogleService-Info.plist in Resources */,
 				F1E68E0F2543D019006892EE /* LaunchScreen.storyboard in Resources */,
+				F1CB656A2560A31E006C8273 /* GoogleService-Info.plist in Resources */,
 				F1E68E0C2543D019006892EE /* Assets.xcassets in Resources */,
 				F175FD82254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */,
 				F175FD7B2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */,
@@ -426,7 +427,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F175FD5D254645840011DD50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F175FD5E254645840011DD50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +589,7 @@
 				F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */,
 				F1E68E032543D018006892EE /* AppDelegate.swift in Sources */,
 				F1E68E462543D1CA006892EE /* RegStepTwoVC.swift in Sources */,
+				F1CB65762560B513006C8273 /* ApplePaymentHandler.swift in Sources */,
 				F1E68E552543D1F8006892EE /* DonateVC.swift in Sources */,
 				F1E68E412543D1BC006892EE /* RegStepOneVC.swift in Sources */,
 				F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */,
@@ -785,13 +785,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NHFK_HolidayDrive/NHFK_HolidayDrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QNM33LR2G7;
+				DEVELOPMENT_TEAM = 5B28UQ5S2P;
 				INFOPLIST_FILE = NHFK_HolidayDrive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.newhopeforkids.holiday;
+				PRODUCT_BUNDLE_IDENTIFIER = org.newhopeforkids.holidayDrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -806,13 +806,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NHFK_HolidayDrive/NHFK_HolidayDrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QNM33LR2G7;
+				DEVELOPMENT_TEAM = 5B28UQ5S2P;
 				INFOPLIST_FILE = NHFK_HolidayDrive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.newhopeforkids.holiday;
+				PRODUCT_BUNDLE_IDENTIFIER = org.newhopeforkids.holidayDrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

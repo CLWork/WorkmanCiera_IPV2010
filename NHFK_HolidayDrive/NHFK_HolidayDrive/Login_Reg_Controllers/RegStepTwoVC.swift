@@ -34,13 +34,7 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     var address2 = ""
     var city = ""
     var state = ""
-    var zipcode = ""
-    
-    var address1Valid = false
-    var address2Valid = true
-    var cityValid = false
-    var stateValid = false
-    var zipValid = false
+    var zipcode = 0
     
     let addressSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-#" + " ")
     let citySet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" + " ")
@@ -53,6 +47,8 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         let statePicker = UIPickerView()
         statePicker.delegate = self
         stateTF.inputView = statePicker
+        stateTF.text = stateArray[0]
+        state = stateArray[0]
         
         address1ErrorLabel.isHidden = true
         address2ErrorLabel.isHidden = true
@@ -76,34 +72,52 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     func validateInput(){
         
-        if(address1Valid && cityValid && stateValid && zipValid){
-        passedUser?.setAddressLineOne(a1: address1)
-        passedUser?.setAddressLineTwo(a2: address2)
-        passedUser?.setCity(c: city)
-        passedUser?.setState(s: state)
-        passedUser?.setZipcode(z: zipcode)
-        
-        updateUserProfile()
+        if(address1 != "" && city != "" && state != "" && zipcode > 0){
+            
+            address1ErrorLabel.isHidden = true
+            address2ErrorLabel.isHidden = true
+            cityErrorLabel.isHidden = true
+            stateErrorLabel.isHidden = true
+            zipcodeErrorLabel.isHidden = true
+            
+            passedUser?.setAddressLineOne(a1: address1)
+            passedUser?.setAddressLineTwo(a2: address2)
+            passedUser?.setCity(c: city)
+            passedUser?.setState(s: state)
+            passedUser?.setZipcode(z: zipcode)
+            
+            updateUserProfile()
         } else{
             self.showToast(message: "Oops! Please check your entries.")
+            
+            if(address1 == ""){
+                address1ErrorLabel.isHidden = false
+            }
+            
+            if(city == ""){
+                cityErrorLabel.isHidden = false
+            }
+            
+            if state == "" {
+                stateErrorLabel.isHidden = false
+            }
+            
+            if zipcode == 0 {
+                zipcodeErrorLabel.isHidden = false
+            }
         }
     }
-    
-    
-    
     
     @IBAction func addOneEditChanged(_ sender: UITextField) {
         address1 = addressOne.text ?? ""
         
         if address1.rangeOfCharacter(from: addressSet.inverted) != nil{
             address1ErrorLabel.isHidden = false
-            address1Valid = false
+           
         }else{
             address1ErrorLabel.isHidden = true
-            address1Valid = true
         }
         
-        print(address1Valid)
     }
     
     @IBAction func addTwoEditChanged(_ sender: UITextField) {
@@ -111,12 +125,12 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         if address2.rangeOfCharacter(from: addressSet.inverted) != nil{
             address2ErrorLabel.isHidden = false
-            address2Valid = false
+            
         } else{
             address2ErrorLabel.isHidden = true
-            address2Valid = true
+            
         }
-        print(address2Valid)
+        
     }
     
     @IBAction func cityEditChanged(_ sender: UITextField) {
@@ -124,23 +138,24 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         if city.rangeOfCharacter(from: citySet.inverted) != nil {
             cityErrorLabel.isHidden = false
-            cityValid = false
+            
         } else{
             cityErrorLabel.isHidden = true
-            cityValid = true
+           
         }
-        print(cityValid)
+       
     }
     
     @IBAction func zipEditChanged(_ sender: UITextField) {
-        zipcode = zipcodeTF.text ?? ""
+        let zipcodeString = zipcodeTF.text ?? ""
         
-        if zipcode.rangeOfCharacter(from: zipcodeSet.inverted) != nil{
+        if zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) != nil || zipcodeString.count > 5{
             zipcodeErrorLabel.isHidden = false
         } else{
+            zipcode = Int(zipcodeString) ?? 0
             zipcodeErrorLabel.isHidden = true
         }
-        print(zipValid)
+       
     }
     
     
@@ -215,6 +230,7 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         stateTF.text = stateArray[row]
+        state = stateArray[row]
     }
     
     

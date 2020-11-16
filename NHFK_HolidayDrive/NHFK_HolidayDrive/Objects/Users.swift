@@ -16,7 +16,7 @@ public class Users: Codable {
     private var addressLineTwo: String = ""
     private var city: String = ""
     private var state: String = ""
-    private var zipcode: String = ""
+    private var zipcode: Int = 0
     private var type: String = ""
     
     //Constructor
@@ -35,7 +35,7 @@ public class Users: Codable {
             "addressLineTwo": self.addressLineTwo,
             "city": self.city,
             "state": state,
-            "zipcode": zipcode]
+            "zipcode": zipcode.description]
         
         return dic
         
@@ -60,7 +60,7 @@ public class Users: Codable {
     public func getState()->String{
         return state
     }
-    public func getZipcode()->String{
+    public func getZipcode()->Int{
         return zipcode
     }
     public func getType()->String{
@@ -86,7 +86,7 @@ public class Users: Codable {
     public func setState(s:String){
         state = s
     }
-    public func setZipcode(z:String){
+    public func setZipcode(z:Int){
         zipcode = z
     }
     public func setType(t: String){

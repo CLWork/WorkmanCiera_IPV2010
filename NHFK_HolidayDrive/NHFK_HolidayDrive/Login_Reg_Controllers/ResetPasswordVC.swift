@@ -11,13 +11,14 @@ import FirebaseAuth
 
 class ResetPasswordVC: UIViewController{
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailTF: UITextField!
     var email = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        indicator.isHidden = true
         self.errorLabel.isHidden = true
     }
     
@@ -29,10 +30,10 @@ class ResetPasswordVC: UIViewController{
             self.errorLabel.isHidden = true
             
             Auth.auth().sendPasswordReset(withEmail: email) { error in
-                if error == nil{
-                    
-                } else{
+                if error != nil{
                     print(error!.localizedDescription)
+                } else{
+                    self.alertUser()
                 }
             }
         }
@@ -40,6 +41,11 @@ class ResetPasswordVC: UIViewController{
             self.errorLabel.isHidden = false
             
         }
+    }
+    
+    //dismiss the controller on cancel
+    @IBAction func cancelTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -58,5 +64,14 @@ class ResetPasswordVC: UIViewController{
         })
     }
     
+    //let user know of success.
+    func alertUser(){
+        
+        let alert = UIAlertController(title: "Reset Email Sent", message: "Please check your email for your reset link.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }

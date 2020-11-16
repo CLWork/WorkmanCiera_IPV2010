@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>68921294294-9ui1g0cna638l9vnkap3dr25hcrrd8je.apps.googleusercontent.com</string>
+	<string>68921294294-c91j58mtq6kgaldb5tcs8s5deai42pi3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.68921294294-9ui1g0cna638l9vnkap3dr25hcrrd8je</string>
+	<string>com.googleusercontent.apps.68921294294-c91j58mtq6kgaldb5tcs8s5deai42pi3</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBVe0ehTIqubIVOpiWpequoS5HApAGsl4Y</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.clworkman.fullsail.student.NHFK-HolidayDrive</string>
+	<string>org.newhopeforkids.holidayDrive</string>
 	<key>PROJECT_ID</key>
 	<string>nhfk-holiday-drive</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:68921294294:ios:89172815e577aee56c3877</string>
+	<string>1:68921294294:ios:4f0ef79b520a972d6c3877</string>
 	<key>DATABASE_URL</key>
 	<string>https://nhfk-holiday-drive.firebaseio.com</string>
 </dict>

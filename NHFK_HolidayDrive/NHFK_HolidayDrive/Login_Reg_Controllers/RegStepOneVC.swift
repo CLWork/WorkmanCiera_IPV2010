@@ -10,8 +10,9 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import FirebaseStorage
 
-class RegStepOneVC: UIViewController{
+class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     //outlets
     @IBOutlet weak var fullNameTF: UITextField!
@@ -27,9 +28,12 @@ class RegStepOneVC: UIViewController{
     @IBOutlet weak var codeErrorLabel: UILabel!
     
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var profileImage: UIImageView!
     
     //variables
     var newUser: Users?
+    let picker = UIImagePickerController()
+    let storage = Storage.storage()
     let emailInUse = "Email already in use."
     let invalidEmail = "Please enter a valid email."
     var pass = ""
@@ -37,6 +41,7 @@ class RegStepOneVC: UIViewController{
     var fullName = ""
     var email = ""
     var code = ""
+    var imgURL = NSURL()
     
     //control bools
     var nameValid = false
@@ -53,7 +58,18 @@ class RegStepOneVC: UIViewController{
         passwordErrorLabel.isHidden = true
         passMatchErrorLabel.isHidden = true
         codeErrorLabel.isHidden = true
-    
+        
+        profileImage.backgroundColor = .lightGray
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
+        
+        profileImage.isUserInteractionEnabled = true
+        let imgTapReg = UITapGestureRecognizer(target: self, action: #selector(changeImage))
+        profileImage.addGestureRecognizer(imgTapReg)
+        picker.delegate = self
+        
+        
     }
     
     //validate input upon button tap
@@ -63,6 +79,8 @@ class RegStepOneVC: UIViewController{
     
     //validate each input
     func validateInput(){
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = .systemGray
         
         //disable textfields to prevent any editing after Continue has been pressed
         fullNameTF.isEnabled = false
@@ -88,8 +106,50 @@ class RegStepOneVC: UIViewController{
             codeTF.isEnabled = true
             showToast(message: "Something went wrong, please check your entries.")
             
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = UIColor(red: 211/255.0, green: 57.0/255.0, blue: 67.0/255.0, alpha: 1.0)
+            
         }
         
+        
+    }
+    
+    @objc
+    func changeImage(){
+        if(UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)){
+            picker.sourceType = .savedPhotosAlbum
+            picker.allowsEditing = false
+            present(picker, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        profileImage.backgroundColor = .none
+        self.profileImage.image = image
+        
+        self.dismiss(animated: true) {
+        }
+    }
+    
+    func storeImage(uid: String){
+        
+        guard profileImage.image != nil else{
+            return
+        }
+        
+        guard let imageData = profileImage.image?.pngData() else{
+            return
+        }
+        self.storage.reference().child("profileImg/\(uid).png").putData(imageData, metadata: nil) { (_, error) in
+            guard error == nil else{
+                return
+            }
+        }
         
     }
     
@@ -197,9 +257,6 @@ class RegStepOneVC: UIViewController{
                     print("Error: \(error.localizedDescription)\n\r \(error.description)")
                 }
             } else {
-                self.showToast(message: "User Created!")
-                // let current = Auth.auth().currentUser
-                //let uid = current?.uid
                 
                 Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
                     if let error = error {
@@ -208,7 +265,8 @@ class RegStepOneVC: UIViewController{
                         
                         return
                     }
-                    self.showToast(message: "Email Verification Sent!")
+                    self.storeImage(uid: Auth.auth().currentUser!.uid)
+                    
                     self.addUserToDB(newUser: newUser, uid: Auth.auth().currentUser!.uid)
                 })
             }
@@ -235,7 +293,9 @@ class RegStepOneVC: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toStepTwo" {
             if let stepTwo = segue.destination as? RegStepTwoVC {
-                stepTwo.passedUser = newUser!
+                if let u = newUser{
+                    stepTwo.passedUser = u
+                }
             }
         }
     }

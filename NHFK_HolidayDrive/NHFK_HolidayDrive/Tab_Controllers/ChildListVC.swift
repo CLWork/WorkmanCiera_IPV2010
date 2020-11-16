@@ -177,6 +177,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if(type == "admin"){
         let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
             completion(true)
             print("Edit Tapped")
@@ -197,6 +198,9 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         config.performsFirstActionWithFullSwipe = false
         
         return config
+        } else{
+            return nil
+        }
     }
     
     func alertUser(passedIndex: Int){
