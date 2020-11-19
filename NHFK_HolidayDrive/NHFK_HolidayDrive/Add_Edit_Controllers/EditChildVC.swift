@@ -48,6 +48,10 @@ class EditChildVC: UIViewController{
     }
     
     func setUp(){
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
         if(passedChild != nil){
             
             nameTF.text = passedChild!.getName()

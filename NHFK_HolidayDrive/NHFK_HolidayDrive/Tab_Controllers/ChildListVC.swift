@@ -112,6 +112,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                             
                             self.childrenArray.append(self.supportedChild!)
                             
+                            interestArray.removeAll()
                             self.tableView.reloadData()
                         }
                     }
@@ -163,7 +164,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180.0
+        return 200.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

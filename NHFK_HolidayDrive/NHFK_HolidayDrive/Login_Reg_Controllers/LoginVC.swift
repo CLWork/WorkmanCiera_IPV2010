@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 
-class LoginVC: UIViewController, LoginButtonDelegate{
+class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -26,6 +26,17 @@ class LoginVC: UIViewController, LoginButtonDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad();
+       
+        setUp()
+    }
+    
+    func setUp(){
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
+        emailTF.delegate = self
+        passwordTF.delegate = self
         
         emailErrorLabel.isHidden = true
         emailErrorLabel.text = invalidError
@@ -42,7 +53,6 @@ class LoginVC: UIViewController, LoginButtonDelegate{
             
             toHomeScreen()
         }
-        
     }
     
     @IBAction func registerTapped(_ sender: UIButton) {
@@ -137,9 +147,11 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         
     }
     
+    //facebook login method
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         let token = result?.token?.tokenString
         let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
+        
         request.start(completionHandler: {connection, result, error in
             if(result != nil){
                 
@@ -158,7 +170,26 @@ class LoginVC: UIViewController, LoginButtonDelegate{
         })
     }
     
+    //required function
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("User logged out.")
+    }
+    
+    //keyboard handling
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if(textField == emailTF){
+            print("EMAIL TEXT FIELD")
+            passwordTF.becomeFirstResponder()
+        } else if(textField == passwordTF){
+            print("PASSWORD TEXT FIELD")
+            passwordTF.resignFirstResponder()
+            if(email != "" && pass != ""){
+                signInUser(email: email, pass: pass)
+            }
+        }
+        
+        return true
     }
 }

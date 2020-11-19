@@ -15,7 +15,10 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var donateAmountLabel: UILabel!
     @IBOutlet weak var donateSlider: UISlider!
-    @IBOutlet weak var donateButton: UIButton!
+    @IBOutlet weak var itemOne: UILabel!
+    @IBOutlet weak var itemTwo: UILabel!
+    @IBOutlet weak var itemThree: UILabel!
+    @IBOutlet weak var itemFour: UILabel!
     
     
     var selectedChild: Child?
@@ -50,16 +53,43 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
         donateLabel.font = UIFont(name: "DancingScript-SemiBold", size: 45)
         
         donateAmountLabel.text = "$" + donationAmnt.description
-        donateButton.setTitle("Donate $\(donationAmnt.description)", for: .normal)
         
-        if(donationAmnt == 0){
-            donateButton.isEnabled = false
-            donateButton.backgroundColor = .gray
-        }
         
         if(selectedChild != nil){
+            let name = selectedChild!.getName() + ", " + selectedChild!.getAge().description
             donateLabel.text = donateToTitle
-            nameLabel.text = selectedChild!.getName()
+            nameLabel.text = name
+            let interests = selectedChild!.getInterests()
+            
+            switch interests.count{
+            case 1:
+                itemOne.text = interests[0]
+                itemTwo.text = ""
+                itemThree.text = ""
+                itemFour.text = ""
+            case 2:
+                itemOne.text = interests[0]
+                itemTwo.text = interests[1]
+                itemThree.text = ""
+                itemFour.text = ""
+            case 3:
+                itemOne.text = interests[0]
+                itemTwo.text = interests[1]
+                itemThree.text = interests[2]
+                itemFour.text = ""
+            case 4:
+                itemOne.text = interests[0]
+                itemTwo.text = interests[1]
+                itemThree.text = interests[2]
+                itemFour.text = interests[3]
+            default:
+                itemOne.text = ""
+                itemTwo.text = ""
+                itemThree.text = ""
+                itemFour.text = ""
+                return
+            }
+            
         } else{
             donateLabel.text = donateTitle
             nameLabel.text = ""
@@ -73,16 +103,17 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
             
             if PKPaymentAuthorizationController.canMakePayments(usingNetworks: paymentRequest.supportedNetworks){
             let applePayBttn = PKPaymentButton(paymentButtonType: .donate, paymentButtonStyle: .black)
-            applePayBttn.frame = CGRect(x: view.frame.width / 2 - 100, y: view.frame.height - 300, width: 250, height: 40)
-            applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 100, y: view.frame.height - 300, width: 250, height: 40)
+            applePayBttn.frame = CGRect(x: view.frame.width / 2 - 125, y: view.frame.height - 300, width: 250, height: 40)
+            applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 125, y: view.frame.height - 300, width: 250, height: 40)
             applePayBttn.clipsToBounds = true
             applePayBttn.addTarget(self, action: #selector(applePayTapped), for: .touchUpInside)
             view.addSubview(applePayBttn)
             } else {
                 let applePayBttn = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
-                applePayBttn.frame = CGRect(x: view.frame.width / 2 - 100, y: view.frame.height - 300, width: 250, height: 40)
-                applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 100, y: view.frame.height - 300, width: 250, height: 40)
+                applePayBttn.frame = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
+                applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
                 applePayBttn.clipsToBounds = true
+                view.addSubview(applePayBttn)
             }
         }
     }
@@ -101,12 +132,7 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     @IBAction func sliderChanged(_ sender: UISlider) {
         donationAmnt = Int(sender.value) * 5
         donateAmountLabel.text = "$\(donationAmnt.description)"
-        donateButton.setTitle("Donate $\(donationAmnt.description)", for: .normal)
         
-        if(donationAmnt > 0){
-            donateButton.isEnabled = true
-            donateButton.backgroundColor = UIColor(red: 211/255.0, green: 57.0/255.0, blue: 67.0/255.0, alpha: 1.0)
-        }
     }
     
     //dismiss controller
@@ -138,7 +164,10 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         
         let paymentToken = payment.token
+        
+        self.dismiss(animated: true, completion: nil)
        
     }
+    
     
 }

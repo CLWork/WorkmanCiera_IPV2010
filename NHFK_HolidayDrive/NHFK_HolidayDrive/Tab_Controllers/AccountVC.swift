@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import FirebaseStorage
 import FirebaseFirestore
 
 class AccountVC: UIViewController{
@@ -20,6 +21,7 @@ class AccountVC: UIViewController{
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var statsBarBttn: UIBarButtonItem!
+    let storage = Storage.storage()
     var type = ""
     var address1 = ""
     var address2 = ""
@@ -29,19 +31,28 @@ class AccountVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        readUserProfile()
+        let name = Notification.Name("didReceiveData")
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: name, object: nil)
         
+        setUp()
+        
+    }
+    
+    func setUp(){
         nameLabel.font = UIFont(name: "DancingScript-SemiBold", size: 30)
-        profileImage.backgroundColor = .lightGray
         profileImage.layer.masksToBounds = false
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
-        
-        profileImage.isUserInteractionEnabled = true
-        let imgTapReg = UITapGestureRecognizer(target: self, action: #selector(changeImage))
-        profileImage.addGestureRecognizer(imgTapReg)
+        readUserProfile()
+        getProfileImage()
     }
     
+    @objc func onDidReceiveData(_ notification:Notification) {
+        // Do something now
+        setUp()
+    }
+    
+    //Pull the User's Firebase profile based on their Auth UID and populate the labels.
     func readUserProfile(){
         let db = Firestore.firestore()
         let currentUser = Auth.auth().currentUser
@@ -71,7 +82,6 @@ class AccountVC: UIViewController{
                             self.statsBarBttn.isEnabled = false
                             self.statsBarBttn.tintColor = .clear
                         }
-                        
                     }
                 } else {
                     
@@ -80,16 +90,56 @@ class AccountVC: UIViewController{
                 }
             }
     }
-    @objc
-    func changeImage(){
+    
+    //Pull Image from Storage based on UID of the current user and populate the ImageView with it.
+    func getProfileImage(){
+        guard let currentUserID = Auth.auth().currentUser?.uid else{
+            return
+        }
+        let imgRef = storage.reference().child("profileImg/\(currentUserID).jpg")
         
+        imgRef.downloadURL { (url, error) in
+            if error != nil{
+                
+                print(error!.localizedDescription)
+                self.showToast(message: "There was a problem retrieving your profile image.")
+                
+            } else{
+                
+                guard let url = url else{
+                    return
+                }
+                
+                
+               let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    guard let data = data, error == nil else{
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        
+                        
+                        let image = UIImage(data: data)
+                        self.profileImage.image = image
+                    }
+                }
+                task.resume()
+            }
+        }
     }
     
+    //Sign out the user
     @IBAction func signOutTapped(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
+        let fbSession = AccessToken.current
         
         do {
-            try firebaseAuth.signOut()
+            if(fbSession != nil){
+                let manager = LoginManager()
+                manager.logOut()
+            } else{
+                try firebaseAuth.signOut()
+            }
             toLoginScreen()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -97,6 +147,7 @@ class AccountVC: UIViewController{
         
     }
     
+    //Redirect user to login screen upon successful signout
     func toLoginScreen(){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         

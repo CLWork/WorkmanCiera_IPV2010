@@ -35,7 +35,7 @@ public class Users: Codable {
             "addressLineTwo": self.addressLineTwo,
             "city": self.city,
             "state": state,
-            "zipcode": zipcode.description]
+        "zipcode": zipcode] as [String: Any]
         
         return dic
         

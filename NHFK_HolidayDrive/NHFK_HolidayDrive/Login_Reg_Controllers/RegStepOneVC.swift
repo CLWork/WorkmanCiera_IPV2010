@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 import FirebaseStorage
 
-class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
     //outlets
     @IBOutlet weak var fullNameTF: UITextField!
@@ -41,6 +41,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     var fullName = ""
     var email = ""
     var code = ""
+    var type = ""
     var imgURL = NSURL()
     
     //control bools
@@ -48,9 +49,18 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     var emailValid = false
     var passValid = false
     var passMatches = false
+    var codeValid = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUp()
+    }
+    
+    func setUp(){
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
         
         //hide all error labels
         nameErrorLabel.isHidden = true
@@ -59,7 +69,6 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         passMatchErrorLabel.isHidden = true
         codeErrorLabel.isHidden = true
         
-        profileImage.backgroundColor = .lightGray
         profileImage.layer.masksToBounds = false
         profileImage.layer.cornerRadius = profileImage.frame.height/2
         profileImage.clipsToBounds = true
@@ -69,7 +78,11 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         profileImage.addGestureRecognizer(imgTapReg)
         picker.delegate = self
         
-        
+        fullNameTF.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        confirmPassTF.delegate = self
+        codeTF.delegate = self
     }
     
     //validate input upon button tap
@@ -90,7 +103,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         codeTF.isEnabled = false
         
         //final check for valid entries just in case
-        if(nameValid && emailValid && passValid && passMatches){
+        if(nameValid && emailValid && passValid && passMatches && codeValid){
             code = codeTF.text ?? ""
             newUser = Users(fName: fullName, userEmail: email)
             newUser?.setType(t: checkType(code: code))
@@ -118,7 +131,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     func changeImage(){
         if(UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)){
             picker.sourceType = .savedPhotosAlbum
-            picker.allowsEditing = false
+            picker.allowsEditing = true
             present(picker, animated: true, completion: nil)
             
         }
@@ -142,10 +155,10 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             return
         }
         
-        guard let imageData = profileImage.image?.pngData() else{
+        guard let imageData = profileImage.image?.jpegData(compressionQuality: 1.0) else{
             return
         }
-        self.storage.reference().child("profileImg/\(uid).png").putData(imageData, metadata: nil) { (_, error) in
+        self.storage.reference().child("profileImg/\(uid).jpg").putData(imageData, metadata: nil) { (_, error) in
             guard error == nil else{
                 return
             }
@@ -214,6 +227,10 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
     }
     
+    @IBAction func codeDidChange(_ sender: UITextField) {
+        code = codeTF.text ?? ""
+        type = checkType(code: code)
+    }
     
     //Add user profile to DB
     func addUserToDB(newUser: Users, uid: String){
@@ -279,15 +296,39 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         if(!code.isEmpty){
             
             if(code == codeString){
+                codeValid = true
+                codeErrorLabel.isHidden = true
                 return "admin"
+                
             } else{
-                return "user"
+                codeValid = false
+                codeErrorLabel.isHidden = false
+                return "invalid"
             }
             
         } else{
+            codeValid = true
             return "user"
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        switch textField.tag{
+        case 0:
+            emailTF.becomeFirstResponder()
+        case 1:
+            passwordTF.becomeFirstResponder()
+        case 2:
+            confirmPassTF.becomeFirstResponder()
+        case 3:
+            codeTF.becomeFirstResponder()
+            validateInput()
+        default:
+            fullNameTF.becomeFirstResponder()
+        }
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     
     @IBOutlet weak var addressOne: UITextField!
@@ -44,6 +44,9 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+        
         let statePicker = UIPickerView()
         statePicker.delegate = self
         stateTF.inputView = statePicker
@@ -55,6 +58,11 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         cityErrorLabel.isHidden = true
         stateErrorLabel.isHidden = true
         zipcodeErrorLabel.isHidden = true
+        
+        addressOne.delegate = self
+        addressTwo.delegate = self
+        cityTF.delegate = self
+        stateTF.delegate = self
     }
     
     
@@ -151,6 +159,11 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         if zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) != nil || zipcodeString.count > 5{
             zipcodeErrorLabel.isHidden = false
+            guard let z = Int(zipcodeString) else{
+                return
+            }
+            
+            zipcode = z
         } else{
             zipcode = Int(zipcodeString) ?? 0
             zipcodeErrorLabel.isHidden = true
@@ -233,5 +246,21 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         state = stateArray[row]
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        switch textField.tag{
+        case 0:
+            addressTwo.becomeFirstResponder()
+        case 1:
+            cityTF.becomeFirstResponder()
+        case 2:
+            stateTF.becomeFirstResponder()
+        default:
+            addressOne.becomeFirstResponder()
+        }
+        
+        return true
+    }
     
 }

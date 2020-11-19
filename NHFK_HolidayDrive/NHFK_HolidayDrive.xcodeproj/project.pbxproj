@@ -24,6 +24,8 @@
 		F19F65882553D18E00FEB895 /* SponsorDonateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */; };
 		F1CB656A2560A31E006C8273 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CB65692560A31E006C8273 /* GoogleService-Info.plist */; };
 		F1CB65762560B513006C8273 /* ApplePaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */; };
+		F1CB65D82565EB15006C8273 /* DonationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */; };
+		F1CB65DD256601C6006C8273 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65DC256601C6006C8273 /* SponsorCell.swift */; };
 		F1E68E032543D018006892EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E022543D018006892EE /* AppDelegate.swift */; };
 		F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E042543D018006892EE /* SceneDelegate.swift */; };
 		F1E68E0A2543D018006892EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E68E082543D018006892EE /* Main.storyboard */; };
@@ -90,6 +92,8 @@
 		F19F65872553D18E00FEB895 /* SponsorDonateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorDonateVC.swift; sourceTree = "<group>"; };
 		F1CB65692560A31E006C8273 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaymentHandler.swift; sourceTree = "<group>"; };
+		F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationHistoryCell.swift; sourceTree = "<group>"; };
+		F1CB65DC256601C6006C8273 /* SponsorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		F1E68DFF2543D018006892EE /* NHFK_HolidayDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHFK_HolidayDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E68E022543D018006892EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E68E042543D018006892EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				F175FD99254BA5870011DD50 /* Sponsor.swift */,
 				F12E7FA925510B9600160B28 /* ChildCell.swift */,
 				F1CB65752560B513006C8273 /* ApplePaymentHandler.swift */,
+				F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */,
+				F1CB65DC256601C6006C8273 /* SponsorCell.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				F180486E2545DFAC000501D4 /* NHFK_HolidayDrive.entitlements */,
+				F1E68E082543D018006892EE /* Main.storyboard */,
 				F175FD682546481A0011DD50 /* Fonts */,
 				F175FD4B254615EC0011DD50 /* Objects */,
 				F175FD4F254615F20011DD50 /* Helpers */,
@@ -237,7 +244,6 @@
 				F1E68E372543D12D006892EE /* Add_Edit_Controllers */,
 				F1E68E022543D018006892EE /* AppDelegate.swift */,
 				F1E68E042543D018006892EE /* SceneDelegate.swift */,
-				F1E68E082543D018006892EE /* Main.storyboard */,
 				F1E68E0D2543D019006892EE /* LaunchScreen.storyboard */,
 				F1E68E0B2543D019006892EE /* Assets.xcassets */,
 				F1E68E102543D019006892EE /* Info.plist */,
@@ -585,7 +591,9 @@
 				F1E68E6E2543D297006892EE /* EditChildVC.swift in Sources */,
 				F19F65882553D18E00FEB895 /* SponsorDonateVC.swift in Sources */,
 				F1E68E4B2543D1D8006892EE /* HomeVC.swift in Sources */,
+				F1CB65DD256601C6006C8273 /* SponsorCell.swift in Sources */,
 				F175FD472546139A0011DD50 /* Toast.swift in Sources */,
+				F1CB65D82565EB15006C8273 /* DonationHistoryCell.swift in Sources */,
 				F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */,
 				F1E68E032543D018006892EE /* AppDelegate.swift in Sources */,
 				F1E68E462543D1CA006892EE /* RegStepTwoVC.swift in Sources */,
@@ -664,6 +672,7 @@
 		F1E68E272543D019006892EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -725,6 +734,7 @@
 		F1E68E282543D019006892EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

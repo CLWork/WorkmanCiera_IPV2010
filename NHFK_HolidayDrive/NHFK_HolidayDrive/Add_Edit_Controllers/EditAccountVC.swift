@@ -36,14 +36,16 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     let storage = Storage.storage()
     let emailInUse = "Email already in use."
     let invalidEmail = "Please enter a valid email."
+    let notifName = Notification.Name("didReceiveData")
     
     var address1 = ""
     var address2 = ""
     var city = ""
     var state = ""
-    var zipcode = 0
+    var zipcode = 10000
     var email = ""
     var name = ""
+    var isEmailInUse = false
     
     let stateArray = Utility.populateStateArray()
     
@@ -52,6 +54,14 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
+    }
+    
+    //inital set up
+    func setUp(){
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
         
         let statePicker = UIPickerView()
         statePicker.delegate = self
@@ -76,8 +86,10 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         picker.delegate = self
         
         readUserProfile()
+        getProfileImage()
     }
     
+    //read current user profile
     func readUserProfile(){
         let db = Firestore.firestore()
         let currentUser = Auth.auth().currentUser
@@ -91,7 +103,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     self.address2 = document.get("addressLineTwo") as? String ?? ""
                     self.city = document.get("city") as? String ?? ""
                     self.state = document.get("state") as? String ?? ""
-                    self.zipcode = document.get("zipcode") as? Int ?? 0
+                    self.zipcode = document.get("zipcode") as? Int ?? 10000
                     
                     
                     self.fullNameTF.text = self.name
@@ -116,16 +128,55 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             }
     }
     
+    //Pull Image from Storage based on UID of the current user and populate the ImageView with it.
+    func getProfileImage(){
+        guard let currentUserID = Auth.auth().currentUser?.uid else{
+            return
+        }
+        let imgRef = storage.reference().child("profileImg/\(currentUserID).jpg")
+        
+        imgRef.downloadURL { (url, error) in
+            if error != nil{
+                
+                print(error!.localizedDescription)
+                self.showToast(message: "There was a problem retrieving your profile image.")
+                
+            } else{
+                
+                guard let url = url else{
+                    return
+                }
+                
+                
+                let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    guard let data = data, error == nil else{
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        
+                        
+                        let image = UIImage(data: data)
+                        self.profileImage.image = image
+                    }
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    //pulls up image picker on profile click
     @objc
     func changeImage(){
         if(UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)){
             picker.sourceType = .savedPhotosAlbum
-            picker.allowsEditing = false
+            picker.allowsEditing = true
             present(picker, animated: true, completion: nil)
             
         }
     }
     
+    //Use picked image, set it to image view, save it to storage
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
@@ -134,46 +185,67 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         profileImage.backgroundColor = .none
         self.profileImage.image = image
         
-        self.dismiss(animated: true) {
-        }
-    }
-    
-    func storeImage(uid: String){
+        self.dismiss(animated: true, completion: nil)
         
         guard profileImage.image != nil else{
             return
         }
         
-        guard let imageData = profileImage.image?.pngData() else{
+        guard let imageData = profileImage.image?.jpegData(compressionQuality: 1.0) else{
             return
         }
-        self.storage.reference().child("profileImg/\(uid).png").putData(imageData, metadata: nil) { (_, error) in
+        self.storage.reference().child("profileImg/\(Auth.auth().currentUser!.uid).jpg").putData(imageData, metadata: nil) { (_, error) in
             guard error == nil else{
                 return
             }
         }
-        
     }
     
+    //Validate input upon button click
     func validateInput(){
-        if(name != "" && email != "" && Utility.checkEmailFormat(email) == true){
+        guard name != "", email != "", Utility.checkEmailFormat(email) == true, isEmailInUse == false else{
+            if name == ""{
+                nameErrorLabel.isHidden = false}
+            if(isEmailInUse){
+                emailErrorLabel.text = emailInUse
+                emailErrorLabel.isHidden = false
+            } else if email == ""{
+                emailErrorLabel.text = invalidEmail
+                emailErrorLabel.isHidden = false
+            }
+            return}
+        
+        address1ErrorLabel.isHidden = true
+        address2ErrorLabel.isHidden = true
+        cityErrorLabel.isHidden = true
+        stateErrorLabel.isHidden = true
+        zipErrorLabel.isHidden = true
+        emailErrorLabel.isHidden = true
+        nameErrorLabel.isHidden = true
+        
         currentUser?.setAddressLineOne(a1: address1)
         currentUser?.setAddressLineTwo(a2: address2)
         currentUser?.setCity(c: city)
         currentUser?.setState(s: state)
         currentUser?.setZipcode(z: zipcode)
         
-            updateUserProfile()}
+        updateUserProfile()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notifName.rawValue), object: nil)
+        self.dismiss(animated: true, completion: nil)
+        
         
     }
     
+    //sends email if it's different than the one on file
     func updateUserEmail(){
-        let updatedEmail = emailTF.text ?? ""
+        let updatedEmail = emailTF.text ?? email
         if(updatedEmail != email && updatedEmail != ""){
             Auth.auth().currentUser?.updateEmail(to: email) { (error) in
                 if(error != nil){
                     print(error!.localizedDescription)
                 } else{
+                    self.currentUser?.setEmail(e: updatedEmail)
                     self.showToast(message: "Email updated to: \(updatedEmail)")
                     Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                     
@@ -183,11 +255,13 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    //Dismisses the edit screen
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
     
+    //Sends inputs back through final validation check
     @IBAction func savePressed(_ sender: Any) {
         validateInput()
         
@@ -201,21 +275,22 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             if(error != nil){
                 print(error!.localizedDescription)
                 self.emailErrorLabel.isHidden = false
-                //self.emailValid = false
                 
             } else if(signInMethods != nil){
                 self.emailErrorLabel.text = self.emailInUse
                 self.emailErrorLabel.isHidden = false
-                //self.emailValid = false
+                self.isEmailInUse = true
+                
             } else{
                 self.emailErrorLabel.text = self.invalidEmail
                 self.emailErrorLabel.isHidden = true
-                //self.emailValid = true
+                self.isEmailInUse = false
             }
         })
         
     }
     
+    //Real-time comparison of entry to ensure validity
     @IBAction func addOneEditChanged(_ sender: UITextField) {
         address1 = addressOneTF.text ?? ""
         
@@ -228,6 +303,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    //Real-time comparison of entry to ensure validity
     @IBAction func addTwoEditChanged(_ sender: UITextField) {
         address2 = addressTwoTF.text ?? ""
         
@@ -240,6 +316,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    //Real-time comparison of entry to ensure validity
     @IBAction func cityEditChanged(_ sender: UITextField) {
         city = cityTF.text ?? ""
         
@@ -252,27 +329,19 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    //Real-time comparison of entry to ensure validity
     @IBAction func zipEditChanged(_ sender: UITextField) {
         let zipcodeString = zipcodeTF.text ?? ""
         
-        if(zipcodeString != "" && zipcodeString.count == 5){
-            guard Int(zipcodeString) != nil else{
-                zipErrorLabel.isHidden = false
-                return
-            }
-            zipErrorLabel.isHidden = true
-            zipcode = Int(zipcodeString) ?? 0
-            
-        } else{
+        guard zipcodeString != "", zipcodeString.count == 5, zipcode == Int(zipcodeString) else{
             zipErrorLabel.isHidden = false
-            
+            return
         }
+        zipErrorLabel.isHidden = true
         
     }
     
-    
-    
-    
+    //Push updates to database and overwrite the current document with current information
     func updateUserProfile(){
         
         if(currentUser != nil){
@@ -280,19 +349,15 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             
             Firestore.firestore()
                 .collection("users")
-                .document(uid!)
-                .setData(currentUser!.getUserDic()) { [weak self] e in
-                    guard self != nil else { return }
-                    if e != nil {
-                        print(e!.localizedDescription)
+                .document(uid!).setData(currentUser!.getUserDic()) { (error) in
+                    guard error == nil else{
+                        self.showToast(message: "There was an error updating your profile, please try again.")
+                        print(error!.localizedDescription)
+                        return
                     }
-                    else {
-                       print("Profile Updated")
-                        
-                    }
+                    
+                    self.updateUserEmail()
                 }
-            
-            updateUserEmail()
             
         } else{
             print("No user was passed.");
@@ -300,7 +365,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
     }
     
-    
+    //Picker Protocols
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
