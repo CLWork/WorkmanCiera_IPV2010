@@ -18,7 +18,7 @@ public class Users: Codable {
     private var state: String = ""
     private var zipcode: Int = 0
     private var type: String = ""
-    
+    private var donationHistory = [String: Double]()
     //Constructor
     init(fName: String, userEmail: String){
         fullName = fName
@@ -35,7 +35,8 @@ public class Users: Codable {
             "addressLineTwo": self.addressLineTwo,
             "city": self.city,
             "state": state,
-        "zipcode": zipcode] as [String: Any]
+            "zipcode": zipcode,
+            "history": donationHistory] as [String: Any]
         
         return dic
         
@@ -67,6 +68,10 @@ public class Users: Codable {
         return type;
     }
     
+    public func getHistory()->[String: Double]{
+        return donationHistory
+    }
+    
     //Setters
     public func setFName(n: String){
         fullName = n
@@ -91,5 +96,8 @@ public class Users: Codable {
     }
     public func setType(t: String){
         type = t
+    }
+    public func setHistory(h: [String: Double]){
+        donationHistory = h
     }
 }

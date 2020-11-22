@@ -12,13 +12,20 @@ import FirebaseFirestore
 
 class HomeVC: UIViewController{
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var editBarBttn: UIBarButtonItem!
+    @IBOutlet weak var hopeLabel: UILabel!
     var type = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         checkType()
+        setUp()
+    }
+    
+    func setUp(){
+        hopeLabel.font = UIFont(name: "DancingScript-Bold", size: 35)
     }
     
     func checkType(){
@@ -32,12 +39,12 @@ class HomeVC: UIViewController{
                         if(self.type == "admin"){
                             self.editBarBttn.isEnabled = true
                             self.editBarBttn.tintColor = .systemBlue
+                            self.navBar.isHidden = false
                         } else{
                             self.editBarBttn.isEnabled = false
                             self.editBarBttn.tintColor = .clear
+                            self.navBar.isHidden = true
                         }
-                        
-                        print(self.type)
                         
                     } else {
                         

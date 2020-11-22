@@ -108,10 +108,10 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
                                 i+=1
                             }
                             
-                            self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program!, gender: gender!, interests: interestArray)
+                            self.supportedChild = Child(id: id ?? 0, name: name!, age: age ?? 0, program: program ?? "Not Specified", gender: gender!, interests: interestArray)
                             
                             self.childrenArray.append(self.supportedChild!)
-                            
+                            self.childrenArray.shuffle()
                             interestArray.removeAll()
                             self.tableView.reloadData()
                         }
@@ -132,7 +132,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) as? ChildCell else {return tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) }
         
         cell.childNameAge.text = childrenArray[indexPath.row].getName() + ", " + childrenArray[indexPath.row].getAge().description
-        cell.childNameAge.font = UIFont(name: "DancingScript-SemiBold", size: 25)
+        cell.childNameAge.font = UIFont(name: "DancingScript-SemiBold", size: 30)
         cell.program.text = childrenArray[indexPath.row].getProgram()
         
         let interests: [String?] = childrenArray[indexPath.row].getInterests()

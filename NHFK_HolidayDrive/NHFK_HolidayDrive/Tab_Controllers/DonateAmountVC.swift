@@ -163,7 +163,7 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         
-        let paymentToken = payment.token
+        //let paymentToken = payment.token
         
         self.dismiss(animated: true, completion: nil)
        
