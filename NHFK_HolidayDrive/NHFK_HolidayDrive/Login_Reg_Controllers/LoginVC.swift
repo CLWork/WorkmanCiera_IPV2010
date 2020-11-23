@@ -22,7 +22,9 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
     var pass = ""
     
     var verifyError = "Email verification required!"
-    var invalidError = "Invalid Email Address"
+    var invalidError = "Invalid Email Format: Expecting test@domain.com"
+    var passwordBlankError = "Password cannot be blank"
+    var invalidEntry = "Email or password is incorrect."
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -42,17 +44,18 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
         emailErrorLabel.text = invalidError
         passErrorLabel.isHidden = true
         
-        let loginButton = FBLoginButton()
-        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 180)
-        loginButton.center = newCenter
-        loginButton.delegate = self
-        loginButton.permissions = ["public_profile", "email"]
-        view.addSubview(loginButton)
-        
-        if let token = AccessToken.current, !token.isExpired || Auth.auth().currentUser != nil{
+        guard let token = AccessToken.current, !token.isExpired, Auth.auth().currentUser != nil else{
             
-            toHomeScreen()
+            let loginButton = FBLoginButton()
+            loginButton.frame = CGRect(x: view.frame.width / 2 - 125 , y: view.frame.height - 280, width: 250, height: 45)
+            loginButton.delegate = self
+            loginButton.permissions = ["public_profile", "email"]
+            view.addSubview(loginButton)
+            
+            return
         }
+        
+       toHomeScreen()
     }
     
     @IBAction func registerTapped(_ sender: UIButton) {
@@ -76,6 +79,7 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
                 print(error!.localizedDescription)
                 self.emailErrorLabel.isHidden = false
                 
+                
             } else{
                 self.emailErrorLabel.isHidden = true
                 
@@ -87,10 +91,12 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
     @IBAction func passEditChange(_ sender: UITextField) {
         pass = passwordTF.text ?? ""
         if(pass == ""){
+            passErrorLabel.text = passwordBlankError
             passErrorLabel.isHidden = false
         }
         
     }
+    
     private func toHomeScreen(){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -115,12 +121,20 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
                     
                 case .wrongPassword:
                     
+                    self.passErrorLabel.text = self.invalidEntry
                     self.passErrorLabel.isHidden = false
+                    
+                    self.emailErrorLabel.text = self.invalidEntry
+                    self.emailErrorLabel.isHidden = false
                     
                 case .invalidEmail:
                     
-                    self.emailErrorLabel.text = self.invalidError
+                    self.passErrorLabel.text = self.invalidEntry
+                    self.passErrorLabel.isHidden = false
+                    
+                    self.emailErrorLabel.text = self.invalidEntry
                     self.emailErrorLabel.isHidden = false
+                    
                     
                 default:
                     print("Error: \(error.localizedDescription)")
@@ -130,6 +144,7 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
                     self.passErrorLabel.isHidden = true
                     self.emailErrorLabel.isHidden = true
                     self.emailErrorLabel.text = self.invalidError
+                    self.passErrorLabel.text = self.passwordBlankError
                     
                     self.showToast(message: "Sign In Successful!")
                     self.email = ""
@@ -180,10 +195,10 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
         textField.resignFirstResponder()
         
         if(textField == emailTF){
-            print("EMAIL TEXT FIELD")
+            
             passwordTF.becomeFirstResponder()
         } else if(textField == passwordTF){
-            print("PASSWORD TEXT FIELD")
+            
             passwordTF.resignFirstResponder()
             if(email != "" && pass != ""){
                 signInUser(email: email, pass: pass)

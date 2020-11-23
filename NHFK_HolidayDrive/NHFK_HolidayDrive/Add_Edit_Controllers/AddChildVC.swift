@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 
-class AddChildVC: UIViewController{
+class AddChildVC: UIViewController, UITextFieldDelegate{
     
     
     @IBOutlet weak var nameTF: UITextField!
@@ -18,6 +18,7 @@ class AddChildVC: UIViewController{
     @IBOutlet weak var interest2TF: UITextField!
     @IBOutlet weak var interest3TF: UITextField!
     @IBOutlet weak var interest4TF: UITextField!
+    
     @IBOutlet weak var nameErrorLabel: UILabel!
     @IBOutlet weak var ageErrorLabel: UILabel!
     @IBOutlet weak var programErrorLabel: UILabel!
@@ -47,6 +48,11 @@ class AddChildVC: UIViewController{
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
 
+        
+        
+    }
+    
+    func setUp(){
         nameErrorLabel.isHidden = true
         ageErrorLabel.isHidden = true
         programErrorLabel.isHidden = true
@@ -54,9 +60,25 @@ class AddChildVC: UIViewController{
         genderErrorLabel.isHidden = true
         programErrorLabel.isHidden = true
         
+        nameTF.delegate = self
+        ageTF.delegate = self
+        interest1TF.delegate = self
+        interest2TF.delegate = self
+        interest3TF.delegate = self
+        interest4TF.delegate = self
+        
+        griefButton.setTitleColor(.systemBlue, for: .selected)
+        griefButton.setTitleColor(.systemGray2, for: .normal)
+        wishButton.setTitleColor(.systemBlue, for: .selected)
+        wishButton.setTitleColor(.systemGray2, for: .normal)
+        maleButton.setTitleColor(.systemBlue, for: .selected)
+        maleButton.setTitleColor(.systemGray2, for: .normal)
+        femaleButton.setTitleColor(.systemBlue, for: .selected)
+        femaleButton.setTitleColor(.systemGray2, for: .normal)
+
     }
     
-    //PULL INFO
+    
     //pull information from the database
     func getChildrenFromDB(){
         
@@ -169,32 +191,25 @@ class AddChildVC: UIViewController{
         case 0:
             program = "Center For Grieving Children"
             griefButton.tintColor = .systemBlue
-            griefButton.setTitleColor(.systemBlue, for: .selected)
             griefButton.isSelected = true
             
             wishButton.isSelected = false
             wishButton.tintColor = .systemGray2
-            wishButton.setTitleColor(.systemGray2, for: .normal)
             
         case 1:
             program = "Wishes For Kids"
             wishButton.tintColor = .systemBlue
-            wishButton.setTitleColor(.systemBlue, for: .selected)
             griefButton.isSelected = false
             
             wishButton.isSelected = true
             griefButton.tintColor = .systemGray2
-            griefButton.setTitleColor(.systemGray2, for: .normal)
-            
         default:
             program = "Center For Grieving Children"
             griefButton.tintColor = .systemBlue
-            griefButton.setTitleColor(.systemBlue, for: .selected)
             griefButton.isSelected = true
             
             wishButton.isSelected = false
             wishButton.tintColor = .systemGray2
-            wishButton.setTitleColor(.systemGray2, for: .normal)
         }
     }
     
@@ -203,22 +218,18 @@ class AddChildVC: UIViewController{
         case 0:
             gender = "Girl"
             femaleButton.tintColor = .systemBlue
-            femaleButton.setTitleColor(.systemBlue, for: .selected)
             femaleButton.isSelected = true
             
             maleButton.isSelected = false
             maleButton.tintColor = .systemGray2
-            maleButton.setTitleColor(.systemGray2, for: .normal)
             
         case 1:
             gender = "Boy"
             maleButton.tintColor = .systemBlue
-            maleButton.setTitleColor(.systemBlue, for: .selected)
             maleButton.isSelected = true
             
             femaleButton.isSelected = false
             femaleButton.tintColor = .systemGray2
-            femaleButton.setTitleColor(.systemGray2, for: .normal)
             
         default:
             return
@@ -228,16 +239,16 @@ class AddChildVC: UIViewController{
     
     @IBAction func interest3DidChange(_ sender: UITextField) {
         switch(sender.tag){
-        case 0:
+        case 2:
             interest1 = interest1TF.text ?? ""
             interestArray.append(interest1)
-        case 1:
+        case 3:
             interest2 = interest2TF.text ?? ""
             interestArray.append(interest2)
-        case 2:
+        case 4:
             interest3 = interest3TF.text ?? ""
             interestArray.append(interest3)
-        case 3:
+        case 5:
             interest4 = interest4TF.text ?? ""
             interestArray.append(interest4)
         default:
@@ -260,6 +271,27 @@ class AddChildVC: UIViewController{
         } else{
             interestErrorLabel.isHidden = false
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        switch textField.tag {
+        case 0:
+            ageTF.becomeFirstResponder()
+        case 1:
+            interest1TF.becomeFirstResponder()
+        case 2:
+            interest2TF.becomeFirstResponder()
+        case 3:
+            interest3TF.becomeFirstResponder()
+        case 4:
+            interest4TF.becomeFirstResponder()
+        default:
+            view.endEditing(true)
+        }
+        
+        return true
     }
     
 }

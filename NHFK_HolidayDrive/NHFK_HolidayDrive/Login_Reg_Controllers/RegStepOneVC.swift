@@ -35,7 +35,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     let picker = UIImagePickerController()
     let storage = Storage.storage()
     let emailInUse = "Email already in use."
-    let invalidEmail = "Please enter a valid email."
+    let invalidEmail = "Invalid Email Format: Expecting test@domain.com"
     var pass = ""
     var confirmPass = ""
     var fullName = ""
@@ -317,19 +317,17 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         textField.resignFirstResponder()
         switch textField.tag{
         case 0:
-            emailTF.becomeFirstResponder()
-        case 1:
             passwordTF.becomeFirstResponder()
-        case 2:
+        case 1:
             confirmPassTF.becomeFirstResponder()
-        case 3:
+        case 2:
             codeTF.becomeFirstResponder()
-            validateInput()
         default:
-            fullNameTF.becomeFirstResponder()
+            view.endEditing(true)
         }
         return true
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toStepTwo" {

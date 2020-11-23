@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EditChildVC: UIViewController{
+class EditChildVC: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var ageTF: UITextField!
@@ -37,13 +37,6 @@ class EditChildVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameErrorLabel.isHidden = true
-        ageErrorLabel.isHidden = true
-        programErrorLabel.isHidden = true
-        interestErrorLabel.isHidden = true
-        
-        
-        
         setUp()
     }
     
@@ -52,29 +45,42 @@ class EditChildVC: UIViewController{
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
         
+        nameErrorLabel.isHidden = true
+        ageErrorLabel.isHidden = true
+        programErrorLabel.isHidden = true
+        interestErrorLabel.isHidden = true
+        griefButton.setTitleColor(.systemBlue, for: .selected)
+        wishButton.setTitleColor(.systemBlue, for: .selected)
+        griefButton.setTitleColor(.systemGray2, for: .normal)
+        wishButton.setTitleColor(.systemGray2, for: .normal)
+        
+        nameTF.delegate = self
+        ageTF.delegate = self
+        interest1.delegate = self
+        interest2.delegate = self
+        interest3.delegate = self
+        interest4.delegate = self
+        
         if(passedChild != nil){
             
             nameTF.text = passedChild!.getName()
             ageTF.text = passedChild!.getAge().description
             
             switch passedChild!.getProgram(){
-            case "Grief":
+            case "Center For Grieving Children":
                 griefButton.isSelected = true
                 wishButton.isSelected = false
                 griefButton.tintColor = .systemBlue
-                griefButton.setTitleColor(.systemBlue, for: .selected)
-            case "Wish":
+                wishButton.tintColor = .systemGray2
+                
+            case "Wishes For Kids":
                 wishButton.isSelected = true
                 griefButton.isSelected = false
                 wishButton.tintColor = .systemBlue
-                wishButton.setTitleColor(.systemBlue, for: .selected)
-            default:
                 griefButton.tintColor = .systemGray2
-                griefButton.setTitleColor(.black, for: .selected)
-                wishButton.tintColor = .systemGray2
-                wishButton.setTitleColor(.black, for: .selected)
-                griefButton.isSelected = false
-                wishButton.isSelected = false
+                
+            default:
+                return
             }
             
             if(passedChild!.getInterests().count > 0){
@@ -126,13 +132,13 @@ class EditChildVC: UIViewController{
         
         switch sender.tag{
         
-        case 0:
-            interestOne = interest1.text ?? ""
-        case 1:
-            interestTwo = interest2.text ?? ""
         case 2:
-            interestThree = interest3.text ?? ""
+            interestOne = interest1.text ?? ""
         case 3:
+            interestTwo = interest2.text ?? ""
+        case 4:
+            interestThree = interest3.text ?? ""
+        case 5:
             interestFour = interest4.text ?? ""
         default:
             return
@@ -168,6 +174,27 @@ class EditChildVC: UIViewController{
         } else{
             interestErrorLabel.isHidden = false
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        switch textField.tag {
+        case 0:
+            ageTF.becomeFirstResponder()
+        case 1:
+            interest1.becomeFirstResponder()
+        case 2:
+            interest2.becomeFirstResponder()
+        case 3:
+            interest3.becomeFirstResponder()
+        case 4:
+            interest4.becomeFirstResponder()
+        default:
+            view.endEditing(true)
+        }
+        
+        return true
     }
     
 }

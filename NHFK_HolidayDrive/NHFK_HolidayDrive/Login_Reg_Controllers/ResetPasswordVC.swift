@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class ResetPasswordVC: UIViewController{
     
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailTF: UITextField!
     var email = ""
@@ -20,8 +19,7 @@ class ResetPasswordVC: UIViewController{
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
-        
-        indicator.isHidden = true
+
         self.errorLabel.isHidden = true
     }
     

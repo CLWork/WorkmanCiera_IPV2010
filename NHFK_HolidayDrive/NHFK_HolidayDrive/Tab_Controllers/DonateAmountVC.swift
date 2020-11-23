@@ -25,8 +25,9 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     var donateTitle = "Donate"
     var donateToTitle = "Donate To"
     var donationAmnt = 5
-    let minIncrement = 5
     
+    let applePayBttn = PKPaymentButton(paymentButtonType: .donate, paymentButtonStyle: .black)
+    let setUpBttn = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
     private var paymentRequest: PKPaymentRequest = {
         let request = PKPaymentRequest()
         request.merchantIdentifier = "merchant.org.newhopeforkids.holidayDrive"
@@ -102,17 +103,16 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
         if PKPaymentAuthorizationController.canMakePayments(){
             
             if PKPaymentAuthorizationController.canMakePayments(usingNetworks: paymentRequest.supportedNetworks){
-            let applePayBttn = PKPaymentButton(paymentButtonType: .donate, paymentButtonStyle: .black)
             applePayBttn.frame = CGRect(x: view.frame.width / 2 - 125, y: view.frame.height - 300, width: 250, height: 40)
             applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 125, y: view.frame.height - 300, width: 250, height: 40)
             applePayBttn.clipsToBounds = true
             applePayBttn.addTarget(self, action: #selector(applePayTapped), for: .touchUpInside)
             view.addSubview(applePayBttn)
             } else {
-                let applePayBttn = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
-                applePayBttn.frame = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
-                applePayBttn.bounds = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
-                applePayBttn.clipsToBounds = true
+                setUpBttn.frame = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
+                setUpBttn.bounds = CGRect(x: view.frame.width / 2 - 90, y: view.frame.height - 300, width: 250, height: 40)
+                setUpBttn.clipsToBounds = true
+                setUpBttn.addTarget(self, action: #selector(openWalletSetUp), for: .touchUpInside)
                 view.addSubview(applePayBttn)
             }
         }
@@ -122,10 +122,16 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     @objc
     func applePayTapped(){
         
-        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "DONATION", amount: NSDecimalNumber(value: donationAmnt))]
+        paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Donation", amount: NSDecimalNumber(value: donationAmnt))]
         
         let applePayController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
         self.present(applePayController!, animated: true, completion: nil)
+    }
+    
+    @objc
+    func openWalletSetUp(){
+        let library = PKPassLibrary()
+        library.openPaymentSetup()
     }
     
     //Update labels as slider changes - increments of $5
@@ -138,12 +144,6 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
     //dismiss controller
     @IBAction func cancelTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    //verify donation on press
-    @IBAction func donateTapped(_ sender: UIButton) {
-        
-        alertUser()
     }
     
     //tell the user their donation was successful. 

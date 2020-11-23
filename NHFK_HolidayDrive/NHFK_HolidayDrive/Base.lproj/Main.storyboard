@@ -29,7 +29,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSq-dQ-ngG">
-                                <rect key="frame" x="82.666666666666671" y="608" width="248.66666666666663" height="45"/>
+                                <rect key="frame" x="82.666666666666671" y="677.66666666666663" width="248.66666666666663" height="45"/>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.22352941179999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.90980392160000001" green="0.91372549020000005" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +82,7 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6f-kV-QkF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password cannot be blank." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6f-kV-QkF">
                                 <rect key="frame" x="40" y="421.33333333333331" width="334" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -148,7 +148,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="1dS-qt-aeS" firstAttribute="centerX" secondItem="zrP-ct-HE2" secondAttribute="centerX" id="wKI-CN-6ux"/>
-                            <constraint firstItem="HSq-dQ-ngG" firstAttribute="top" secondItem="Xm9-tj-cgW" secondAttribute="bottom" constant="20.333333333333371" id="wc9-BS-2Zy"/>
+                            <constraint firstItem="HSq-dQ-ngG" firstAttribute="top" secondItem="Xm9-tj-cgW" secondAttribute="bottom" constant="20.333333333333371" id="wc9-BS-2Zy">
+                                <variation key="heightClass=regular-widthClass=compact" constant="90"/>
+                            </constraint>
                             <constraint firstItem="7tr-PT-3vc" firstAttribute="leading" secondItem="GlK-2N-YWc" secondAttribute="leading" constant="40" id="xtI-i4-k9t"/>
                         </constraints>
                         <variation key="default">
@@ -165,16 +167,6 @@
                                 <exclude reference="F6f-kV-QkF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0sJ-wy-YcL"/>
-                                <exclude reference="5Eg-33-TiF"/>
-                                <exclude reference="I1q-RI-S84"/>
-                                <exclude reference="PMV-f7-O3l"/>
-                                <exclude reference="QP6-k6-5ik"/>
-                                <exclude reference="UJg-3W-Cns"/>
-                                <exclude reference="V0O-Of-KPb"/>
-                                <exclude reference="iqc-Eu-QPX"/>
-                                <exclude reference="lO3-A3-gyh"/>
-                                <exclude reference="m9P-ER-esp"/>
                                 <exclude reference="27n-PI-oTY"/>
                                 <exclude reference="4DD-wE-sRD"/>
                                 <exclude reference="4HR-fn-nMz"/>
@@ -212,6 +204,16 @@
                                 <exclude reference="D6D-ZZ-E0u"/>
                                 <exclude reference="DJU-Q9-9Wn"/>
                                 <exclude reference="wc9-BS-2Zy"/>
+                                <exclude reference="0sJ-wy-YcL"/>
+                                <exclude reference="5Eg-33-TiF"/>
+                                <exclude reference="I1q-RI-S84"/>
+                                <exclude reference="PMV-f7-O3l"/>
+                                <exclude reference="QP6-k6-5ik"/>
+                                <exclude reference="UJg-3W-Cns"/>
+                                <exclude reference="V0O-Of-KPb"/>
+                                <exclude reference="iqc-Eu-QPX"/>
+                                <exclude reference="lO3-A3-gyh"/>
+                                <exclude reference="m9P-ER-esp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -233,16 +235,6 @@
                                 <include reference="F6f-kV-QkF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0sJ-wy-YcL"/>
-                                <include reference="5Eg-33-TiF"/>
-                                <include reference="I1q-RI-S84"/>
-                                <include reference="PMV-f7-O3l"/>
-                                <include reference="QP6-k6-5ik"/>
-                                <exclude reference="UJg-3W-Cns"/>
-                                <include reference="V0O-Of-KPb"/>
-                                <exclude reference="iqc-Eu-QPX"/>
-                                <include reference="lO3-A3-gyh"/>
-                                <exclude reference="m9P-ER-esp"/>
                                 <include reference="27n-PI-oTY"/>
                                 <include reference="4DD-wE-sRD"/>
                                 <include reference="4HR-fn-nMz"/>
@@ -281,6 +273,16 @@
                                 <include reference="D6D-ZZ-E0u"/>
                                 <include reference="DJU-Q9-9Wn"/>
                                 <include reference="wc9-BS-2Zy"/>
+                                <exclude reference="0sJ-wy-YcL"/>
+                                <include reference="5Eg-33-TiF"/>
+                                <include reference="I1q-RI-S84"/>
+                                <include reference="PMV-f7-O3l"/>
+                                <include reference="QP6-k6-5ik"/>
+                                <exclude reference="UJg-3W-Cns"/>
+                                <include reference="V0O-Of-KPb"/>
+                                <exclude reference="iqc-Eu-QPX"/>
+                                <include reference="lO3-A3-gyh"/>
+                                <exclude reference="m9P-ER-esp"/>
                             </mask>
                         </variation>
                     </view>
@@ -1416,7 +1418,7 @@
                                     <action selector="nameDidChange:" destination="SmB-FY-vHP" eventType="editingChanged" id="grz-Wx-7nP"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPI-7X-RT7">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPI-7X-RT7">
                                 <rect key="frame" x="50" y="241" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="postal-code"/>
@@ -1456,7 +1458,7 @@
                                     <action selector="savePressed:" destination="SmB-FY-vHP" eventType="touchUpInside" id="Kx7-Gr-jMW"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-YW-hsa">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-YW-hsa">
                                 <rect key="frame" x="39" y="551" width="165.66666666666666" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="165.5" id="bQ8-dJ-ia0"/>
@@ -1467,7 +1469,7 @@
                                     <action selector="interest3DidChange:" destination="SmB-FY-vHP" eventType="editingDidEnd" id="X2F-mS-wm8"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtA-Lp-WEh">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtA-Lp-WEh">
                                 <rect key="frame" x="208" y="551" width="165.66666666666663" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -1475,7 +1477,7 @@
                                     <action selector="interest3DidChange:" destination="SmB-FY-vHP" eventType="editingDidEnd" id="9y0-ME-QaC"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-Jr-xOH">
+                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYT-Jr-xOH">
                                 <rect key="frame" x="39" y="599" width="165.66666666666666" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -1483,7 +1485,7 @@
                                     <action selector="interest3DidChange:" destination="SmB-FY-vHP" eventType="editingDidEnd" id="1fp-1C-UgZ"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lm0-aL-rzl">
+                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lm0-aL-rzl">
                                 <rect key="frame" x="208" y="599" width="165.66666666666663" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
@@ -1531,7 +1533,7 @@
                                 <rect key="frame" x="50" y="462" width="155" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" systemColor="systemGray2Color"/>
-                                <state key="normal" title="Female" image="checkmark.circle" catalog="system">
+                                <state key="normal" title="Girl" image="checkmark.circle" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
@@ -1542,7 +1544,7 @@
                                 <rect key="frame" x="225" y="462" width="155" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" systemColor="systemGray2Color"/>
-                                <state key="normal" title="Male" image="checkmark.circle" catalog="system">
+                                <state key="normal" title="Boy" image="checkmark.circle" catalog="system">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
@@ -1715,7 +1717,7 @@
                                     <action selector="nameDidChange:" destination="Oap-mi-JTo" eventType="editingChanged" id="pUl-5O-Mzd"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XJJ-ps-zcg">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XJJ-ps-zcg">
                                 <rect key="frame" x="50" y="220" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
@@ -1723,7 +1725,7 @@
                                     <action selector="ageDidChange:" destination="Oap-mi-JTo" eventType="editingChanged" id="J6f-r7-pH3"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ezs-cO-Ngr">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ezs-cO-Ngr">
                                 <rect key="frame" x="40" y="441" width="165.66666666666666" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
@@ -1731,17 +1733,17 @@
                                     <action selector="interestDidChange:" destination="Oap-mi-JTo" eventType="editingChanged" id="f7O-r4-vEJ"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PpY-eb-RJ9">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PpY-eb-RJ9">
                                 <rect key="frame" x="209" y="441" width="165.66666666666663" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJl-Da-mLW">
+                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJl-Da-mLW">
                                 <rect key="frame" x="40" y="489" width="165.66666666666666" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7d-Lo-cqa">
+                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7d-Lo-cqa">
                                 <rect key="frame" x="209" y="489" width="165.66666666666663" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="password"/>
@@ -2004,7 +2006,7 @@
                                 <color key="textColor" red="0.75294117647058822" green="0.8666666666666667" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-CA-WGM">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-CA-WGM">
                                 <rect key="frame" x="21.666666666666657" y="506" width="370.66666666666674" height="31"/>
                                 <color key="tintColor" red="0.38431372549999998" green="0.086274509799999996" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -2184,7 +2186,7 @@
         <!--DonateVC-->
         <scene sceneID="VeC-SW-dVM">
             <objects>
-                <viewController storyboardIdentifier="supportDonate" id="KkZ-yz-dba" userLabel="DonateVC" customClass="SponsorDonateVC" customModule="NHFK_HolidayDrive" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="supportDonate" id="KkZ-yz-dba" userLabel="DonateVC" customClass="DonatePageVC" customModule="NHFK_HolidayDrive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XmM-SQ-zKg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2208,10 +2210,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="vtR-Z0-xqJ">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="150" translatesAutoresizingMaskIntoConstraints="NO" id="vtR-Z0-xqJ">
                                 <rect key="frame" x="21.666666666666657" y="417.33333333333331" width="370.66666666666674" height="31"/>
                                 <color key="tintColor" red="0.38431372549999998" green="0.086274509799999996" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <action selector="sliderChanged:" destination="KkZ-yz-dba" eventType="valueChanged" id="8dI-Wu-a9U"/>
                                     <action selector="sliderChanged:" destination="16B-wr-lyI" eventType="valueChanged" id="yXh-xf-Dk0"/>
                                 </connections>
                             </slider>
@@ -2470,10 +2473,10 @@
             </objects>
             <point key="canvasLocation" x="2207" y="1037"/>
         </scene>
-        <!--Table View Controller-->
+        <!--SponsorsVC-->
         <scene sceneID="wDe-Bu-ErF">
             <objects>
-                <tableViewController storyboardIdentifier="sponsors" id="bOU-ma-gzm" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sponsors" id="bOU-ma-gzm" customClass="SponsorsVC" customModule="NHFK_HolidayDrive" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MuJ-Yc-CC1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3151,20 +3154,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waking up one morning to learn your mommy or daddy has died" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qms-af-UcU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waking up one morning to learn your mommy or daddy has died" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qms-af-UcU">
                                 <rect key="frame" x="41.333333333333343" y="388.66666666666669" width="331.33333333333326" height="46.666666666666686"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Being a child and losing your chair because of chemotherapy and feeling too sick to play" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-oc-hyh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Being a child and losing your chair because of chemotherapy and feeling too sick to play" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-oc-hyh">
                                 <rect key="frame" x="41.333333333333343" y="460.33333333333331" width="331.33333333333326" height="69.999999999999943"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVK-OI-90k">
-                                <rect key="frame" x="41.333333333333343" y="555.33333333333337" width="331.33333333333326" height="93.333333333333371"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVK-OI-90k">
+                                <rect key="frame" x="41.333333333333343" y="555.33333333333337" width="331.33333333333326" height="116.66666666666663"/>
                                 <string key="text">Experiencing death, serious illness and despair is often overwhelming, but there is always hope, and since 1996 there has been New Hope For Kids.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -3220,8 +3223,6 @@
                                 <exclude reference="UO7-eL-aF0"/>
                                 <exclude reference="esB-PD-DVi"/>
                                 <exclude reference="z4w-0G-6l5"/>
-                                <exclude reference="ELG-Ig-9Pb"/>
-                                <exclude reference="TaL-3d-5F3"/>
                                 <exclude reference="81H-PO-2QC"/>
                                 <exclude reference="Dsc-dh-OYf"/>
                                 <exclude reference="awl-8b-GTg"/>
@@ -3240,6 +3241,8 @@
                                 <exclude reference="FhH-8Y-XeS"/>
                                 <exclude reference="dac-YW-cUU"/>
                                 <exclude reference="m3s-ig-tCM"/>
+                                <exclude reference="ELG-Ig-9Pb"/>
+                                <exclude reference="TaL-3d-5F3"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3257,8 +3260,6 @@
                                 <include reference="UO7-eL-aF0"/>
                                 <include reference="esB-PD-DVi"/>
                                 <include reference="z4w-0G-6l5"/>
-                                <include reference="ELG-Ig-9Pb"/>
-                                <include reference="TaL-3d-5F3"/>
                                 <include reference="81H-PO-2QC"/>
                                 <include reference="Dsc-dh-OYf"/>
                                 <include reference="awl-8b-GTg"/>
@@ -3277,6 +3278,8 @@
                                 <include reference="FhH-8Y-XeS"/>
                                 <include reference="dac-YW-cUU"/>
                                 <include reference="m3s-ig-tCM"/>
+                                <include reference="ELG-Ig-9Pb"/>
+                                <include reference="TaL-3d-5F3"/>
                             </mask>
                         </variation>
                     </view>
@@ -3302,7 +3305,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.1213611767" green="0.5" blue="0.063966939350000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.1960784314" green="0.43921568630000002" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.30980392156862746" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="1" green="0.33725490196078434" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
@@ -3358,7 +3361,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
-                                    <action selector="passMatchEditChanged:" destination="6n5-71-hWa" eventType="editingDidEnd" id="4FJ-pW-HQB"/>
+                                    <action selector="passMatchEditChanged:" destination="6n5-71-hWa" eventType="editingChanged" id="Gq0-E5-CDu"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3M-KP-m1d">
@@ -3593,12 +3596,12 @@
                                     <action selector="addOneEditChanged:" destination="OBc-kZ-ykO" eventType="editingChanged" id="CTo-V7-0rs"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWf-7D-0sN">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lWf-7D-0sN">
                                 <rect key="frame" x="40.000000000000007" y="493.33333333333331" width="119.66666666666669" height="33.999999999999943"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="address-level1"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-1v-UJm">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-1v-UJm">
                                 <rect key="frame" x="219.66666666666666" y="493.33333333333331" width="119.66666666666666" height="33.999999999999943"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="postal-code"/>
@@ -3631,7 +3634,7 @@
                                 <rect key="frame" x="-20" y="397" width="414" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wSK-nZ-UHA">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wSK-nZ-UHA">
                                 <rect key="frame" x="41" y="313.66666666666669" width="299" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-line2"/>
@@ -3661,7 +3664,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tff-oO-E0J">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Tff-oO-E0J">
                                 <rect key="frame" x="41" y="401.33333333333331" width="299" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>

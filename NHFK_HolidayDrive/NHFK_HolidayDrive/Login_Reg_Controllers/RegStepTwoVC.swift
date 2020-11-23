@@ -29,6 +29,7 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     var passedUser: Users?
     let stateArray = Utility.populateStateArray()
+    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     var address1 = ""
     var address2 = ""
@@ -46,6 +47,10 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
+        setUp()
+    }
+    
+    func setUp(){
         
         let statePicker = UIPickerView()
         statePicker.delegate = self
@@ -63,13 +68,15 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         addressTwo.delegate = self
         cityTF.delegate = self
         stateTF.delegate = self
+        zipcodeTF.delegate = self
     }
     
-    
+    //final validation on button tapped
     @IBAction func finishTapped(_ sender: Any) {
         validateInput();
     }
     
+    //bypass address entry
     @IBAction func skipTapped(_ sender: UIButton) {
         updateUserProfile()
         
@@ -77,26 +84,10 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     
-    
+    //Final validation
     func validateInput(){
         
-        if(address1 != "" && city != "" && state != "" && zipcode > 0){
-            
-            address1ErrorLabel.isHidden = true
-            address2ErrorLabel.isHidden = true
-            cityErrorLabel.isHidden = true
-            stateErrorLabel.isHidden = true
-            zipcodeErrorLabel.isHidden = true
-            
-            passedUser?.setAddressLineOne(a1: address1)
-            passedUser?.setAddressLineTwo(a2: address2)
-            passedUser?.setCity(c: city)
-            passedUser?.setState(s: state)
-            passedUser?.setZipcode(z: zipcode)
-            
-            updateUserProfile()
-        } else{
-            self.showToast(message: "Oops! Please check your entries.")
+        guard address1 != "" && city != "" && state != "" && zipcode > 0 else{
             
             if(address1 == ""){
                 address1ErrorLabel.isHidden = false
@@ -113,87 +104,98 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             if zipcode == 0 {
                 zipcodeErrorLabel.isHidden = false
             }
+            return
         }
+        
+        address1ErrorLabel.isHidden = true
+        address2ErrorLabel.isHidden = true
+        cityErrorLabel.isHidden = true
+        stateErrorLabel.isHidden = true
+        zipcodeErrorLabel.isHidden = true
+        
+        passedUser?.setAddressLineOne(a1: address1)
+        passedUser?.setAddressLineTwo(a2: address2)
+        passedUser?.setCity(c: city)
+        passedUser?.setState(s: state)
+        passedUser?.setZipcode(z: zipcode)
+        
     }
     
+    //checks field in real-time
     @IBAction func addOneEditChanged(_ sender: UITextField) {
         address1 = addressOne.text ?? ""
         
-        if address1.rangeOfCharacter(from: addressSet.inverted) != nil{
+        guard address1.rangeOfCharacter(from: addressSet.inverted) == nil else{
             address1ErrorLabel.isHidden = false
-           
-        }else{
-            address1ErrorLabel.isHidden = true
+            return
         }
+        address1ErrorLabel.isHidden = true
+        
         
     }
     
+    //checks field in real-time
     @IBAction func addTwoEditChanged(_ sender: UITextField) {
         address2 = addressTwo.text ?? ""
         
-        if address2.rangeOfCharacter(from: addressSet.inverted) != nil{
+        guard address2.rangeOfCharacter(from: addressSet.inverted) == nil else{
             address2ErrorLabel.isHidden = false
-            
-        } else{
-            address2ErrorLabel.isHidden = true
-            
+            return
         }
+        
+        address2ErrorLabel.isHidden = true
         
     }
     
+    //checks field in real-time
     @IBAction func cityEditChanged(_ sender: UITextField) {
         city = cityTF.text ?? ""
         
-        if city.rangeOfCharacter(from: citySet.inverted) != nil {
+        guard city != "" else{
             cityErrorLabel.isHidden = false
-            
-        } else{
-            cityErrorLabel.isHidden = true
-           
+            return
         }
+        
+        cityErrorLabel.isHidden = true
        
     }
     
+    //checks field in real-time
     @IBAction func zipEditChanged(_ sender: UITextField) {
         let zipcodeString = zipcodeTF.text ?? ""
-        
-        if zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) != nil || zipcodeString.count > 5{
+    
+        guard zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) == nil, zipcodeString.count > 5, let z = Int(zipcodeString) else{
             zipcodeErrorLabel.isHidden = false
-            guard let z = Int(zipcodeString) else{
-                return
-            }
-            
-            zipcode = z
-        } else{
-            zipcode = Int(zipcodeString) ?? 0
-            zipcodeErrorLabel.isHidden = true
+            return
         }
-       
+        
+        zipcode = z
+        zipcodeErrorLabel.isHidden = true
+        
     }
     
     
     func updateUserProfile(){
         
-        if(passedUser != nil){
-            let uid = Auth.auth().currentUser?.uid
-            
-            Firestore.firestore()
-                .collection("users")
-                .document(uid!)
-                .setData(passedUser!.getUserDic()) { [weak self] e in
-                    guard let self = self else { return }
-                    if e != nil {
-                        print(e!.localizedDescription)
-                    }
-                    else {
-                        self.alertUser()
-                    }
-                }
-            
-        } else{
-            print("No user was passed.");
+        guard passedUser != nil else{
+            showToast(message: "An error occured, please try again.")
+            return
         }
+        let uid = Auth.auth().currentUser?.uid
         
+        Firestore.firestore()
+            .collection("users")
+            .document(uid!)
+            .setData(passedUser!.getUserDic()) { [weak self] e in
+                guard let self = self else { return }
+                if e != nil {
+                    print(e!.localizedDescription)
+                }
+                else {
+                    self.alertUser()
+                }
+                
+            }
     }
     
     func alertUser(){
@@ -208,7 +210,6 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     //Segues
     func toLoginScreen(){
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let viewController = mainStoryboard
             .instantiateViewController(withIdentifier: "login")
@@ -217,8 +218,6 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func toHomeScreen(){
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let viewController = mainStoryboard
             .instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
         UIApplication.shared.windows.first?.rootViewController = viewController
@@ -256,6 +255,8 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             cityTF.becomeFirstResponder()
         case 2:
             stateTF.becomeFirstResponder()
+        case 3:
+            zipcodeTF.becomeFirstResponder()
         default:
             addressOne.becomeFirstResponder()
         }

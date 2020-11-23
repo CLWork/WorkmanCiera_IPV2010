@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
-class SponsorsVC: UITabBarController{
+class SponsorsVC: UITableViewController{
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }
