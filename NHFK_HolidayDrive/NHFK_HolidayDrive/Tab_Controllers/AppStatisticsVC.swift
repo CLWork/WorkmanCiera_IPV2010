@@ -10,5 +10,11 @@ import UIKit
 
 class AppStatisticsVC: UIViewController{
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
+    func setUp(){
+        
+    }
 }

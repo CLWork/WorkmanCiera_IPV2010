@@ -56,6 +56,12 @@ class Child{
     public func getID() -> Int{
         return id
     }
+    
+    public func getTotal()-> Int{
+        return total
+    }
+    
+    
     public func setHidden(isHidden: Bool){
         hidden = isHidden
     }
@@ -70,6 +76,10 @@ class Child{
     
     public func setInterests(interests: [String?]){
         self.interests = interests
+    }
+    
+    public func setTotal(t: Int){
+        total = t
     }
     
     public func compareTotal(){

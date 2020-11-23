@@ -34,8 +34,7 @@ class LoginVC: UIViewController, LoginButtonDelegate, UITextFieldDelegate{
     
     func setUp(){
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboard()
         
         emailTF.delegate = self
         passwordTF.delegate = self

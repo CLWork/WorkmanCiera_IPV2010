@@ -6,6 +6,10 @@
 	<array>
 		<string>merchant.org.newhopeforkids.holidayDrive</string>
 	</array>
+	<key>com.apple.developer.pass-type-identifiers</key>
+	<array>
+		<string>$(TeamIdentifierPrefix)*</string>
+	</array>
 	<key>keychain-access-groups</key>
 	<array/>
 </dict>

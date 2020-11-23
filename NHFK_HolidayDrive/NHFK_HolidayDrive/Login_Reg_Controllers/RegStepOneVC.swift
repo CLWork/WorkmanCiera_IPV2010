@@ -59,8 +59,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
     func setUp(){
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboard()
         
         //hide all error labels
         nameErrorLabel.isHidden = true
@@ -303,7 +302,7 @@ class RegStepOneVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             } else{
                 codeValid = false
                 codeErrorLabel.isHidden = false
-                return "invalid"
+                return "user"
             }
             
         } else{

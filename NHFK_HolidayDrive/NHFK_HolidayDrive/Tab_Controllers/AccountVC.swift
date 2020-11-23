@@ -27,7 +27,7 @@ class AccountVC: UIViewController{
     var address2 = ""
     var city = ""
     var state = ""
-    var zipcode = ""
+    var zipcode = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,14 +66,14 @@ class AccountVC: UIViewController{
                     self.address2 = document.get("addressLineTwo") as? String ?? ""
                     self.city = document.get("city") as? String ?? ""
                     self.state = document.get("state") as? String ?? ""
-                    self.zipcode = document.get("zipcode") as? String ?? ""
+                    self.zipcode = document.get("zipcode") as? Int ?? 09876
                     self.type = document.get("type") as? String ?? "user"
                     
                     if(name != nil){
                         self.nameLabel.text = name
                         self.emailLabel.text = email
                         self.addressL1.text = self.address1 + " " + self.address2
-                        self.cityLabel.text = self.city + ", " + self.state + " " + self.zipcode
+                        self.cityLabel.text = self.city + ", " + self.state + " " + self.zipcode.description
                         
                         if(self.type == "admin"){
                             self.statsBarBttn.isEnabled = true

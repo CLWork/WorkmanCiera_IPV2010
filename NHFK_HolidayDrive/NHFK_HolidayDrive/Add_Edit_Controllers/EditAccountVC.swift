@@ -50,6 +50,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     let stateArray = Utility.populateStateArray()
     
     let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-#" + " ")
+    let zipcodeSet =  CharacterSet(charactersIn: "0123456789")
     
     
     override func viewDidLoad() {
@@ -60,8 +61,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     //inital set up
     func setUp(){
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboard()
         
         let statePicker = UIPickerView()
         statePicker.delegate = self
@@ -203,7 +203,7 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     //Validate input upon button click
     func validateInput(){
-        guard name != "", email != "", Utility.checkEmailFormat(email) == true, isEmailInUse == false else{
+        guard name != "" else{
             if name == ""{
                 nameErrorLabel.isHidden = false}
             if(isEmailInUse){
@@ -267,6 +267,18 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
     }
     
+    @IBAction func nameDidChange(_ sender: UITextField) {
+        
+        name = fullNameTF.text ?? ""
+        if(name.count < 6 || name.isEmpty){
+            nameErrorLabel.isHidden = false
+           
+        } else{
+            nameErrorLabel.isHidden = true
+            
+        }
+        
+    }
     //checks for email validity as user types
     @IBAction func emailEditChanged(_ sender: UITextField) {
         email = sender.text ?? ""
@@ -333,10 +345,16 @@ class EditAccountVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBAction func zipEditChanged(_ sender: UITextField) {
         let zipcodeString = zipcodeTF.text ?? ""
         
-        guard zipcodeString != "", zipcodeString.count == 5, zipcode == Int(zipcodeString) else{
+        if zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) != nil || zipcodeString.count != 5 {
+            zipErrorLabel.isHidden = false
+            
+        }
+        guard let z = Int(zipcodeString) else{
             zipErrorLabel.isHidden = false
             return
         }
+        
+        zipcode = z
         zipErrorLabel.isHidden = true
         
     }

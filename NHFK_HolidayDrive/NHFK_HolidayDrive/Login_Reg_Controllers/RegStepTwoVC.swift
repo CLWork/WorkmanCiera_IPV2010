@@ -25,6 +25,7 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var cityErrorLabel: UILabel!
     @IBOutlet weak var stateErrorLabel: UILabel!
     @IBOutlet weak var zipcodeErrorLabel: UILabel!
+    @IBOutlet weak var finishBttn: UIButton!
     
     
     var passedUser: Users?
@@ -45,13 +46,11 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
         setUp()
     }
     
     func setUp(){
-        
+        self.hideKeyboard()
         let statePicker = UIPickerView()
         statePicker.delegate = self
         stateTF.inputView = statePicker
@@ -87,23 +86,30 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     //Final validation
     func validateInput(){
         
-        guard address1 != "" && city != "" && state != "" && zipcode > 0 else{
-            
+        finishBttn.backgroundColor = .systemGray
+        finishBttn.isEnabled = false
+        guard address1 != "" , city != "" , state != "", zipcode > 0 else{
+           
             if(address1 == ""){
                 address1ErrorLabel.isHidden = false
+                
             }
             
             if(city == ""){
                 cityErrorLabel.isHidden = false
+                
             }
             
             if state == "" {
                 stateErrorLabel.isHidden = false
+               
             }
             
             if zipcode == 0 {
                 zipcodeErrorLabel.isHidden = false
             }
+            finishBttn.backgroundColor = .systemGray
+            finishBttn.isEnabled = true
             return
         }
         
@@ -119,6 +125,8 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         passedUser?.setState(s: state)
         passedUser?.setZipcode(z: zipcode)
         
+        
+        updateUserProfile()
     }
     
     //checks field in real-time
@@ -129,6 +137,7 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             address1ErrorLabel.isHidden = false
             return
         }
+        
         address1ErrorLabel.isHidden = true
         
         
@@ -149,14 +158,16 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     //checks field in real-time
     @IBAction func cityEditChanged(_ sender: UITextField) {
+        
         city = cityTF.text ?? ""
         
-        guard city != "" else{
+        if city.rangeOfCharacter(from: citySet.inverted) != nil {
             cityErrorLabel.isHidden = false
-            return
+            
+        } else{
+            cityErrorLabel.isHidden = true
+            
         }
-        
-        cityErrorLabel.isHidden = true
        
     }
     
@@ -164,19 +175,22 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBAction func zipEditChanged(_ sender: UITextField) {
         let zipcodeString = zipcodeTF.text ?? ""
     
-        guard zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) == nil, zipcodeString.count > 5, let z = Int(zipcodeString) else{
+        if zipcodeString.rangeOfCharacter(from: zipcodeSet.inverted) != nil || zipcodeString.count != 5 {
             zipcodeErrorLabel.isHidden = false
             return
         }
         
+        guard let z = Int(zipcodeString) else{
+            zipcodeErrorLabel.isHidden = false
+            return
+        }
         zipcode = z
         zipcodeErrorLabel.isHidden = true
-        
+       
     }
     
     
     func updateUserProfile(){
-        
         guard passedUser != nil else{
             showToast(message: "An error occured, please try again.")
             return
@@ -186,16 +200,17 @@ class RegStepTwoVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         Firestore.firestore()
             .collection("users")
             .document(uid!)
-            .setData(passedUser!.getUserDic()) { [weak self] e in
-                guard let self = self else { return }
-                if e != nil {
-                    print(e!.localizedDescription)
-                }
-                else {
-                    self.alertUser()
+            .setData(passedUser!.getUserDic()) { (error) in
+                guard error == nil else{
+                    
+                    self.showToast(message: "There was an error in saving your profile.")
+                    return
                 }
                 
+                self.alertUser()
             }
+        
+        
     }
     
     func alertUser(){

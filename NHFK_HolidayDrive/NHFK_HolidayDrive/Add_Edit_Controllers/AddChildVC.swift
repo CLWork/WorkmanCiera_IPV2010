@@ -45,14 +45,11 @@ class AddChildVC: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-
-        
-        
+        setUp()
     }
     
     func setUp(){
+        self.hideKeyboard()
         nameErrorLabel.isHidden = true
         ageErrorLabel.isHidden = true
         programErrorLabel.isHidden = true

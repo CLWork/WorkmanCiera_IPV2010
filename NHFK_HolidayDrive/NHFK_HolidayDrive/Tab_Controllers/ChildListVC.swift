@@ -82,7 +82,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         childrenArray.removeAll()
         
-        db.collection("children").getDocuments { (snapshot, error ) in
+        db.collection("children").whereField("hidden", isEqualTo: false).getDocuments { (snapshot, error ) in
             
             if(error != nil){
                 print(error!.localizedDescription)

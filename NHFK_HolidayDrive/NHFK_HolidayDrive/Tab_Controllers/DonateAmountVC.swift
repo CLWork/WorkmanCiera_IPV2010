@@ -161,13 +161,17 @@ class DonateAmountVC: UIViewController, PKPaymentAuthorizationControllerDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+    private func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) {
+        completion(PKPaymentAuthorizationStatus.success)
         
-        //let paymentToken = payment.token
+        guard selectedChild != nil else{
+            return
+        }
+        let currentT = selectedChild!.getTotal()
+        let newT = currentT + donationAmnt
+        selectedChild!.setTotal(t: newT)
         
-        self.dismiss(animated: true, completion: nil)
-       
-    }
+      }
     
     
 }

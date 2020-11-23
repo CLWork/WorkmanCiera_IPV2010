@@ -110,7 +110,7 @@ class DonatePageVC: UIViewController, PKPaymentAuthorizationControllerDelegate{
             amt25Bttn.isSelected = false
             amt100Bttn.isSelected = true
             amt500Bttn.isSelected = false
-            amt25Bttn.tintColor = .systemBlue
+            amt100Bttn.tintColor = .systemBlue
             donateAmount = 100
         case 2:
             amt25Bttn.isSelected = false

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
 
 class EditChildVC: UIViewController, UITextFieldDelegate{
     
@@ -42,8 +43,7 @@ class EditChildVC: UIViewController, UITextFieldDelegate{
     
     func setUp(){
         
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
+        self.hideKeyboard()
         
         nameErrorLabel.isHidden = true
         ageErrorLabel.isHidden = true
@@ -100,11 +100,37 @@ class EditChildVC: UIViewController, UITextFieldDelegate{
         }
     }
     
-    func updateChild(){
+    func findChildDoc(){
+        var docID = ""
         
-        
+        guard passedChild != nil else{
+            return
+        }
+        Firestore.firestore()
+            .collection("children").whereField("id", isEqualTo: passedChild!.getID()).getDocuments { (snapshot, error) in
+                guard error == nil else{
+                    return
+                }
+                
+                for document in snapshot!.documents{
+                    docID = document.documentID
+                    let id = document.get("id") as? Int
+                    
+                    guard id != nil, id == self.passedChild!.getID() else{
+                        return
+                    }
+                    self.updateDoc(docID: docID)
+                    
+                }
+            }
     }
     
+    func updateDoc(docID: String){
+        guard passedChild != nil else{
+            return
+        }
+        Firestore.firestore().collection("children").document(docID).setData(passedChild!.getChildDic())
+    }
     
     @IBAction func nameDidChange(_ sender: UITextField) {
         name = nameTF.text ?? ""
