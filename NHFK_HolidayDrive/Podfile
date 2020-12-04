@@ -18,8 +18,7 @@ pod 'FirebaseUI/Auth'
 pod 'FirebaseUI/Facebook'
 pod 'FBSDKLoginKit'
 pod 'IQKeyboardManagerSwift'
-pod 'Stripe'
-    
+pod 'SquarePointOfSaleSDK'
 
 pod 'Firebase/Firestore'
 

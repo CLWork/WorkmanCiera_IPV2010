@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
+let cellId = "child_cell"
 class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var addBarBttn: UIBarButtonItem!
@@ -20,6 +21,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     let db = Firestore.firestore()
     var supportedChild: Child?
     var chosenChild: Child?
+    let sectionHeight = CGFloat(10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +30,12 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = true
+        tableView.backgroundColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        tableView.register(UINib(nibName: "ChildCellTV", bundle: nil), forCellReuseIdentifier: cellId)
         getChildrenFromDB()
     }
     
@@ -124,39 +127,53 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     //MARK: TableView Protocols
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return childrenArray.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return sectionHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = .clear
+        return v
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) as? ChildCell else {return tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ChildCellTV else {return tableView.dequeueReusableCell(withIdentifier: "child_cell", for: indexPath) }
         
-        cell.childNameAge.text = childrenArray[indexPath.row].getName() + ", " + childrenArray[indexPath.row].getAge().description
-        cell.childNameAge.font = UIFont(name: "DancingScript-SemiBold", size: 30)
-        cell.program.text = childrenArray[indexPath.row].getProgram()
+        let child = childrenArray[indexPath.section]
+        cell.name.text = child.getName() + ", " + child.getAge().description
+        cell.program.text = child.getProgram()
         
-        let interests: [String?] = childrenArray[indexPath.row].getInterests()
+        let interests: [String?] = child.getInterests()
         
         switch interests.count{
         case 1:
-            cell.movie1.text = interests[0]
+            cell.item1.text = interests[0]
         case 2:
-            cell.movie1.text = interests[0]
-            cell.movie2.text = interests[1]
+            cell.item1.text = interests[0]
+            cell.item2.text = interests[1]
         case 3:
-            cell.movie1.text = interests[0]
-            cell.movie2.text = interests[1]
-            cell.item1.text = interests[2]
+            cell.item1.text = interests[0]
+            cell.item2.text = interests[1]
+            cell.item3.text = interests[2]
         case 4:
-            cell.movie1.text = interests[0]
-            cell.movie2.text = interests[1]
-            cell.item1.text = interests[2]
-            cell.item2.text = interests[3]
+            cell.item1.text = interests[0]
+            cell.item2.text = interests[1]
+            cell.item3.text = interests[2]
+            cell.item4.text = interests[3]
         default:
-            cell.movie1.text = ""
-            cell.movie2.text = ""
             cell.item1.text = ""
             cell.item2.text = ""
+            cell.item3.text = ""
+            cell.item4.text = ""
             
         }
         
@@ -164,7 +181,7 @@ class ChildListVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        return 225.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

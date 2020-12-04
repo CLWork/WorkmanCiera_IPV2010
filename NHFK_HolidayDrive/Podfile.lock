@@ -409,7 +409,7 @@ PODS:
   - SDWebImage (5.10.0):
     - SDWebImage/Core (= 5.10.0)
   - SDWebImage/Core (5.10.0)
-  - Stripe (21.0.1)
+  - SquarePointOfSaleSDK (3.5.0)
 
 DEPENDENCIES:
   - FBSDKLoginKit
@@ -421,7 +421,7 @@ DEPENDENCIES:
   - FirebaseUI/Auth
   - FirebaseUI/Facebook
   - IQKeyboardManagerSwift
-  - Stripe
+  - SquarePointOfSaleSDK
 
 SPEC REPOS:
   trunk:
@@ -454,7 +454,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
-    - Stripe
+    - SquarePointOfSaleSDK
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -486,8 +486,8 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
-  Stripe: e8af052b05c82db783707938fb598d12ed352b94
+  SquarePointOfSaleSDK: 1f69421c2d46e812cb65a0c6edd3e19aef339740
 
-PODFILE CHECKSUM: 33ae99f810ef7d1a77936f65191d5f19ab1b78ee
+PODFILE CHECKSUM: 8c63ef6868be98b7bc219adf76314b17d565e49e
 
 COCOAPODS: 1.10.0

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A45AD362FCDAEAD1A0BF9F33 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */; };
 		B49402697B9F354CC370FAFE /* Pods_NHFK_HolidayDriveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */; };
-		F12E7FAA25510B9600160B28 /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12E7FA925510B9600160B28 /* ChildCell.swift */; };
 		F175FD472546139A0011DD50 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD462546139A0011DD50 /* Toast.swift */; };
 		F175FD54254615FE0011DD50 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175FD53254615FE0011DD50 /* Utility.swift */; };
 		F175FD6A254648290011DD50 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F175FD69254648290011DD50 /* DancingScript-Bold.ttf */; };
@@ -24,6 +23,11 @@
 		F18D4386256B5B300006D97D /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F18D4385256B5B300006D97D /* PassKit.framework */; };
 		F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F657F2553515F00FEB895 /* DonateAmountVC.swift */; };
 		F19F65882553D18E00FEB895 /* DonatePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19F65872553D18E00FEB895 /* DonatePageVC.swift */; };
+		F1C9A70B2576FC58005C4239 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9A70A2576FC58005C4239 /* DatabaseHelper.swift */; };
+		F1C9A76E25799DEA005C4239 /* ChildCellTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9A76C25799DEA005C4239 /* ChildCellTV.swift */; };
+		F1C9A76F25799DEA005C4239 /* ChildCellTV.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C9A76D25799DEA005C4239 /* ChildCellTV.xib */; };
+		F1C9A7792579AF51005C4239 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C9A7782579AF51005C4239 /* Constants.swift */; };
+		F1C9A7872579BE2E005C4239 /* Please write me a song.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C9A7862579BE2D005C4239 /* Please write me a song.ttf */; };
 		F1CB656A2560A31E006C8273 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1CB65692560A31E006C8273 /* GoogleService-Info.plist */; };
 		F1CB65D82565EB15006C8273 /* DonationHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */; };
 		F1CB65DD256601C6006C8273 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB65DC256601C6006C8273 /* SponsorCell.swift */; };
@@ -45,7 +49,6 @@
 		F1E68E642543D264006892EE /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E632543D264006892EE /* AccountVC.swift */; };
 		F1E68E692543D28A006892EE /* AddChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E682543D28A006892EE /* AddChildVC.swift */; };
 		F1E68E6E2543D297006892EE /* EditChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E6D2543D297006892EE /* EditChildVC.swift */; };
-		F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E722543D2D9006892EE /* EditHomeVC.swift */; };
 		F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E772543D2EA006892EE /* EditAccountVC.swift */; };
 		F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */; };
 		F9E78A1599618C62D45A06F0 /* Pods_NHFK_HolidayDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DBAE94329F556A6D2C18631 /* Pods_NHFK_HolidayDrive.framework */; };
@@ -77,7 +80,6 @@
 		C3E106ABBDC48ADCEBFD4F76 /* Pods-NHFK_HolidayDriveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDriveTests.release.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDriveTests/Pods-NHFK_HolidayDriveTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5C1563366CC7FC4873A7FB0 /* Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDrive_NHFK_HolidayDriveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E705539AD5821491A16A8857 /* Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; path = "Target Support Files/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests/Pods-NHFK_HolidayDrive-NHFK_HolidayDriveUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F12E7FA925510B9600160B28 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
 		F175FD462546139A0011DD50 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		F175FD53254615FE0011DD50 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		F175FD69254648290011DD50 /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Bold.ttf"; sourceTree = "<group>"; };
@@ -93,6 +95,11 @@
 		F18D4385256B5B300006D97D /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		F19F657F2553515F00FEB895 /* DonateAmountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateAmountVC.swift; sourceTree = "<group>"; };
 		F19F65872553D18E00FEB895 /* DonatePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatePageVC.swift; sourceTree = "<group>"; };
+		F1C9A70A2576FC58005C4239 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		F1C9A76C25799DEA005C4239 /* ChildCellTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCellTV.swift; sourceTree = "<group>"; };
+		F1C9A76D25799DEA005C4239 /* ChildCellTV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChildCellTV.xib; sourceTree = "<group>"; };
+		F1C9A7782579AF51005C4239 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1C9A7862579BE2D005C4239 /* Please write me a song.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Please write me a song.ttf"; sourceTree = "<group>"; };
 		F1CB65692560A31E006C8273 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationHistoryCell.swift; sourceTree = "<group>"; };
 		F1CB65DC256601C6006C8273 /* SponsorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
@@ -120,7 +127,6 @@
 		F1E68E632543D264006892EE /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		F1E68E682543D28A006892EE /* AddChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildVC.swift; sourceTree = "<group>"; };
 		F1E68E6D2543D297006892EE /* EditChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildVC.swift; sourceTree = "<group>"; };
-		F1E68E722543D2D9006892EE /* EditHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeVC.swift; sourceTree = "<group>"; };
 		F1E68E772543D2EA006892EE /* EditAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountVC.swift; sourceTree = "<group>"; };
 		F1E68E7C2543D5C1006892EE /* AppStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatisticsVC.swift; sourceTree = "<group>"; };
 		FD6D0DD66862AF79B05ACCD3 /* Pods_NHFK_HolidayDriveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHFK_HolidayDriveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,9 +191,10 @@
 				F1804815254530E8000501D4 /* Users.swift */,
 				F175FD94254BA5770011DD50 /* Child.swift */,
 				F175FD99254BA5870011DD50 /* Sponsor.swift */,
-				F12E7FA925510B9600160B28 /* ChildCell.swift */,
 				F1CB65D72565EB15006C8273 /* DonationHistoryCell.swift */,
 				F1CB65DC256601C6006C8273 /* SponsorCell.swift */,
+				F1C9A76C25799DEA005C4239 /* ChildCellTV.swift */,
+				F1C9A76D25799DEA005C4239 /* ChildCellTV.xib */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -198,6 +205,8 @@
 				F175FD462546139A0011DD50 /* Toast.swift */,
 				F175FD53254615FE0011DD50 /* Utility.swift */,
 				F18D4305256B409B0006D97D /* KeyboardDismiss.swift */,
+				F1C9A70A2576FC58005C4239 /* DatabaseHelper.swift */,
+				F1C9A7782579AF51005C4239 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -205,6 +214,7 @@
 		F175FD682546481A0011DD50 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F1C9A7862579BE2D005C4239 /* Please write me a song.ttf */,
 				F175FD69254648290011DD50 /* DancingScript-Bold.ttf */,
 				F175FD73254648310011DD50 /* DancingScript-Medium.ttf */,
 				F175FD7A2546483A0011DD50 /* DancingScript-Regular.ttf */,
@@ -306,7 +316,6 @@
 			children = (
 				F1E68E682543D28A006892EE /* AddChildVC.swift */,
 				F1E68E6D2543D297006892EE /* EditChildVC.swift */,
-				F1E68E722543D2D9006892EE /* EditHomeVC.swift */,
 				F1E68E772543D2EA006892EE /* EditAccountVC.swift */,
 			);
 			path = Add_Edit_Controllers;
@@ -425,6 +434,8 @@
 				F1E68E0F2543D019006892EE /* LaunchScreen.storyboard in Resources */,
 				F1CB656A2560A31E006C8273 /* GoogleService-Info.plist in Resources */,
 				F1E68E0C2543D019006892EE /* Assets.xcassets in Resources */,
+				F1C9A7872579BE2E005C4239 /* Please write me a song.ttf in Resources */,
+				F1C9A76F25799DEA005C4239 /* ChildCellTV.xib in Resources */,
 				F175FD82254648420011DD50 /* DancingScript-SemiBold.ttf in Resources */,
 				F175FD7B2546483A0011DD50 /* DancingScript-Regular.ttf in Resources */,
 				F175FD74254648310011DD50 /* DancingScript-Medium.ttf in Resources */,
@@ -596,6 +607,7 @@
 				F19F65882553D18E00FEB895 /* DonatePageVC.swift in Sources */,
 				F18D4306256B409B0006D97D /* KeyboardDismiss.swift in Sources */,
 				F1E68E4B2543D1D8006892EE /* HomeVC.swift in Sources */,
+				F1C9A7792579AF51005C4239 /* Constants.swift in Sources */,
 				F1CB65DD256601C6006C8273 /* SponsorCell.swift in Sources */,
 				F175FD472546139A0011DD50 /* Toast.swift in Sources */,
 				F1CB65D82565EB15006C8273 /* DonationHistoryCell.swift in Sources */,
@@ -607,15 +619,15 @@
 				F175FD9A254BA5870011DD50 /* Sponsor.swift in Sources */,
 				F1E68E5A2543D23F006892EE /* AboutVC.swift in Sources */,
 				F1E68E502543D1EE006892EE /* ChildListVC.swift in Sources */,
+				F1C9A70B2576FC58005C4239 /* DatabaseHelper.swift in Sources */,
 				F1804816254530E8000501D4 /* Users.swift in Sources */,
+				F1C9A76E25799DEA005C4239 /* ChildCellTV.swift in Sources */,
 				F1E68E782543D2EA006892EE /* EditAccountVC.swift in Sources */,
 				F1E68E642543D264006892EE /* AccountVC.swift in Sources */,
 				F19F65802553515F00FEB895 /* DonateAmountVC.swift in Sources */,
 				F175FD9F254BB2780011DD50 /* ResetPasswordVC.swift in Sources */,
 				F1E68E5F2543D257006892EE /* SponsorsVC.swift in Sources */,
 				F1E68E392543D186006892EE /* LoginVC.swift in Sources */,
-				F12E7FAA25510B9600160B28 /* ChildCell.swift in Sources */,
-				F1E68E732543D2D9006892EE /* EditHomeVC.swift in Sources */,
 				F1E68E052543D018006892EE /* SceneDelegate.swift in Sources */,
 				F175FD95254BA5780011DD50 /* Child.swift in Sources */,
 				F1E68E7D2543D5C1006892EE /* AppStatisticsVC.swift in Sources */,
